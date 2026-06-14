@@ -11,7 +11,14 @@ Close the loop on a generated Divi 5 page: validate it, push it to any WordPress
 ## Pre-requisite
 
 The **Divi Tools Importer** plugin must be installed and active on the target site.
-The developer gets it from: `divi5-tools/plugin/divi-tools-importer.zip`
+The plugin zip is `divi-tools-importer.zip` in the repo root. To rebuild it from source, run from the repo root:
+
+```bash
+bash plugins/divi5-tools/plugin/build-zip.sh
+```
+
+This creates a clean WordPress plugin zip (one top-level `divi-tools-importer/` folder, no nested zips, no `.DS_Store` files).
+
 After activation they go to **Settings → Divi Tools Importer** to copy their site URL and API key.
 
 ## Non-negotiable rules
