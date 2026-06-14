@@ -1,78 +1,125 @@
 ---
 name: import-to-local
-description: "Import Divi 5 landing page JSON into a Local (localwp.com) WordPress site as a draft page, open the preview, and run the accept/refine loop. Use when: importing Divi JSON into a Local site, previewing a generated Divi page, publishing an approved Divi landing page, re-importing after edits. Triggers: import divi page, import to local, localwp import, preview divi page, publish divi landing page, divi local site."
+description: "Import Divi 5 landing page JSON into any WordPress site (local or hosted) as a draft page via the Divi Tools Importer plugin REST API. Open the preview and run the accept/refine loop. Triggers: import divi page, import to local, localwp import, preview divi page, publish divi landing page, divi local site, import divi hosted, deploy divi page."
+argument-hint: "[site-url] [api-key]  — or omit to be prompted"
 ---
 
-# Divi 5 → Local WP Importer
+# Divi 5 Page Importer
 
-Close the loop on a generated Divi 5 page: validate it, import it into a running Local site as a **draft**, open the preview, then act on the user's verdict — accept, refine, or re-import. The rendered page is the judgement surface.
+Close the loop on a generated Divi 5 page: validate it, push it to any WordPress site via the Divi Tools Importer plugin, open the preview, then act on the user's verdict. Works on **any host** — Local, Kinsta, WP Engine, SiteGround, Flywheel — no SSH or WP-CLI required.
+
+## Pre-requisite
+
+The **Divi Tools Importer** plugin must be installed and active on the target site.
+The developer gets it from: `divi5-tools/plugin/divi-tools-importer.zip`
+After activation they go to **Settings → Divi Tools Importer** to copy their site URL and API key.
 
 ## Non-negotiable rules
 
-1. **Draft first, always.** Import creates/updates a draft keyed on slug. Publish only on the user's explicit accept (`--publish`).
-2. **Never touch any page other than the draft keyed to this import's slug.** No deletes, no edits to other content.
-3. **Validator FAILs block import** — run the sibling `landing-page` skill's `scripts/validate.js` first; no overrides. WARNs are reported but importable.
-4. **All WordPress mutation goes through `scripts/wp.sh` + `wordpress/import-divi-page.php`.** Never raw SQL, never editing site files directly.
-5. **Refinements amend the run's `generate-*.js` builder script and regenerate** — never hand-edit generated JSON.
-6. **Re-runs with the same slug update the same draft.** No page litter.
+1. **Draft first, always.** Never pass `"publish": true` unless the user explicitly says "publish" or "go live".
+2. **Never touch any page other than the draft keyed to this import's slug.**
+3. **Validator FAILs block import** — run `landing-page`'s `scripts/validate.js` first; fix all FAILs before sending. WARNs are reported but don't block.
+4. **Refinements amend the run's `generate-*.js` and regenerate** — never hand-edit the JSON.
+5. **Re-runs with the same slug update the same draft.** No page litter.
+6. **Never log or store the API key.** Use it only in the request header.
+
+---
 
 ## Workflow
 
 ### 1. Resolve inputs
 
-- **Layout JSON**: explicit path if the user gave one; otherwise the most recent `*-landing-page.json` in the working directory. Confirm if ambiguous. Context must be `et_builder`.
-- **SEO meta**: the matching `*-seo-meta.json` if present (title tag, meta description, slug).
-- **Target site**: run `node scripts/list-local-sites.js --json`. One running site → use it (tell the user which). Several running → ask via AskUserQuestion. None running → tell the user to start the site in Local; do not proceed.
+**Layout JSON** — explicit path if given; otherwise the most recent `*-landing-page.json` in the working directory. Confirm if ambiguous. Must have `"context": "et_builder"`.
+
+**SEO meta** — matching `*-seo-meta.json` if present. Keys used: `title`/`titleTag`, `description`/`metaDescription`, `slug`, `keyword`.
+
+**Schema** — matching `*-schema.json` if present. Sent as-is; the plugin stores it and auto-injects it into `<head>` by slug.
+
+**Site URL + API key** — from `$ARGUMENTS`, or ask via AskUserQuestion:
+- "What is your WordPress site URL?" (e.g. `https://mysite.com` or `http://mysite.local`)
+- "What is your Divi Tools Importer API key?" (starts with `dtik_`)
 
 ### 2. Validate
 
 ```bash
-node <plugin>/skills/landing-page/scripts/validate.js <layout.json> --keyword "<kw>" --meta <seo-meta.json>
+node <CLAUDE_SKILL_DIR>/../landing-page/scripts/validate.js <layout.json> \
+  --keyword "<keyword from seo-meta>" \
+  --meta <seo-meta.json>
 ```
 
-Fix FAILs (or hand back to the `landing-page` skill) before going further. Show the report.
+Show the report. Stop on any FAIL — hand back to `landing-page` skill to fix.
 
-### 3. Preflight the site
+### 3. Ping the site
 
 ```bash
-bash scripts/wp.sh <site-id> <public-dir> option get siteurl
+curl -s "<site-url>/wp-json/divi-tools/v1/ping?dti_key=<api-key>"
 ```
 
-- Output must match the site's domain — wrong DB means stop.
-- First run on a machine: see `references/local-environment.md` if the env extraction in `wp.sh` needs adjusting for the installed Local version.
+Check the response:
+- `status: "ok"` → proceed
+- HTTP 401 → wrong key, ask the user to check Settings → Divi Tools Importer
+- HTTP 404 → plugin not active, ask user to activate it
+- Connection refused / timeout → site is down or URL is wrong
 
-### 4. Import
+Report what was detected: Divi 5, Yoast, RankMath. If no SEO plugin, warn the user they'll need to set meta manually.
+
+### 4. Build the payload and import
+
+Assemble `payload.json` in the working directory:
+
+```json
+{
+  "layout":  <contents of layout JSON>,
+  "seo":     <contents of seo-meta JSON, or {}>,
+  "schema":  <contents of schema JSON, or {}>,
+  "publish": false
+}
+```
+
+Send it:
 
 ```bash
-bash scripts/wp.sh <site-id> <public-dir> eval-file wordpress/import-divi-page.php <layout.json> <seo-meta.json>
+curl -s -X POST "<site-url>/wp-json/divi-tools/v1/import" \
+  -H "Content-Type: application/json" \
+  -H "X-Divi-Tools-Key: <api-key>" \
+  -d @payload.json
 ```
 
-The PHP bridge (verified against Divi 5 beta 9.1 source):
+Parse the JSON response. On error:
+- `401` → invalid key
+- `422` → layout validation failed (show `message`)
+- `429` → rate limited, wait 60s and retry
+- `500` → server error (show `message`)
 
-- imports presets via `GlobalPreset::process_presets_for_import` and rewrites remapped preset IDs into the content,
-- imports global colours (tuple → assoc conversion, merged) and global variables,
-- creates/updates the draft, sets `_et_pb_use_builder` + `_et_pb_use_divi_5`,
-- sets Yoast/RankMath meta when present (otherwise prints the values for manual entry),
-- emits `IMPORT_REPORT:{json}` — parse it.
+### 5. Present the report
 
-If the report warns that Divi 5 helpers were missing, tell the user Divi 5 isn't active on that site; content-only import has already happened, presets/colours have not.
-
-### 5. Preview
-
-Open the report's `previewUrl` in the browser (`open <url>` on macOS). Present the report: action taken, what was imported, validator/SEO report card, and remind about `*-schema.json` → Divi > Theme Options > Integration > head.
+Show the user:
+- Page action (created / updated), slug, status (draft/published)
+- What was imported: presets, global colours, global variables
+- SEO plugin used (or warning if none)
+- Schema saved: yes/no
+- Any warnings from the plugin
+- Preview URL (open it: `open <previewUrl>` on macOS)
+- ~~Schema reminder~~ — **not needed**, the plugin handles it automatically
 
 ### 6. Decide
 
 | Verdict | Action |
 |---|---|
-| **Accept** | Re-run the import with `--publish` (or `wp.sh <id> <dir> post update <pageId> --post_status=publish`). Confirm the live URL. |
-| **Refine** | Take the feedback, amend the run's `generate-*.js` builder script, re-run it, re-validate, re-import (same slug → same draft). |
-| **Re-import** | User hand-edited the builder script or JSON: validate, then import again. |
-| **Rewrite** | Hand back to the `landing-page` skill with the amended brief. |
+| **Accept** | Re-send with `"publish": true`. Confirm the live URL from `slug`. |
+| **Refine** | Take feedback, amend `generate-*.js`, regenerate, re-validate, re-import. |
+| **Re-import** | User edited the script: validate then import again (same slug → same draft). |
+| **Rewrite** | Hand back to `landing-page` skill with amended brief. |
 
-## Resources
+---
 
-- `scripts/list-local-sites.js` — site discovery from Local's `sites.json` + running heuristic
-- `scripts/wp.sh` — WP-CLI against a Local site via its ssh-entry environment
-- `wordpress/import-divi-page.php` — the import bridge (run via `wp eval-file`)
-- `references/local-environment.md` — Local paths, mechanisms, first-run verification, pitfalls
+## Publish flow (after accept)
+
+```bash
+curl -s -X POST "<site-url>/wp-json/divi-tools/v1/import" \
+  -H "Content-Type: application/json" \
+  -H "X-Divi-Tools-Key: <api-key>" \
+  -d @payload.json  # same payload with "publish": true
+```
+
+Confirm the live URL: `<site-url>/<slug>/`
