@@ -35,7 +35,7 @@ re-run this script, or finish manually:
   1. Create an empty repo at https://github.com/new named:
      iconnectit-claude-plugins  (no README/licence/gitignore)
   2. Then run:
-     git remote add origin https://github.com/<your-user>/iconnectit-claude-plugins.git
+     git remote add origin https://github.com/Kieransaunders/iconnectit-claude-plugins.git
      git push -u origin main
 EOF
 fi

@@ -1,0 +1,11 @@
+{
+  "name": "noloco-api",
+  "description": "Work with Noloco's per-app GraphQL data API — schema introspection, CRUD queries and mutations, pagination, and WordPress sync patterns.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kieran (iConnectIT)",
+    "email": "kieran@iconnectit.co.uk"
+  },
+  "license": "MIT",
+  "keywords": ["noloco", "graphql", "api", "wordpress", "sync"]
+}

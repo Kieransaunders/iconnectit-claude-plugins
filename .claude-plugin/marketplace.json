@@ -23,6 +23,14 @@
       "description": "WordPress plugin/theme go-to-market asset generator plus a pre-submission audit against the WordPress.org Plugin Directory guidelines.",
       "version": "0.1.0",
       "keywords": ["wordpress", "plugin", "theme", "marketing", "wordpress-org", "submission"]
+    },
+    {
+      "name": "noloco-api",
+      "source": "./plugins/noloco-api",
+      "description": "Work with Noloco's per-app GraphQL data API — schema introspection, CRUD queries and mutations, pagination, and WordPress sync patterns.",
+      "version": "1.0.0",
+      "category": "development",
+      "keywords": ["noloco", "graphql", "api", "wordpress", "sync"]
     }
   ]
 }

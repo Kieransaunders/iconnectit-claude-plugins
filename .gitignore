@@ -11,6 +11,10 @@ Thumbs.db
 node_modules/
 npm-debug.log*
 
+# Python
+__pycache__/
+*.pyc
+
 # Generated test/run output from divi5-tools scripts
 *-landing-page.json
 *-seo-meta.json
