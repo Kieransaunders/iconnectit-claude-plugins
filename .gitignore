@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Generated test/run output from divi5-tools scripts
+*-landing-page.json
+*-seo-meta.json
+*-schema.json
+preview-*.html
+generate-*.js
+
+# ...but keep the bundled example generator
+!plugins/divi5-tools/skills/landing-page/examples/example-page.js

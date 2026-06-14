@@ -1,0 +1,28 @@
+{
+  "name": "iconnectit-claude-plugins",
+  "owner": {
+    "name": "Kieran, iConnectIT",
+    "email": "kieran@iconnectit.co.uk",
+    "url": "https://iconnectit.co.uk"
+  },
+  "metadata": {
+    "description": "iConnectIT's marketplace of Claude Code / Cowork plugins for WordPress, Divi 5, and web delivery.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "divi5-tools",
+      "source": "./plugins/divi5-tools",
+      "description": "Divi 5 toolkit: SEO-optimised landing page JSON generator, design/SEO reviewer, brand-guide-to-global-variables converter, and one-command import into Local WP sites.",
+      "version": "0.3.0",
+      "keywords": ["divi", "divi-5", "wordpress", "landing-page", "seo", "localwp"]
+    },
+    {
+      "name": "wp-dev-tools",
+      "source": "./plugins/wp-dev-tools",
+      "description": "WordPress plugin/theme go-to-market asset generator plus a pre-submission audit against the WordPress.org Plugin Directory guidelines.",
+      "version": "0.1.0",
+      "keywords": ["wordpress", "plugin", "theme", "marketing", "wordpress-org", "submission"]
+    }
+  ]
+}

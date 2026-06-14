@@ -1,0 +1,19 @@
+{
+  "name": "wp-dev-tools",
+  "version": "0.1.0",
+  "description": "WordPress plugin/theme go-to-market and release toolkit: generate finished marketing assets (listing copy, readme.txt, landing pages, email/social, ICP) and run a pre-submission audit against the WordPress.org Plugin Directory guidelines.",
+  "author": {
+    "name": "Kieran, iConnectIT"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "theme",
+    "marketing",
+    "wordpress-org",
+    "readme",
+    "plugin-check",
+    "submission"
+  ],
+  "license": "MIT"
+}
