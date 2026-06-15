@@ -1,6 +1,6 @@
 {
   "name": "divi5-tools",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Divi 5 toolkit: SEO-optimised landing page JSON generator, design/SEO reviewer for any Divi 5 export, brand-guide-to-global-variables converter, and one-command import into Local WP sites with draft preview and publish-on-accept.",
   "author": {
     "name": "Kieran, iConnectIT"
