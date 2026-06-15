@@ -72,18 +72,60 @@ function placeholder(children) {
   return ['<!-- wp:divi/placeholder -->', ...children, '<!-- /wp:divi/placeholder -->'].join(CRLF);
 }
 
+// ─── DiviTheatre motion helper ──────────────────────────────────────────────
+
+/**
+ * Build a `module.advanced.attributes` attrs fragment for DiviTheatre data-theatre
+ * attributes. ONLY call this when the user has explicitly confirmed DiviTheatre
+ * is installed. Never emit data-theatre attributes without consent.
+ *
+ * Usage in a module:  section({ theatre: 'hero-reveal', theatreOpts: { trigger: 'onLoad' } }, [...])
+ * Or standalone:      attrs: D.theatreAttrs('fade-up', { trigger: 'onScroll', delay: 200 })
+ *
+ * @param {string} preset - DiviTheatre preset name (fade-up, stagger, parallax-scroll, etc.)
+ * @param {Object} opts   - { trigger:'onScroll'|'onLoad'|'onClick', delay:ms, duration:ms, mobile:bool }
+ */
+function theatreAttrs(preset, opts) {
+  const o = opts || {};
+  const dataAttrs = {};
+  if (preset) dataAttrs['data-theatre'] = preset;
+  if (o.trigger) dataAttrs['data-theatre-trigger'] = o.trigger;
+  if (o.delay != null) dataAttrs['data-theatre-delay'] = String(o.delay);
+  // duration is ignored by parallax-scroll and hero-reveal (fixed timelines) —
+  // don't emit a misleading attribute for them.
+  const DURATION_IGNORED = preset === 'parallax-scroll' || preset === 'hero-reveal';
+  if (o.duration != null && !DURATION_IGNORED) dataAttrs['data-theatre-duration'] = String(o.duration);
+  if (o.mobile) dataAttrs['data-theatre-mobile'] = 'true';
+  return Object.keys(dataAttrs).length
+    ? { module: { advanced: { attributes: { desktop: { value: dataAttrs } } } } }
+    : {};
+}
+
+/** Merge theatre attrs into o.attrs if o.theatre is set. Called by every module function. */
+function withTheatre(o) {
+  if (!o.theatre) return o.attrs || {};
+  return merge(o.attrs || {}, theatreAttrs(o.theatre, o.theatreOpts));
+}
+
 // ─── structural modules ─────────────────────────────────────────────────────
 
 /**
- * section({ adminLabel, background, padding:{top,bottom}, phonePadding, preset, attrs }, rows)
+ * section({ adminLabel, background, backgroundImage, backgroundImagePosition, padding:{top,bottom}, phonePadding, preset, theatre, theatreOpts, attrs }, rows)
+ * theatre: DiviTheatre preset name (ONLY when user confirmed DiviTheatre installed)
  */
 function section(opts, rows) {
   const o = opts || {};
+  const bgValue = prune({
+    color: o.background,
+    image: o.backgroundImage
+      ? { url: o.backgroundImage, size: 'cover', position: o.backgroundImagePosition || 'center center' }
+      : undefined,
+  });
   let attrs = {
     module: {
       meta: o.adminLabel ? { adminLabel: dv(o.adminLabel) } : undefined,
       decoration: {
-        background: o.background ? dv({ color: o.background }) : undefined,
+        background: Object.keys(bgValue).length ? dv(bgValue) : undefined,
         spacing: o.padding
           ? {
               desktop: { value: { padding: { top: o.padding.top, bottom: o.padding.bottom || o.padding.top, syncVertical: o.padding.bottom && o.padding.bottom !== o.padding.top ? 'off' : 'on', syncHorizontal: 'off' } } },
@@ -93,7 +135,7 @@ function section(opts, rows) {
       },
     },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('section', attrs, rows);
 }
@@ -117,7 +159,7 @@ function row(opts, columns) {
       },
     },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('row', attrs, columns);
 }
@@ -140,7 +182,7 @@ function column(opts, modules) {
       },
     },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('column', attrs, modules);
 }
@@ -171,7 +213,7 @@ function heading(opts) {
       decoration: { font: { font: f.phoneSize ? dv(desktopFont, { phone: { size: f.phoneSize } }) : dv(desktopFont) } },
     },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('heading', attrs, null);
 }
@@ -197,7 +239,7 @@ function text(opts) {
       },
     },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('text', attrs, null);
 }
@@ -206,7 +248,7 @@ function text(opts) {
 function eyebrow(label, color, opts) {
   const o = opts || {};
   return text({
-    html: `<p style="text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:600;color:${color};">${label}</p>`,
+    html: `<p style="text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:600;color:${color};text-align:${o.textAlign || 'center'};">${label}</p>`,
     font: { textAlign: o.textAlign || 'center' },
     preset: o.preset,
   });
@@ -229,7 +271,7 @@ function button(opts) {
       },
     },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('button', attrs, null);
 }
@@ -247,7 +289,7 @@ function blurb(opts) {
     },
     content: { innerContent: dv(o.body) },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('blurb', attrs, null);
 }
@@ -257,7 +299,7 @@ function image(opts) {
   const o = opts || {};
   if (!o.alt) throw new Error(`image(${o.src}): alt text is required (SEO rule)`);
   let attrs = { image: { innerContent: dv(prune({ src: o.src, alt: o.alt, titleText: o.title })) } };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('image', attrs, null);
 }
@@ -268,7 +310,7 @@ function icon(opts) {
   let attrs = {
     icon: { innerContent: dv({ unicode: o.unicode, type: 'fa', weight: '900' }), advanced: o.color ? { color: dv(o.color) } : undefined },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('icon', attrs, null);
 }
@@ -296,7 +338,7 @@ function numberCounter(opts) {
     number: { innerContent: dv(String(o.number)), decoration: o.numberColor ? { font: { font: dv({ color: o.numberColor, size: o.numberSize || '48px', weight: '700' }) } } : undefined },
     percent: { advanced: { sign: dv(o.percent ? 'on' : 'off') } },
   };
-  attrs = prune(merge(attrs, o.attrs));
+  attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('number-counter', attrs, null);
 }
@@ -397,5 +439,6 @@ module.exports = {
   dv, block, placeholder, merge, prune,
   section, row, column,
   heading, text, eyebrow, button, blurb, image, icon, accordion, numberCounter, divider,
+  theatreAttrs, withTheatre,
   createBuilder, randomId,
 };

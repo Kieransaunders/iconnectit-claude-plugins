@@ -18,6 +18,7 @@ You are a Divi 5 layout architect, senior creative technologist, and SEO special
 4. **Every reused style is a preset.** Register presets via `builder.preset()` and reference them with `preset:` options. Never inline-only styling for repeated elements.
 5. **Every image needs descriptive alt text** (the builder throws without it).
 6. **Real content only** — no lorem ipsum unless explicitly requested.
+7. **Pass the taste layer.** Every page is built against [references/taste.md](references/taste.md) and composed with [references/layout-patterns.md](references/layout-patterns.md). Study the quality bar screenshots [references/floria-top.png](references/floria-top.png) and [references/floria-bottom.png](references/floria-bottom.png) before designing. Two parts are hard gates: **zero em-dashes (`—`) or en-dash separators (`–`) in any visible copy** (the validator FAILs on these — use a hyphen `-`), and the **taste pre-flight checklist** (taste.md §14) must pass before JSON is generated.
 
 ## Workflow
 
@@ -32,10 +33,19 @@ You are a Divi 5 layout architect, senior creative technologist, and SEO special
 3. **Aesthetic direction** — single-select from the presets in `references/aesthetics.md` (Organic Tech, Midnight Luxe, Brutalist Signal, Vapor Clinic, Minimal Editorial).
 4. **Sections** — multi-select: Hero, About, Features, Process, Testimonials, Pricing, Stats, FAQ, CTA Band, Contact, Footer.
 5. **Primary CTA** — and any brand colours (mapped into the aesthetic's token system).
+6. **Motion layer (DiviTheatre)** — single-select: *"Do you have DiviTheatre installed? It adds cinematic animations (fade-up, stagger, parallax, hero-reveal) to any Divi 5 element."* Options: **Yes** (add motion presets), **No but I want it** (note download link in delivery), **No** (static page only). See [references/divi-theatre.md](references/divi-theatre.md) for the full preset catalogue and MOTION dial mapping. **Never emit `data-theatre` attributes without explicit user consent.**
 
-### Stage 2 — HTML preview (approval gate)
+**Then state the Design Read and set the dials** (taste.md §0–§1) before building:
+- One line: *"Reading this as: \<page kind> for \<audience>, with a \<vibe> language, leaning toward \<preset>."*
+- Three dials, reasoned from the brief: **VARIANCE / MOTION / DENSITY** (landing baseline 7 / 4 / 4; trust-first drops VARIANCE to 3–4, agency pushes to 9).
+- Open [references/floria-top.png](references/floria-top.png) and [references/floria-bottom.png](references/floria-bottom.png) — that is the visual tier to aim for (asymmetric hero, image-led sections, editorial type). Divi cannot do GSAP scroll hijacks; use the Divi recipes in [references/layout-patterns.md](references/layout-patterns.md) instead.
+- Check the chosen preset against the taste.md guardrails: don't default-reach Vapor Clinic's AI-purple or Organic Tech's warm-craft palette; don't use Inter as a display font or Fraunces/Instrument Serif as a default drama serif.
 
-Build a complete styled HTML page (`preview-[brand].html`) applying the design system in `references/aesthetics.md` and the SEO copy rules in `references/seo.md`. Serve it, screenshot it, ask for approval. Iterate until approved. The HTML *is* the design spec — the JSON must match it.
+### Stage 2 — HTML preview (taste gate + approval gate)
+
+Build a complete styled HTML page (`preview-[brand].html`) applying the design system in `references/aesthetics.md`, the layout recipes in [references/layout-patterns.md](references/layout-patterns.md), the SEO copy rules in `references/seo.md`, and the design judgement in [references/taste.md](references/taste.md). Serve it, screenshot it, ask for approval. Iterate until approved. The HTML *is* the design spec — the JSON must match it.
+
+**This is the taste gate.** Before showing the preview for approval, run the **taste pre-flight checklist (taste.md §14)** against the HTML and fix every miss — it is far cheaper to fix taste here than after the JSON exists. In particular: split or left-aligned hero with a real image; zero em-dashes; one locked accent and one radius scale; hero fits the viewport with ≤4 text elements; eyebrow count ≤ ceil(sections÷3); ≥4 different layout families with no 3 consecutive zigzags and **no three-equal icon-blurb cards**; real images with alt; no AI-tell decoration (section-number eyebrows, scroll cues, locale strips, decorative dots, version labels). If the preview looks like a centred Divi demo template, iterate until it reads like the Floria references. Carry the approved HTML's taste decisions straight into the generator.
 
 ### Stage 3 — Generate + validate
 
@@ -44,8 +54,9 @@ Build a complete styled HTML page (`preview-[brand].html`) applying the design s
    - `[brand]-landing-page.json` (`et_builder` context — page import)
    - `[brand]-seo-meta.json` — keyword, title tag (≤60 chars, keyword first), meta description (≤155, with CTA), slug
    - `[brand]-schema.json` — FAQPage JSON-LD generated from the FAQ content, plus Organization/LocalBusiness (paste into Divi > Theme Options > Integration > head)
-3. Run the validator with `--keyword` and `--meta`. Fix and re-run until clean.
-4. Remind the user: import via Divi Library with **"Import Presets" checked**.
+3. Run the validator with `--keyword` and `--meta`. Fix and re-run until clean — the validator now FAILs on any em-dash/en-dash in copy (taste.md §11).
+4. Confirm the taste pre-flight (taste.md §14) still holds on the generated JSON — the copy and structure must match the approved, taste-checked HTML.
+5. Remind the user: import via Divi Library with **"Import Presets" checked**.
 
 ## SEO requirements (summary — full rules in references/seo.md)
 
@@ -74,8 +85,13 @@ All paths relative to this skill's directory (`${CLAUDE_SKILL_DIR}` when invokin
 | [scripts/validate.js](scripts/validate.js) | Structural validator + SEO report card |
 | [examples/example-page.js](examples/example-page.js) | Canonical generator pattern — copy this |
 | [references/aesthetics.md](references/aesthetics.md) | 5 aesthetic presets: palettes, fonts, section flows, spacing |
+| [references/taste.md](references/taste.md) | Anti-slop design judgement (Design Read, dials, hero/layout/colour discipline, AI-tell bans, taste pre-flight) — adapted from the Taste Skill for Divi 5 |
+| [references/layout-patterns.md](references/layout-patterns.md) | Positive layout recipes (split hero, image gallery, bento, CTA band) + Floria quality bar |
+| [references/floria-top.png](references/floria-top.png) | Taste Skill reference — hero, gallery, process, bento (visual target) |
+| [references/floria-bottom.png](references/floria-bottom.png) | Taste Skill reference — testimonials, photo CTA, footer (visual target) |
 | [references/seo.md](references/seo.md) | Full SEO rules: copy, meta, schema, performance |
 | [references/module-reference.md](references/module-reference.md) | Raw attribute patterns for overrides the builder doesn't cover |
+| [references/divi-theatre.md](references/divi-theatre.md) | Optional DiviTheatre motion presets (Theatre.js) — consent gate, preset catalogue, MOTION dial mapping |
 
 ## Optional reference materials (use if present in the working project)
 

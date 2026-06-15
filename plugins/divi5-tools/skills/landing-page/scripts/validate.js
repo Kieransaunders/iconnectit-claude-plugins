@@ -22,6 +22,10 @@
  *   - Keyword present in h1, first text content, and >=1 h2 (when --keyword given)
  *   - Title <=60 chars, description <=155 chars (when --meta given)
  *   - Responsive: non-full-width columns define phone flexType
+ *
+ * Taste checks (the one anti-slop rule that is deterministically checkable —
+ * see references/taste.md sections 10/11):
+ *   - Zero em-dash / en-dash characters in visible copy (FAIL). Use a hyphen "-".
  */
 
 'use strict';
@@ -207,6 +211,26 @@ for (const g of new Set(allGcidRefs)) {
   if (!definedColors.has(g)) err(`global colour "${g}" referenced but not defined in global_colors`);
 }
 if (definedColors.size) pass(`${definedColors.size} global colours defined, references checked`);
+
+// ─── taste: em-dash / en-dash ban (deterministic) ───────────────────────────
+// The em-dash is the #1 AI tell. references/taste.md §11 bans it (and en-dash as
+// a separator) in all user-visible copy. Divi structure uses only ASCII, so any
+// U+2014/U+2013 (or its HTML entity) lives in copy values — safe to FAIL on.
+const DASH_RE = /—|–|&mdash;|&ndash;|&#8212;|&#8211;|&#x201[34];/gi;
+const dashHits = [];
+for (const { content } of contents) {
+  let m;
+  const re = new RegExp(DASH_RE.source, DASH_RE.flags);
+  while ((m = re.exec(content)) !== null) {
+    const start = Math.max(0, m.index - 30);
+    dashHits.push('…' + content.slice(start, m.index + 30).replace(/\s+/g, ' ').trim() + '…');
+  }
+}
+if (dashHits.length) {
+  err(`TASTE: ${dashHits.length} em-dash/en-dash in copy — banned (use a hyphen "-"). First: ${dashHits.slice(0, 3).join('  |  ')}`);
+} else {
+  pass('TASTE: no em-dash/en-dash in copy');
+}
 
 // ─── SEO report card ────────────────────────────────────────────────────────
 

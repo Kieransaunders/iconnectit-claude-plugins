@@ -2,14 +2,26 @@
 
 Single source of truth — supersedes the token sets previously duplicated across cinematic-landing and ui-ux-pro-max.
 
+> **Anti-slop guardrails (see `references/taste.md`).** Pick the preset that fits the *brief*, never
+> a default reach. Specifically: don't choose **Vapor Clinic** just because the brief says "tech"
+> (its Plasma `#7B61FF` is the AI-purple tell), and don't choose **Organic Tech** just because it
+> says "wellness" or "artisan" (its warm cream/clay is the premium-consumer cliché family). `Inter`
+> is fine as a neutral *body* font but is discouraged as a *display/heading* font; `Fraunces` and
+> `Instrument Serif` are banned as default drama serifs. Em-dashes are banned in all page copy.
+
 ## The 5 presets
 
 ### A — Organic Tech (Clinical Boutique)
 - **Identity:** research lab meets luxury magazine
 - **Palette:** Moss `#2E4036` (dark base), Clay `#CC5833` (accent), Cream `#F2F0E9` (light bg), Charcoal `#1A1A1A` (text)
-- **Fonts:** Plus Jakarta Sans (headings, 700) / Inter (body) / Cormorant Garamond Italic (drama)
+- **Fonts:** Plus Jakarta Sans (headings, 700) / Source Sans 3 (body) / Cormorant Garamond Italic (drama)
 - **Flow:** Dark hero → Cream about → White features → Cream process → Clay CTA → Dark footer
 - **Image mood:** organic textures, forest, laboratory glassware
+- **Use only when earned:** cream + clay + charcoal is the default AI reach for "artisan / wellness /
+  premium-consumer" briefs, which makes those brands look identical. The moss base keeps it off the
+  pure beige+brass cliché, but if you've shipped this palette recently, rotate the accent (forest +
+  amber, terracotta + slate, or olive + brick) rather than defaulting to clay again. The Cormorant
+  drama serif is a *justified* serif here (genuine luxury-magazine identity), not a default reach.
 
 ### B — Midnight Luxe (Dark Editorial)
 - **Identity:** private members' club meets watchmaker's atelier
@@ -28,9 +40,12 @@ Single source of truth — supersedes the token sets previously duplicated acros
 ### D — Vapor Clinic (Neon Biotech)
 - **Identity:** genome lab inside a Tokyo nightclub
 - **Palette:** Deep Void `#0A0A14`, Plasma `#7B61FF`, Ghost `#F0EFF4`, Graphite `#18181B`
-- **Fonts:** Sora (headings) / DM Sans (body) / Instrument Serif Italic (drama)
+- **Fonts:** Sora (headings) / DM Sans (body) / Newsreader Italic (drama)
 - **Flow:** Dark hero → Ghost about → White features → Ghost process → Plasma CTA → Dark footer
 - **Image mood:** neon gradients, lab glass, night architecture
+- **Use only when earned:** Plasma `#7B61FF` is the textbook AI-purple glow. Reach for this preset
+  only when the brief genuinely wants neon-biotech energy. If purple isn't justified, swap Plasma for
+  a different high-contrast accent (electric blue, acid lime, hot magenta) and keep the dark base.
 
 ### E — Minimal Editorial (Clean Authority)
 - **Identity:** Kinfolk magazine meets Swiss design studio
@@ -62,7 +77,7 @@ Single source of truth — supersedes the token sets previously duplicated acros
 |-------|---------|------|--------------|
 | Modern Corporate | Poppins | Inter | — |
 | Elegant Serif | Playfair Display | Lora | — |
-| Bold Geometric | Sora | DM Sans | Instrument Serif Italic |
+| Bold Geometric | Sora | DM Sans | Newsreader Italic |
 | Warm Humanist | Nunito | Source Sans 3 | — |
 | Tech Forward | Space Grotesk | IBM Plex Sans | IBM Plex Mono |
 | Luxury Minimal | Cormorant Garamond | Montserrat | — |
@@ -119,10 +134,15 @@ Max two font families per page (SEO/CWV rule).
 
 ## Components
 
-- **Cards:** white bg on gray section, 8px radius, 2em padding, accent icon, h3 title, muted body.
-- **Buttons:** exactly two styles — Primary (filled accent, white text) and Ghost (transparent, subtle border). Invert primary on accent backgrounds.
-- **Hero:** static (no slider), eyebrow → h1 → subtitle (maxWidth 600px, muted) → primary CTA.
+- **Cards:** use only when elevation communicates hierarchy. Prefer image-led tiles (photo + caption) over icon blurbs. When cards are used: contrasting bg, consistent radius, 2em padding.
+- **Buttons:** exactly two styles — Primary (filled) and Ghost (transparent / text link). Pick one radius system (pill `999px`, soft `12–16px`, or sharp) and hold it. Invert primary on accent backgrounds.
+- **Hero:** static (no slider). **Default: asymmetric split** — left-aligned copy + right image (see `layout-patterns.md`). Centred stack only for manifesto/editorial briefs with low VARIANCE.
 
-## Section anatomy (the cinematic arc)
+## Section anatomy (layout families, not a template)
 
-Hero "the opening shot" → About "the invitation" → Features "the evidence" (3-col cards) → Process "the journey" (numbered steps — numbers are text, not headings) → Testimonials "the proof" (quote icon, italic body, bold name) → Pricing "the offer" (middle tier emphasised) → CTA band "the close" (high contrast) → FAQ "the reassurance" (first item open) → Footer "the anchor" (dark, NAP if local).
+Pick sections from the brief. Each section uses a **different layout family** (see `layout-patterns.md`).
+Quality bar: [floria-top.png](floria-top.png), [floria-bottom.png](floria-bottom.png).
+
+Suggested arc (swap families — never repeat the same structure):
+
+Hero **split or editorial** → About **split narrative** → Features **image gallery or bento** (not 3 equal icon blurbs) → Process **split with numbered steps** (numbers are `text()`, not headings) → Testimonials **staggered cards** → Pricing **vertical stack or emphasised middle tier** → CTA band **full-width photo or accent** → FAQ **single column** → Footer **dark anchor** (NAP if local).
