@@ -75,9 +75,17 @@ function placeholder(children) {
 // ─── DiviTheatre motion helper ──────────────────────────────────────────────
 
 /**
- * Build a `module.advanced.attributes` attrs fragment for DiviTheatre data-theatre
- * attributes. ONLY call this when the user has explicitly confirmed DiviTheatre
- * is installed. Never emit data-theatre attributes without consent.
+ * Build a Divi 5 custom-attributes fragment for DiviTheatre data-theatre attributes.
+ * ONLY call this when the user has explicitly confirmed DiviTheatre is installed.
+ * Never emit data-theatre attributes without consent.
+ *
+ * Divi 5 reads custom attributes from `module.decoration.attributes` (NOT `advanced`),
+ * and the value is `{ attributes: [ { name, value, targetElement } ] }` — an ARRAY of
+ * objects, not a key→value map. Verified against Divi 5 beta.9.1
+ * Module.php (`$attrs['module']['decoration']['attributes']`) and
+ * AttributeUtils::separate_attributes_by_target_element()
+ * (`$data['desktop']['value']['attributes']`). The old advanced/key-value shape
+ * never rendered to the DOM.
  *
  * Usage in a module:  section({ theatre: 'hero-reveal', theatreOpts: { trigger: 'onLoad' } }, [...])
  * Or standalone:      attrs: D.theatreAttrs('fade-up', { trigger: 'onScroll', delay: 200 })
@@ -87,17 +95,20 @@ function placeholder(children) {
  */
 function theatreAttrs(preset, opts) {
   const o = opts || {};
-  const dataAttrs = {};
-  if (preset) dataAttrs['data-theatre'] = preset;
-  if (o.trigger) dataAttrs['data-theatre-trigger'] = o.trigger;
-  if (o.delay != null) dataAttrs['data-theatre-delay'] = String(o.delay);
+  const list = [];
+  // targetElement 'main' = the module's own wrapper (Divi's canonical value; an
+  // empty string renders identically but Divi rewrites it to 'main' on first save).
+  const add = (name, value) => list.push({ name: name, value: String(value), targetElement: 'main' });
+  if (preset) add('data-theatre', preset);
+  if (o.trigger) add('data-theatre-trigger', o.trigger);
+  if (o.delay != null) add('data-theatre-delay', String(o.delay));
   // duration is ignored by parallax-scroll and hero-reveal (fixed timelines) —
   // don't emit a misleading attribute for them.
   const DURATION_IGNORED = preset === 'parallax-scroll' || preset === 'hero-reveal';
-  if (o.duration != null && !DURATION_IGNORED) dataAttrs['data-theatre-duration'] = String(o.duration);
-  if (o.mobile) dataAttrs['data-theatre-mobile'] = 'true';
-  return Object.keys(dataAttrs).length
-    ? { module: { advanced: { attributes: { desktop: { value: dataAttrs } } } } }
+  if (o.duration != null && !DURATION_IGNORED) add('data-theatre-duration', String(o.duration));
+  if (o.mobile) add('data-theatre-mobile', 'true');
+  return list.length
+    ? { module: { decoration: { attributes: { desktop: { value: { attributes: list } } } } } }
     : {};
 }
 
@@ -219,8 +230,10 @@ function heading(opts) {
 }
 
 /**
- * text({ html, font:{family,size,lineHeight,color,textAlign}, maxWidth, centered, preset, attrs })
+ * text({ html, font:{family,size,weight,lineHeight,color,textAlign,letterSpacing}, maxWidth, centered, preset, attrs })
  * html is raw inner HTML (<p>…</p>). Use for body copy, eyebrows, decorative numbers, footer links.
+ * NOTE: never put inline `style="…"` in html — Divi strips styled modules to empty on save.
+ * Style through this font object (Divi decoration), not inline CSS.
  */
 function text(opts) {
   const o = opts || {};
@@ -229,7 +242,7 @@ function text(opts) {
     content: {
       innerContent: dv(o.html),
       decoration: Object.keys(f).length
-        ? { bodyFont: { body: { font: dv(prune({ family: f.family, size: f.size, lineHeight: f.lineHeight, color: f.color, textAlign: f.textAlign })) } } }
+        ? { bodyFont: { body: { font: dv(prune({ family: f.family, size: f.size, weight: f.weight, lineHeight: f.lineHeight, color: f.color, textAlign: f.textAlign, letterSpacing: f.letterSpacing })) } } }
         : undefined,
     },
     module: {
@@ -244,12 +257,14 @@ function text(opts) {
   return block('text', attrs, null);
 }
 
-/** Eyebrow label convenience: uppercase, letter-spaced accent text (a <p>, never a heading). */
+/** Eyebrow label convenience: letter-spaced accent text (a <p>, never a heading).
+ *  Styled via Divi decoration (no inline CSS — that gets stripped on save). Pass an
+ *  already-uppercased label; emphasis comes from weight + letterSpacing + accent colour. */
 function eyebrow(label, color, opts) {
   const o = opts || {};
   return text({
-    html: `<p style="text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:600;color:${color};text-align:${o.textAlign || 'center'};">${label}</p>`,
-    font: { textAlign: o.textAlign || 'center' },
+    html: `<p>${label}</p>`,
+    font: { size: '12px', weight: '600', color: color, letterSpacing: '3px', textAlign: o.textAlign || 'center' },
     preset: o.preset,
   });
 }
