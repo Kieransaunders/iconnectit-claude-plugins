@@ -186,6 +186,47 @@ for (const { key, content } of contents) {
       if (!v.alt || !String(v.alt).trim()) imagesMissingAlt.push(v.src || '(no src)');
     }
 
+    // ─── DiviTheatre custom-attribute checks (pin category) ──────────────────
+    // Read the canonical custom-attributes array (theatreAttrs() output shape).
+    if (t.attrs) {
+      const customAttrs = t.attrs.module?.decoration?.attributes?.desktop?.value?.attributes;
+      if (Array.isArray(customAttrs)) {
+        const get = n => {
+          const hit = customAttrs.find(a => a && a.name === n);
+          return hit ? String(hit.value) : null;
+        };
+        const theatre = get('data-theatre');
+        const isPin = theatre && theatre.startsWith('pin:');
+
+        // Collision guard (Pitfall 2b): a pin attribute and Divi's native sticky on
+        // the SAME block are two pinning systems fighting. Native sticky lives at
+        // module.decoration.sticky.{breakpoint}.value.position; "none"/absent = off.
+        if (isPin) {
+          const sticky = t.attrs.module?.decoration?.sticky;
+          if (sticky && typeof sticky === 'object') {
+            const active = Object.values(sticky).some(bp => {
+              const pos = bp?.value?.position;
+              return pos && pos !== 'none';
+            });
+            if (active) {
+              err(`COLLISION: ${t.name} carries data-theatre="${theatre}" AND a native Divi sticky (decoration.sticky) — two pinning systems on one block. Remove the native sticky.`);
+            }
+          }
+          // Distance format: vh only (engine falls back to 150vh, but a junk value is a generator bug).
+          const dist = get('data-theatre-distance');
+          if (dist != null && !/^\d+vh$/.test(dist)) {
+            err(`PIN: data-theatre-distance="${dist}" on ${t.name} must match /^\\d+vh$/ (e.g. "200vh").`);
+          }
+        }
+
+        // Part-role allowlist (ADR-001 §5): media|panel only.
+        const part = get('data-theatre-part');
+        if (part != null && !['media', 'panel'].includes(part)) {
+          warn(`data-theatre-part="${part}" on ${t.name} is not a known role (media|panel) — it will be ignored by the engine.`);
+        }
+      }
+    }
+
     // responsive columns
     if (t.name === 'column' && t.attrs) {
       const ft = t.attrs.module?.decoration?.sizing?.desktop?.value?.flexType;

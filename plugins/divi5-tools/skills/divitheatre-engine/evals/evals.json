@@ -1,0 +1,26 @@
+{
+  "skill_name": "divitheatre-engine",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "I'm working on the DiviTheatre WordPress plugin (it drives @theatre/core 0.7.0, no studio on the frontend). Add a new animation preset called `blur-in` as src/presets/blur-in.js. It should fade opacity from 0 to 1 and animate a CSS blur filter from 8px down to 0 over 0.8 seconds, then settle. Follow the plugin's existing preset conventions so it actually plays in production and shows up when someone uses data-theatre=\"blur-in\". Give me the full file.",
+      "expected_output": "A complete preset file: registerPreset with name 'blur-in', a baked state object keyed under sheetsById['blur-in'] with definitionVersion '0.4.0', sheet.object('el', ...) with number props, factory using project.sheet('blur-in', String(config._id)) (sheetId matches baked key, instance id for uniqueness), onValuesChange writing ONLY filter (blur) and opacity, a play/reset return, a jumpToEnd landing the final visible state (opacity 1, blur 0), and a note to add the side-effect import to src/engine.js.",
+      "assertions": [],
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "DiviTheatre bug: my new `slide-in` preset never animates. project.ready resolves fine and there's no console error, but the element just sits at its start position. In the factory I have `const sheet = project.sheet('slide-in-' + config._id)` and my baked state is keyed under sheetsById['slide-in'] with definitionVersion '0.4.0'. onValuesChange is wired to write transform. What's wrong and how do I fix it?",
+      "expected_output": "Diagnoses that the sheetId passed to project.sheet must match the baked-state key. Using 'slide-in-<id>' means there is no baked sequence for that sheetId, so the timeline is empty and nothing plays (silent, no error). Fix: keep sheetId 'slide-in' and pass the element id as the SECOND argument (the instance id): project.sheet('slide-in', String(config._id)).",
+      "assertions": [],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "For DiviTheatre I want to add a parallax preset that moves an element vertically as the user scrolls the page (not a one-shot entrance animation). Using @theatre/core, how should I drive this — do I just call sheet.sequence.play()? Sketch the approach.",
+      "expected_output": "Explains that scroll-scrub should NOT use play(). Instead drive sheet.sequence.position from scroll progress, using a custom createRafDriver and binding onValuesChange(fn, driver) to it; mark the preset selfManaged (category scene/pin, honoursDuration false) so the engine doesn't call play(); gate the rAF loop with IntersectionObserver and register teardown (observer + driver stop) for pagehide. Notes the hidden-tab raf pause caveat.",
+      "assertions": [],
+      "files": []
+    }
+  ]
+}
