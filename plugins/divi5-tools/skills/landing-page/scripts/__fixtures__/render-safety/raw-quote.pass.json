@@ -1,0 +1,11 @@
+{
+  "context": "et_builder",
+  "data": {
+    "1": "<!-- wp:divi/placeholder -->\r\n<!-- wp:divi/section {\"builderVersion\":\"5.0.0-public-beta.9.1\"} -->\r\n<!-- wp:divi/row {\"module\":{\"advanced\":{\"flexColumnStructure\":{\"desktop\":{\"value\":\"equal-columns_1\"}}},\"decoration\":{\"layout\":{\"desktop\":{\"value\":{\"flexWrap\":\"nowrap\",\"display\":\"flex\"}},\"phone\":{\"value\":{\"flexWrap\":\"wrap\",\"display\":\"flex\"}},\"phoneWide\":{\"value\":{\"flexWrap\":\"wrap\",\"display\":\"flex\"}}}}},\"builderVersion\":\"5.0.0-public-beta.9.1\"} -->\r\n<!-- wp:divi/column {\"module\":{\"decoration\":{\"sizing\":{\"desktop\":{\"value\":{\"flexType\":\"24_24\"}}}}},\"builderVersion\":\"5.0.0-public-beta.9.1\"} -->\r\n<!-- wp:divi/text {\"content\":{\"innerContent\":{\"desktop\":{\"value\":\"<p>Safe <a href='https://example.com'>link</a> and data-theatre=&quot;fade-up&quot; entity form.</p>\"}}},\"builderVersion\":\"5.0.0-public-beta.9.1\"} /-->\r\n<!-- /wp:divi/column -->\r\n<!-- /wp:divi/row -->\r\n<!-- /wp:divi/section -->\r\n<!-- /wp:divi/placeholder -->"
+  },
+  "_fixture": {
+    "rule": "RS-RAW-QUOTE",
+    "case": "pass",
+    "note": "Single-quoted HTML attribute and &quot; entities. No literal U+0022 in innerContent. Must NOT flag."
+  }
+}

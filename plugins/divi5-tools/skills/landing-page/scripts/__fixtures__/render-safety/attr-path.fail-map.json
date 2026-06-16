@@ -1,0 +1,11 @@
+{
+  "context": "et_builder",
+  "data": {
+    "1": "<!-- wp:divi/placeholder -->\r\n<!-- wp:divi/section {\"builderVersion\":\"5.0.0-public-beta.9.1\"} -->\r\n<!-- wp:divi/row {\"module\":{\"advanced\":{\"flexColumnStructure\":{\"desktop\":{\"value\":\"equal-columns_1\"}}},\"decoration\":{\"layout\":{\"desktop\":{\"value\":{\"flexWrap\":\"nowrap\",\"display\":\"flex\"}},\"phone\":{\"value\":{\"flexWrap\":\"wrap\",\"display\":\"flex\"}},\"phoneWide\":{\"value\":{\"flexWrap\":\"wrap\",\"display\":\"flex\"}}}}},\"builderVersion\":\"5.0.0-public-beta.9.1\"} -->\r\n<!-- wp:divi/column {\"module\":{\"decoration\":{\"sizing\":{\"desktop\":{\"value\":{\"flexType\":\"24_24\"}}}}},\"builderVersion\":\"5.0.0-public-beta.9.1\"} -->\r\n<!-- wp:divi/section {\"module\":{\"decoration\":{\"attributes\":{\"desktop\":{\"value\":{\"attributes\":{\"data-theatre\":\"fade-up\"}}}}}},\"builderVersion\":\"5.0.0-public-beta.9.1\"} /-->\r\n<!-- /wp:divi/column -->\r\n<!-- /wp:divi/row -->\r\n<!-- /wp:divi/section -->\r\n<!-- /wp:divi/placeholder -->"
+  },
+  "_fixture": {
+    "rule": "RS-ATTR-PATH",
+    "case": "fail-map",
+    "note": "Custom attributes at the canonical PATH but as a key->value map. Builder migrates; Tier 1 must FAIL on the input shape."
+  }
+}

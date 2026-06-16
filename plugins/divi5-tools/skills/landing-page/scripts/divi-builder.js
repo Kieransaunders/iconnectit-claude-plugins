@@ -20,6 +20,13 @@
 const BUILDER_VERSION = '5.0.0-public-beta.9.1';
 const CRLF = '\r\n';
 
+// Single source of truth for the banned-glyph set lives in scripts/glyphs.js.
+// The emitter does NOT rewrite author copy in Phase 0 (the risk of mangling
+// intentional glyphs outweighs the benefit); this import exists solely so the
+// default ban list cannot drift between "what the generator avoids emitting"
+// and "what the validator flags" (spec §4 RS-GLYPH, Phase 0 plan T5).
+const { DEFAULT_GLYPH_SOURCE: SHARED_GLYPH_SOURCE } = require('./glyphs');
+
 // ─── core helpers ───────────────────────────────────────────────────────────
 
 /** Deep-merge b into a (b wins). Arrays are replaced, not merged. */
@@ -68,6 +75,53 @@ function block(name, attrs, children) {
   return [`<!-- wp:divi/${name} ${json} -->`, ...children, `<!-- /wp:divi/${name} -->`].join(CRLF);
 }
 
+/**
+ * Normalise module innerContent HTML so the emitted value is robust regardless
+ * of how downstream parsers handle a literal U+0022 (spec §4 RS-RAW-QUOTE;
+ * Phase 0 plan T4). Three steps, applied in order:
+ *
+ *   1. Protect `$variable({...})$` tokens (they contain JSON with literal ").
+ *   2. Convert double-quoted HTML attributes to single quotes, matching the
+ *      existing footer `<a href='…'>` convention. Idempotent: already
+ *      single-quoted attrs are untouched.
+ *   3. Escape any remaining literal `"` (now necessarily in a text node) to
+ *      `&quot;`. Leaves existing `&quot;` and `&#34;` untouched.
+ *
+ * The output is idempotent: `htmlContent(htmlContent(x)) === htmlContent(x)`.
+ *
+ * NOTE: T4 step 1 confirmed `block()` already round-trips literal `"` correctly
+ * (JSON.stringify escapes it at both layers). This normaliser is defence in
+ * depth — it makes the recovered innerContent value itself free of any `"` so
+ * the RS-RAW-QUOTE rule (Phase 1) has nothing to flag, and matches the
+ * `<a href='…'>` convention the spec relies on.
+ *
+ * @param {string} html
+ * @returns {string}
+ */
+function htmlContent(html) {
+  if (html == null) return html;
+  let s = String(html);
+
+  // Step 1 — protect $variable({...})$ tokens (they legitimately contain ").
+  const stash = [];
+  s = s.replace(/\$variable\(\{[\s\S]*?\}\)\$/g, (m) => {
+    stash.push(m);
+    return `\0VAR${stash.length - 1}\0`;
+  });
+
+  // Step 2 — double-quoted HTML attribute → single-quoted.
+  // Matches `name="value"` (HTML/XML attribute form); value has no " inside.
+  s = s.replace(/([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*"([^"]*)"/g, "$1='$2'");
+
+  // Step 3 — any remaining literal " is in a text node → escape to &quot;.
+  s = s.replace(/"/g, '&quot;');
+
+  // Restore protected tokens.
+  s = s.replace(/\0VAR(\d+)\0/g, (_, i) => stash[Number(i)]);
+
+  return s;
+}
+
 function placeholder(children) {
   return ['<!-- wp:divi/placeholder -->', ...children, '<!-- /wp:divi/placeholder -->'].join(CRLF);
 }
@@ -114,8 +168,83 @@ function theatreAttrs(preset, opts) {
 
 /** Merge theatre attrs into o.attrs if o.theatre is set. Called by every module function. */
 function withTheatre(o) {
-  if (!o.theatre) return o.attrs || {};
-  return merge(o.attrs || {}, theatreAttrs(o.theatre, o.theatreOpts));
+  const merged = o.theatre
+    ? merge(o.attrs || {}, theatreAttrs(o.theatre, o.theatreOpts))
+    : (o.attrs || {});
+  return normaliseCustomAttrs(merged);
+}
+
+/**
+ * Guard the custom-attributes path so `theatreAttrs()` is the only shape that
+ * can reach `module.decoration.attributes.desktop.value.attributes` (spec §4
+ * RS-ATTR-PATH; Phase 0 plan T3). Any wrong-shape branch arriving through the
+ * `attrs:` escape hatch is rejected loudly at generate time, or — only for the
+ * unambiguous key→value map case — migrated to the canonical array shape that
+ * `theatreAttrs()` itself produces.
+ *
+ * Canonical shape (from theatreAttrs):
+ *   module.decoration.attributes.desktop.value.attributes =
+ *     Array<{ name:string, value:string, targetElement:'main' }>
+ *
+ * Detected + rejected (throw, naming the offending path):
+ *   (a) module.advanced.attributes            — old location; renders zero
+ *   (b) advanced.attributes                   — top-level; renders zero
+ *   (c) module.decoration.attributes.desktop.value.attributes present but
+ *       not an Array of {name,value} objects  — renders zero
+ * Migrated (only when byte-identical to theatreAttrs output):
+ *   - a plain key→value map at the (c) path, e.g. { 'data-theatre': 'fade-up' }
+ *
+ * @param {object} attrs  - the merged attrs object (or null/undefined)
+ * @returns {object}      - the (possibly migrated) attrs object
+ * @throws {Error}        - on any wrong-shape branch that cannot be migrated
+ */
+function normaliseCustomAttrs(attrs) {
+  if (!attrs || typeof attrs !== 'object') return attrs;
+
+  const mod = attrs.module;
+  const moduleAdvancedAttrs = mod && mod.advanced && mod.advanced.attributes;
+  if (moduleAdvancedAttrs) {
+    throw new Error(
+      "custom attributes on module.advanced.attributes — Divi reads module.decoration.attributes, so zero will render. " +
+      "Use theatreAttrs()/theatre: instead. Offending path: module.advanced.attributes"
+    );
+  }
+
+  const topLevelAdvancedAttrs = attrs.advanced && attrs.advanced.attributes;
+  if (topLevelAdvancedAttrs) {
+    throw new Error(
+      "custom attributes on advanced.attributes — Divi reads module.decoration.attributes, so zero will render. " +
+      "Offending path: advanced.attributes"
+    );
+  }
+
+  const decAttrBranch = mod && mod.decoration && mod.decoration.attributes;
+  const decAttrValue = decAttrBranch && decAttrBranch.desktop && decAttrBranch.desktop.value;
+  const decAttrList = decAttrValue && decAttrValue.attributes;
+  if (decAttrList != null) {
+    const isCanonical = Array.isArray(decAttrList) &&
+      decAttrList.every(it => it && typeof it === 'object' && 'name' in it && 'value' in it);
+    if (!isCanonical) {
+      // Migration: a plain key→value map → canonical array (byte-identical to
+      // theatreAttrs() output: targetElement:'main', value as String).
+      const canMigrate = decAttrList && typeof decAttrList === 'object' && !Array.isArray(decAttrList);
+      if (canMigrate) {
+        decAttrValue.attributes = Object.keys(decAttrList).map(name => ({
+          name: name,
+          value: String(decAttrList[name]),
+          targetElement: 'main',
+        }));
+      } else {
+        throw new Error(
+          "module.decoration.attributes.desktop.value.attributes must be an Array<{name,value,targetElement}> " +
+          "(the shape theatreAttrs() emits); got " + (Array.isArray(decAttrList) ? 'an array of non-canonical objects' : typeof decAttrList) + ". " +
+          "Offending path: module.decoration.attributes.desktop.value.attributes"
+        );
+      }
+    }
+  }
+
+  return attrs;
 }
 
 // ─── structural modules ─────────────────────────────────────────────────────
@@ -220,7 +349,7 @@ function heading(opts) {
   });
   let attrs = {
     title: {
-      innerContent: dv(o.text),
+      innerContent: dv(htmlContent(o.text)),
       decoration: { font: { font: f.phoneSize ? dv(desktopFont, { phone: { size: f.phoneSize } }) : dv(desktopFont) } },
     },
   };
@@ -240,7 +369,7 @@ function text(opts) {
   const f = o.font || {};
   let attrs = {
     content: {
-      innerContent: dv(o.html),
+      innerContent: dv(htmlContent(o.html)),
       decoration: Object.keys(f).length
         ? { bodyFont: { body: { font: dv(prune({ family: f.family, size: f.size, weight: f.weight, lineHeight: f.lineHeight, color: f.color, textAlign: f.textAlign, letterSpacing: f.letterSpacing })) } } }
         : undefined,
@@ -277,7 +406,7 @@ function button(opts) {
   const pad = o.padding || { v: '16px', h: '32px' };
   let attrs = {
     button: {
-      innerContent: dv({ text: o.text, linkUrl: o.url || '#' }),
+      innerContent: dv({ text: htmlContent(o.text), linkUrl: o.url || '#' }),
       decoration: {
         font: { font: dv(prune({ family: o.fontFamily, size: o.fontSize || '16px', color: o.color || '#ffffff', weight: '600' })) },
         background: o.background ? dv({ color: o.background }) : undefined,
@@ -299,10 +428,10 @@ function blurb(opts) {
       ? { innerContent: dv({ useIcon: 'on', icon: { unicode: o.icon, type: 'fa', weight: '900' } }), advanced: o.iconColor ? { color: { icon: dv(o.iconColor) } } : undefined }
       : undefined,
     title: {
-      innerContent: dv({ text: o.title }),
+      innerContent: dv({ text: htmlContent(o.title) }),
       decoration: { font: { font: dv({ headingLevel: o.titleLevel || 'h3' }) } },
     },
-    content: { innerContent: dv(o.body) },
+    content: { innerContent: dv(htmlContent(o.body)) },
   };
   attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
@@ -336,8 +465,8 @@ function accordion(items, opts) {
   const children = items.map((it, i) =>
     block('accordion-item', prune({
       module: it.open || (i === 0 && o.firstOpen !== false) ? { advanced: { open: dv('on') } } : undefined,
-      title: { innerContent: dv(it.question) },
-      content: { innerContent: dv(it.answer) },
+      title: { innerContent: dv(htmlContent(it.question)) },
+      content: { innerContent: dv(htmlContent(it.answer)) },
     }), null)
   );
   let attrs = prune(o.attrs || {});
@@ -349,7 +478,7 @@ function accordion(items, opts) {
 function numberCounter(opts) {
   const o = opts || {};
   let attrs = {
-    title: { innerContent: dv(o.title) },
+    title: { innerContent: dv(htmlContent(o.title)) },
     number: { innerContent: dv(String(o.number)), decoration: o.numberColor ? { font: { font: dv({ color: o.numberColor, size: o.numberSize || '48px', weight: '700' }) } } : undefined },
     percent: { advanced: { sign: dv(o.percent ? 'on' : 'off') } },
   };
@@ -451,9 +580,9 @@ function createBuilder() {
 
 module.exports = {
   BUILDER_VERSION, CRLF,
-  dv, block, placeholder, merge, prune,
+  dv, block, placeholder, merge, prune, htmlContent,
   section, row, column,
   heading, text, eyebrow, button, blurb, image, icon, accordion, numberCounter, divider,
-  theatreAttrs, withTheatre,
+  theatreAttrs, withTheatre, normaliseCustomAttrs,
   createBuilder, randomId,
 };

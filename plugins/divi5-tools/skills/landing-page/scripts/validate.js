@@ -116,8 +116,14 @@ const imagesMissingAlt = [];
 let textBlocks = [];
 let blockCount = 0;
 
+// tokensByKey: parsed block-comment tokens keyed by content key. Populated inside
+// the existing content loop below so a future render-safety module can re-walk
+// the tokens without re-parsing (spec §4 "Required tweak to validate.js").
+const tokensByKey = {};
+
 for (const { key, content } of contents) {
   const tokens = parseBlocks(content);
+  tokensByKey[key] = tokens; // (T1) retain parsed tokens for downstream re-walks
   if (!tokens.length) { err(`data["${key}"]: no Divi blocks found`); continue; }
   if (tokens[0].name !== 'placeholder') err(`data["${key}"]: content must start with wp:divi/placeholder`);
 
@@ -212,15 +218,25 @@ for (const g of new Set(allGcidRefs)) {
 }
 if (definedColors.size) pass(`${definedColors.size} global colours defined, references checked`);
 
-// ─── taste: em-dash / en-dash ban (deterministic) ───────────────────────────
+// ─── taste: banned-glyph scan (deterministic) ───────────────────────────────
 // The em-dash is the #1 AI tell. references/taste.md §11 bans it (and en-dash as
 // a separator) in all user-visible copy. Divi structure uses only ASCII, so any
 // U+2014/U+2013 (or its HTML entity) lives in copy values — safe to FAIL on.
-const DASH_RE = /—|–|&mdash;|&ndash;|&#8212;|&#8211;|&#x201[34];/gi;
+//
+// The banned set is configurable so a future render-safety module can own/extend
+// it (spec §4 RS-GLYPH). Default = dashes only (literal chars + their HTML
+// entities, so behaviour is byte-identical to the old hard-coded regex). Override
+// with `--ban-glyphs "…"` to ban additional literal characters.
+//
+// The default source is shared with divi-builder.js via scripts/glyphs.js so the
+// "what the generator avoids" and "what the validator flags" lists cannot drift.
+const { DEFAULT_GLYPH_SOURCE, buildGlyphRe } = require('./glyphs');
+const GLYPH_SOURCE = argValue('--ban-glyphs') != null ? argValue('--ban-glyphs') : DEFAULT_GLYPH_SOURCE;
+const glyphRe = buildGlyphRe(GLYPH_SOURCE);
 const dashHits = [];
 for (const { content } of contents) {
   let m;
-  const re = new RegExp(DASH_RE.source, DASH_RE.flags);
+  const re = new RegExp(glyphRe.source, glyphRe.flags);
   while ((m = re.exec(content)) !== null) {
     const start = Math.max(0, m.index - 30);
     dashHits.push('…' + content.slice(start, m.index + 30).replace(/\s+/g, ' ').trim() + '…');
