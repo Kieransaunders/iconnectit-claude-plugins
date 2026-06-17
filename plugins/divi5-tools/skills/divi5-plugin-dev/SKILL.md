@@ -1,5 +1,5 @@
 ---
-name: divi-plugin-dev
+name: divi5-plugin-dev
 description: >
   Divi 5 third-party plugin and custom module developer. Use this skill whenever
   the user is building, scaffolding, extending, or debugging a Divi 5 plugin that
@@ -524,6 +524,61 @@ Divi loads the stylesheet only on pages containing the module.
 - **`HTMLUtility::render()`** + `'childrenSanitizer' => 'et_core_esc_previously'` is the safe pattern for building HTML strings
 - **`wp_kses_post()`** for rich text that must allow HTML tags
 - Check `et_builder_d5_enabled()` before any D5-specific API calls
+
+---
+
+## Going Further
+
+Beyond building a single module, these tasks have dedicated reference files:
+
+| Task | Reference |
+|---|---|
+| Add custom fields to a **core** Divi module (Text, Image, Button…) | [references/extending-core-modules.md](references/extending-core-modules.md) |
+| Make a custom module work with **global presets** (attribute-name resolvers) | [references/preset-resolution.md](references/preset-resolution.md) |
+| Migrate a Divi 4 shortcode module to Divi 5 (`conversion-outline.json`) | [references/conversion-outline.md](references/conversion-outline.md) |
+| Read/write builder **state** — breakpoints, global colours, selection, programmatic attribute updates | [references/vb-state-and-hooks.md](references/vb-state-and-hooks.md) |
+
+---
+
+## Requirements & CSS Cache
+
+### Hosting baseline
+
+Divi 5's client-side editor + page-save routines are memory- and time-intensive.
+Recommended server settings (raise these first when saves fail or truncate silently):
+
+| Setting | Minimum | Recommended |
+|---|---|---|
+| PHP version | 7.4 | 8.0+ |
+| `memory_limit` | 128M | 256M–512M |
+| `max_input_vars` | 1000 | 3000–5000 |
+| `max_execution_time` | 60s | 120–180s |
+| `post_max_size` | 32M | 64M–128M |
+| `upload_max_filesize` | 16M | 64M |
+| Database | MySQL 5.7 / MariaDB 10.2 | MySQL 8.0 / MariaDB 10.5 |
+
+Required PHP extensions: `curl`, `mbstring`, `xml`, and `gd` or `imagick`.
+A too-low `max_input_vars` silently truncates design attributes on save — a classic
+"my settings won't stick" symptom.
+
+### Static CSS cache
+
+Divi 5 compiles design styles to static files in `wp-content/et-cache/`. If you modify
+posts or theme options outside the normal save flow, purge the cache programmatically:
+
+```php
+// Clear the whole site's compiled CSS
+ET_Core_PageResource::remove_static_resources( 'all', 'all' );
+
+// Clear one post
+ET_Core_PageResource::remove_static_resources( $post_id, 'all' );
+
+// Clear only Divi 5 dynamic assets
+ET_Core_PageResource::remove_static_resources( $post_id, 'all', false, 'dynamic' );
+```
+
+> Note: there is **no** `\ET\Builder\Element::clear_css_cache()` method — that signature
+> circulates in third-party notes but does not exist. Use `ET_Core_PageResource` above.
 
 ---
 
