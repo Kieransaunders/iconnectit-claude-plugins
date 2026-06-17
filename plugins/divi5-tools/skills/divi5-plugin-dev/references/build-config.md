@@ -101,6 +101,34 @@ module.exports = {
 
 ---
 
+## TypeScript variant (`@divi/*` package imports)
+
+If you author in TypeScript and import the Divi packages by name
+(`import { registerModule } from '@divi/module-library'`) rather than reading
+`window.divi.*`, map every Divi/vendor package to its runtime global via `externals`
+so webpack doesn't bundle them:
+
+```js
+module.exports = {
+  externals: {
+    react:                  'React',
+    'react-dom':            'ReactDOM',
+    '@wordpress/hooks':     'window.vendor.wp.hooks',
+    '@divi/module':         'window.divi.module',
+    '@divi/module-library': 'window.divi.moduleLibrary',
+    '@divi/rest':           'window.divi.rest',
+    lodash:                 'window.vendor.lodash',
+  },
+};
+```
+
+These are provided as globals at runtime — listing them as externals is required, or
+the bundle ships a duplicate React/Divi and breaks the editor. Use `.ts`/`.tsx`
+extensions in `resolve.extensions` and a TS-aware loader (`ts-loader` or
+`babel-loader` with `@babel/preset-typescript`).
+
+---
+
 ## Build commands
 
 ```bash

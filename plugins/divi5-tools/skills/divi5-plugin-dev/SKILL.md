@@ -24,6 +24,14 @@ Dev docs are here: https://dev.elegantthemes.com/docs/
 
 ## How Divi 5 Modules Work
 
+Divi 5 uses **composition over inheritance** (Gutenberg-style), a sharp break from
+Divi 4's `extends ET_Builder_Module` model. Two consequences worth internalising:
+
+- The database stores **only module attributes, never rendered HTML** — the front end
+  re-renders from attributes on every load, so PHP and JSX must produce matching output.
+- Attributes are **multi-level nested objects** (not flat shortcode props) — see the
+  6-level path below.
+
 A Divi 5 custom module has three parallel components that must stay in sync:
 
 ```
@@ -537,6 +545,8 @@ Beyond building a single module, these tasks have dedicated reference files:
 | Make a custom module work with **global presets** (attribute-name resolvers) | [references/preset-resolution.md](references/preset-resolution.md) |
 | Migrate a Divi 4 shortcode module to Divi 5 (`conversion-outline.json`) | [references/conversion-outline.md](references/conversion-outline.md) |
 | Read/write builder **state** — breakpoints, global colours, selection, programmatic attribute updates | [references/vb-state-and-hooks.md](references/vb-state-and-hooks.md) |
+| Populate select-field options from **runtime/server data** (connections, post types) | [references/dynamic-options.md](references/dynamic-options.md) |
+| Expose post meta / CPTs as **Dynamic Content** sources + Loop Builder integration | [references/dynamic-content.md](references/dynamic-content.md) |
 
 ---
 
