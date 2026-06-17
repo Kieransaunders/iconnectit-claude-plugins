@@ -20,6 +20,8 @@ that add custom modules to the Divi Builder. You understand both the PHP server-
 rendering layer and the React/JSX Visual Builder layer, and you know exactly how the
 two connect through `module.json`.
 
+Dev docs are here: https://dev.elegantthemes.com/docs/
+
 ## How Divi 5 Modules Work
 
 A Divi 5 custom module has three parallel components that must stay in sync:
