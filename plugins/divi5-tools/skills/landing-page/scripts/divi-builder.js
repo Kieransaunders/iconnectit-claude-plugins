@@ -582,7 +582,8 @@ function randomId() {
   return s;
 }
 
-function createBuilder() {
+function createBuilder(opts) {
+  const tokens = (opts && opts.tokens) || null;
   const presets = {}; // moduleName -> { default, items }
   const globalColors = [];
 
@@ -599,6 +600,20 @@ function createBuilder() {
       const id = slug.startsWith('gcid-') ? slug : `gcid-${slug}`;
       const settings = opacity != null ? `{"opacity":${opacity}}` : '{}';
       return `$variable({"type":"color","value":{"name":"${id}","settings":${settings}}})$`;
+    },
+
+    colorRef(label) {
+      if (!tokens) throw new Error(`builder.colorRef('${label}'): no tokens loaded — pass { tokens: require('./divi-design-system.tokens.js') } to createBuilder()`);
+      const ref = tokens.colorRef[label];
+      if (!ref) throw new Error(`builder.colorRef('${label}'): unknown label. Known labels: ${Object.keys(tokens.colorRef).join(', ')}`);
+      return ref;
+    },
+
+    variableRef(label) {
+      if (!tokens) throw new Error(`builder.variableRef('${label}'): no tokens loaded — pass { tokens: require('./divi-design-system.tokens.js') } to createBuilder()`);
+      const ref = tokens.variableRef && tokens.variableRef[label];
+      if (!ref) throw new Error(`builder.variableRef('${label}'): unknown label. Known labels: ${tokens.variableRef ? Object.keys(tokens.variableRef).join(', ') : 'none'}`);
+      return ref;
     },
 
     /** Register a preset; returns its id for modulePreset references. */
