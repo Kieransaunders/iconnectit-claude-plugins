@@ -135,6 +135,37 @@ Build a complete styled HTML page (`preview-[brand].html`) applying the design s
 - Global colours: `builder.globalColor()` returns the `$variable(...)$` reference; escaping is handled by serialisation.
 - Responsive: only include breakpoints that differ from desktop.
 
+### Token-aware builder (opt-in)
+
+Load the ET design system tokens to replace raw hex with server-resolved variable refs:
+
+```js
+const TOKENS = require('./references/Divi design system JSON/divi-design-system.tokens.js');
+const b = D.createBuilder({ tokens: TOKENS });
+
+// ET colour by label → resolves to $variable(...)$ string (Divi resolves server-side)
+const white   = b.colorRef('White');                      // gcid-y43rzvjcdl
+const overlay = b.colorRef('Background Overlay - Dark'); // gcid-2ihj6tueev
+
+// Brand-specific colours — not in ET design system, registered as custom global colours
+const accent = b.globalColor('brand-accent', '#F95E00', 'Brand Accent');
+```
+
+Both `colorRef()` and `variableRef()` **throw** if the label is not found — fail fast rather than silently emitting nothing. Available labels are in `divi-design-system.tokens.js`.
+
+### Overlay sections
+
+```js
+D.overlaySection({
+  image:   { src: 'https://...', parallax: 'off' },
+  overlay: { color: b.colorRef('Background Overlay - Dark'), opacity: 0.8, blend: 'multiply' },
+  padding: { top: '8vw', bottom: '8vw' },
+  adminLabel: 'Hero',
+}, rows)
+```
+
+Emits a `divi/section` with a two-layer background (image bottom, colour top). All other `section()` options (`theatre`, `preset`, etc.) pass through. The overlay colour, blend mode, and opacity are optional.
+
 ## File map
 
 All paths relative to this skill's directory (`${CLAUDE_SKILL_DIR}` when invoking scripts):
