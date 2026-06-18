@@ -36,7 +36,11 @@ After activation they go to **Settings → Divi Tools Importer** to copy their s
 
 ### 1. Resolve inputs
 
-**Layout JSON** — explicit path if given; otherwise the most recent `*-landing-page.json` in the working directory. Confirm if ambiguous. Must have `"context": "et_builder"`.
+**Layout JSON** — explicit path if given; otherwise the most recent `*-landing-page.json` or `*-section.json` in the working directory. Confirm if ambiguous.
+
+Check the `context` field to determine import type:
+- `"context": "et_builder"` → **page import** (standard flow below)
+- `"context": "et_builder_layouts"` → **section/library import** — use the same `/import` endpoint; the plugin handles both contexts. Remind the user to import via **Divi Library → Import → check "Import Presets"**, not via page import. Skip SEO and schema steps (not applicable to sections).
 
 **SEO meta** — matching `*-seo-meta.json` if present. Keys used: `title`/`titleTag`, `description`/`metaDescription`, `slug`, `keyword`.
 
@@ -55,6 +59,41 @@ node <CLAUDE_SKILL_DIR>/../landing-page/scripts/validate.js <layout.json> \
 ```
 
 Show the report. Stop on any FAIL — hand back to `landing-page` skill to fix.
+
+### 2.5. Live preview (fidelity gate — before full import)
+
+Build a temporary payload with just the layout:
+
+```bash
+node -e "
+const l = JSON.parse(require('fs').readFileSync('<layout.json>','utf8'));
+require('fs').writeFileSync('preview-payload.json', JSON.stringify({layout:l}));
+"
+```
+
+POST it to the preview endpoint:
+
+```bash
+curl -s -X POST "<site-url>/wp-json/divi-tools/v1/preview" \
+  -H "Content-Type: application/json" \
+  -H "X-Divi-Tools-Key: <api-key>" \
+  -d @preview-payload.json
+```
+
+Parse the response and open the `preview_url` in the browser:
+
+```bash
+open "<preview_url>"
+```
+
+This renders the page via **real Divi 5** — full presets, global colours, animations, responsive breakpoints — without creating a named page. The preview overwrites a fixed draft (`dti-live-preview`) each time, so there is no page litter.
+
+Wait for the user's verdict:
+
+| Verdict | Action |
+|---|---|
+| **Approved** | Proceed to Step 3 (full `/import`) |
+| **Refine** | Hand back to `landing-page` skill — fix `generate-*.js`, regenerate, re-validate, re-preview |
 
 ### 3. Ping the site
 

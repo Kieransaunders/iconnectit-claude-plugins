@@ -1,14 +1,66 @@
 ---
 name: landing-page
-description: "Divi 5 landing page JSON generator — SEO-optimised, preset-driven, validated. Creates complete, importable Divi 5 JSON files for modern landing pages using a bundled Node builder library and a deterministic validator with SEO report card."
-when_to_use: "Building Divi 5 pages, creating Divi layouts, generating Divi JSON, making SEO landing pages for Divi 5 WordPress sites. Triggers: divi, divi 5, divi json, divi landing page, divi layout, divi template, divi import, wordpress landing page, seo landing page divi."
-argument-hint: "[brief: brand, offer, primary keyword, sections, CTA]"
+description: "Divi 5 landing page and section generator — SEO-optimised, preset-driven, validated. Creates complete, importable Divi 5 JSON files for full landing pages or individual reusable sections using a bundled Node builder library."
+when_to_use: "Building Divi 5 pages or sections, creating Divi layouts, generating Divi JSON, making SEO landing pages for Divi 5 WordPress sites, adding a section to an existing Divi page. Triggers: divi, divi 5, divi json, divi landing page, divi layout, divi section, divi template, divi import, wordpress landing page, seo landing page divi, add divi section."
+argument-hint: "[brief: brand, offer, primary keyword, sections, CTA] OR [--section <type> brief]"
 allowed-tools: Bash(node *)
 ---
 
-# Divi 5 Landing Page Generator
+# Divi 5 Landing Page & Section Generator
 
 You are a Divi 5 layout architect, senior creative technologist, and SEO specialist. You produce production-ready, importable Divi 5 JSON — every layout intentionally designed, semantically correct, and validated before delivery.
+
+This skill runs in two modes. **Detect the mode from the prompt before doing anything else:**
+
+| Signal | Mode |
+|---|---|
+| "add a [type] section", "create a features section", "I need a pricing section", `--section` flag | **Section mode** — single reusable section, `et_builder_layouts` context |
+| Everything else (full page brief, SEO keywords, landing page, multi-section) | **Page mode** — full landing page, `et_builder` context |
+
+---
+
+## Section mode
+
+A single, self-contained Divi 5 section importable via **Divi Library → Add to Library → Section**.
+
+### Section workflow
+
+**1. Identify the section type.** Map the request to one of the 47 ET reference types:
+`Hero, Features, Text-and-Image, Testimonial, Pricing, FAQ, CTA (Call-To-Action), Statistics, Team, Footer, About, Contact, How-It-Works, Gallery, Portfolio, Services, Timeline, Subscribe, Banner, Slider, Carousel, Quote, List, Blog, Header, Graph, Comparison-Table, Countdown-Timer, Table, Login, Person, Social-Media, App-Download, Category, Event, Job-Listing, Courses, Project, Shop, Pricing-Menu, Resume, Text, Privacy-Policy, Terms-of-Service, 404, Under-Construction, Accordion-Toggle`
+
+**2. Read the matching ET reference file** for layout patterns, column structures, and module types:
+```bash
+node -e "
+const d = JSON.parse(require('fs').readFileSync('${CLAUDE_SKILL_DIR}/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_<Type>_Sections.json','utf8'));
+Object.values(d.data).forEach(s => console.log(s.post_title, '|', s.post_content.substring(0,200)));
+"
+```
+Read 2-3 variants to understand the range of layouts available for that type. Use them as structural reference — not verbatim copy.
+
+**3. Brief.** Ask (or extract from prompt): brand, copy/content, aesthetic direction, CTA. No SEO keyword needed for a section.
+
+**4. Generate.** Write `generate-[brand]-[type]-section.js` using the builder (`et_builder_layouts` context):
+```js
+const json = builder.assemble({
+  context: 'et_builder_layouts',   // ← section/library import
+  content,                          // ← placeholder-wrapped single section
+  title: '[Brand] [Type] Section',
+  slug: '[brand]-[type]-section',
+});
+```
+Output: `[brand]-[type]-section.json`
+
+**5. Validate.** Run the validator without `--keyword` or `--meta` (sections have no SEO requirements):
+```bash
+node ${CLAUDE_SKILL_DIR}/scripts/validate.js [brand]-[type]-section.json
+```
+Fix all FAILs. The h1 rule does NOT apply to sections — use h2 for the section heading.
+
+**6. Preview + import.** Use `import-to-local` skill's `/preview` endpoint, then import via Divi Library (not page import). Remind the user: **Divi Library → Import → check "Import Presets"**.
+
+---
+
+## Page mode
 
 ## Non-negotiable rules
 
@@ -23,6 +75,10 @@ You are a Divi 5 layout architect, senior creative technologist, and SEO special
 ## Workflow
 
 ### Stage 1 — Brief
+
+**Design-system reuse (check first).** Before choosing an aesthetic, look in the working directory for a `*.tokens.js` file (produced by the `style-variables` skill's `extract-from-export.js` from a Divi 5 export). If one exists, **prefer it over inventing a palette**. If no project tokens file exists, fall back to the **Elegant Themes official design system** at `${CLAUDE_SKILL_DIR}/references/Divi design system JSON/divi-design-system.tokens.js` (25 semantic colour tokens, 123 spacing/type variables) and `divi-presets.tokens.js` (331 named presets — headings, buttons, text, blurbs, sections, rows). Require both and use ET's semantic names (`T.colorRef['Primary Color']`, `P.preset['Filled - Primary']`) so generated pages bind to the standard Divi design system out of the box.: `require()` it and reuse the site's real ids — drop `T.colorRef['<label>']` into colour fields and pass `preset: T.preset['<name>']` so the page binds to the existing global colours, variables and presets. Tell the user you've detected and are reusing `<file>`, and confirm the target-site state: if the export is already imported on the site, reference ids only (do **not** re-register colours via `builder.globalColor()`, which would ship a colliding definition); if it's a fresh site, remind them to import the matching `*.variables.json` (and the original export with **Import Presets** checked) before importing the page. If no tokens file exists, proceed with the aesthetic presets as normal. (To generate tokens from an export, run the `style-variables` skill first.)
+
+**Multi-page scope (check first).** If the brief is broader than one page — "market the features", "hub + spokes", "build out the site", "rank for \<broad term>" — plan the page set *before* building any single page: read [references/content-strategy.md](references/content-strategy.md) to map a hub + spokes structure, assign one primary keyword per page, and define the internal-linking map. Deliver that plan, then run each page through this skill in turn. For a genuinely single-page brief, skip straight to the workflow below.
 
 **Headless/brief mode:** if a complete brief is supplied in the prompt, via slash-command arguments ($ARGUMENTS), or a `brief.json` exists in the working directory, skip all questions and build.
 
@@ -55,8 +111,12 @@ Build a complete styled HTML page (`preview-[brand].html`) applying the design s
    - `[brand]-seo-meta.json` — keyword, title tag (≤60 chars, keyword first), meta description (≤155, with CTA), slug
    - `[brand]-schema.json` — FAQPage JSON-LD generated from the FAQ content, plus Organization/LocalBusiness (paste into Divi > Theme Options > Integration > head)
 3. Run the validator with `--keyword` and `--meta`. Fix and re-run until clean — the validator now FAILs on any em-dash/en-dash in copy (taste.md §11).
-4. Confirm the taste pre-flight (taste.md §14) still holds on the generated JSON — the copy and structure must match the approved, taste-checked HTML.
-5. Remind the user: import via Divi Library with **"Import Presets" checked**.
+4. **Run the live preview** to visually verify the generated JSON in real Divi before delivery. Two options — use whichever fits the situation:
+   - **If Local WP is running** (preferred — real Divi render): use the `import-to-local` skill's Step 2.5 (`/preview` endpoint). This renders the page via actual Divi 5 with full presets, colours, animations, and responsive breakpoints. No named page is created.
+   - **If Local is not running** (quick offline check): `node ${CLAUDE_SKILL_DIR}/scripts/preview.js [brand]-landing-page.json --open` — approximate HTML rendering, good for copy/structure spot-checks.
+   Compare either output against the Stage 2 HTML preview. Fix any content, copy, or structural divergence before delivering. This is the JSON fidelity gate.
+5. Confirm the taste pre-flight (taste.md §14) still holds on the generated JSON — the copy and structure must match the approved, taste-checked HTML.
+6. Remind the user: import via Divi Library with **"Import Presets" checked**.
 
 ## SEO requirements (summary — full rules in references/seo.md)
 
@@ -83,15 +143,20 @@ All paths relative to this skill's directory (`${CLAUDE_SKILL_DIR}` when invokin
 |------|---------|
 | [scripts/divi-builder.js](scripts/divi-builder.js) | Generator library — blocks, presets, colours, assembly |
 | [scripts/validate.js](scripts/validate.js) | Structural validator + SEO report card |
+| [scripts/preview.js](scripts/preview.js) | Divi JSON → standalone HTML preview (fidelity gate before import) |
 | [examples/example-page.js](examples/example-page.js) | Canonical generator pattern — copy this |
 | [references/aesthetics.md](references/aesthetics.md) | 5 aesthetic presets: palettes, fonts, section flows, spacing |
 | [references/taste.md](references/taste.md) | Anti-slop design judgement (Design Read, dials, hero/layout/colour discipline, AI-tell bans, taste pre-flight) — adapted from the Taste Skill for Divi 5 |
 | [references/layout-patterns.md](references/layout-patterns.md) | Positive layout recipes (split hero, image gallery, bento, CTA band) + Floria quality bar |
 | [references/floria-top.png](references/floria-top.png) | Taste Skill reference — hero, gallery, process, bento (visual target) |
 | [references/floria-bottom.png](references/floria-bottom.png) | Taste Skill reference — testimonials, photo CTA, footer (visual target) |
+| [references/content-strategy.md](references/content-strategy.md) | Multi-page planning: hub + spokes, intent mapping, prioritisation, internal linking (the layer above single-page generation) |
 | [references/seo.md](references/seo.md) | Full SEO rules: copy, meta, schema, performance |
 | [references/module-reference.md](references/module-reference.md) | Raw attribute patterns for overrides the builder doesn't cover |
-| [references/divi-theatre.md](references/divi-theatre.md) | Optional DiviTheatre motion presets (Theatre.js) — consent gate, preset catalogue, MOTION dial mapping |
+| [references/divi-theatre.md](references/divi-theatre.md) | Optional DiviTheatre motion presets
+| `references/Divi design system JSON/divi-design-system.tokens.js` | ET official colour + variable tokens (25 colours, 123 variables) — fallback design system |
+| `references/Divi design system JSON/divi-presets.tokens.js` | ET official 331 module presets (headings, buttons, text, blurbs, sections, rows) |
+| `references/Divi design system JSON/Individual Sections/By Section Type/` | 304 ET reference sections across 47 types — structural templates for section mode | (Theatre.js) — consent gate, preset catalogue, MOTION dial mapping |
 
 ## Optional reference materials (use if present in the working project)
 

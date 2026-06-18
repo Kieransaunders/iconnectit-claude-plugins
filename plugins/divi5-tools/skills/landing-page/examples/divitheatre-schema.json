@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I add animations to Divi 5 without code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Install DiviTheatre, then open any module’s Advanced → Attributes panel and add an attribute named data-theatre with a preset value such as fade-up or stagger. No custom JavaScript or CSS required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best animation plugin for Divi 5?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DiviTheatre is purpose-built for Divi 5’s block system, using the Theatre.js motion engine for multi-step, choreographed animations that go beyond Divi’s built-in entrance effects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does DiviTheatre slow down my Divi 5 site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The engine is a single IIFE bundle, exits as a no-op when no tagged elements exist, and uses requestAnimationFrame with IntersectionObserver - zero scroll listeners and no layout shift."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will DiviTheatre animations work on mobile and with reduced motion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every preset skips below 768px and jumps to its final visible state under prefers-reduced-motion, so content is never hidden."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I change the animation trigger or timing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add data-theatre-trigger (onScroll, onLoad, onClick), data-theatre-delay in milliseconds, and data-theatre-duration alongside the data-theatre attribute."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "DiviTheatre",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "WordPress",
+      "description": "A Divi 5 animation plugin that adds Theatre.js-powered cinematic motion to any module via a data-theatre attribute.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "iConnectIT",
+        "url": "https://iconnectit.co.uk"
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
  * Plugin Name:       Divi Tools Importer
  * Plugin URI:        https://iconnectit.co.uk
  * Description:       REST API endpoint for importing Divi 5 pages, SEO meta, and FAQ schema from Claude Code. Install, copy your API key, hand it to Claude.
- * Version:           1.0.0
+ * Version:           1.2.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            iConnectIT
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DTI_VERSION', '1.0.0' );
+define( 'DTI_VERSION', '1.2.0' );
 define( 'DTI_FILE', __FILE__ );
 define( 'DTI_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -24,6 +24,8 @@ require_once DTI_DIR . 'src/Auth.php';
 require_once DTI_DIR . 'src/SchemaInjector.php';
 require_once DTI_DIR . 'src/SeoWriter.php';
 require_once DTI_DIR . 'src/PageImporter.php';
+require_once DTI_DIR . 'src/PagePreviewer.php';
+require_once DTI_DIR . 'src/LibraryImporter.php';
 require_once DTI_DIR . 'src/RestApi.php';
 require_once DTI_DIR . 'admin/SettingsPage.php';
 

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divi 5 Landing Page Generator — Claude Skill Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0B0B0F;
+            --bg-card: #12121A;
+            --bg-hover: #1A1A26;
+            --accent: #7B61FF;
+            --accent-muted: rgba(123, 97, 255, 0.1);
+            --text-main: #E2E2E9;
+            --text-muted: #9494A6;
+            --text-inverse: #0B0B0F;
+            --border: #232334;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'Space Grotesk', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 300px;
+            background-color: #07070A;
+            border-right: 1px solid var(--border);
+            padding: 40px 24px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .logo-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .logo-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-title span {
+            color: var(--accent);
+        }
+
+        .logo-badge {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: var(--accent-muted);
+            color: var(--accent);
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: max-content;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #FFF;
+            background-color: var(--bg-hover);
+        }
+
+        nav li.active a {
+            color: #FFF;
+            background-color: var(--accent-muted);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding-left: 11px;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 300px;
+            flex: 1;
+            padding: 60px 80px;
+            max-width: 1200px;
+        }
+
+        header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 40px;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #FFF;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 760px;
+        }
+
+        section {
+            margin-bottom: 80px;
+            scroll-margin-top: 40px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #FFF;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        /* Cards & Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(123, 97, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Workflow Blocks */
+        .workflow-step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+
+        .workflow-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 32px;
+            height: 32px;
+            background-color: var(--accent-muted);
+            border: 1px solid var(--accent);
+            color: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .workflow-step h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 8px;
+        }
+
+        /* Aesthetic Preset Spec Sheets */
+        .preset-card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .color-chip {
+            flex: 1;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .font-badge {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            background-color: rgba(255,255,255,0.05);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--text-main);
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* Callout Box / Guardrails */
+        .callout {
+            background: linear-gradient(135deg, #1A1235 0%, #0F0B21 100%);
+            border: 1px solid #443399;
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin: 32px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .callout::after {
+            content: '!';
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            font-size: 10rem;
+            font-weight: 900;
+            color: rgba(123, 97, 255, 0.04);
+            font-family: var(--font-serif);
+        }
+
+        .callout-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #D6CFFF;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: #07070A;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #A5A5B3;
+            margin: 16px 0;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            color: #FF79C6;
+            background-color: rgba(255,255,255,0.04);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre code {
+            padding: 0;
+            background-color: transparent;
+            color: inherit;
+            font-size: inherit;
+        }
+
+        .keyword { color: #FF79C6; }
+        .string { color: #F1FA8C; }
+        .comment { color: #6272A4; }
+        .function { color: #50FA7B; }
+
+        /* Copyable Triggers List */
+        .trigger-tag {
+            display: inline-block;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-right: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .trigger-tag:hover {
+            border-color: var(--accent);
+            background-color: var(--accent-muted);
+            color: #FFF;
+        }
+
+        /* Footer */
+        .guide-footer {
+            margin-top: 100px;
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="logo-area">
+                <div class="logo-title">Divi 5 <span>Architect</span></div>
+                <div class="logo-badge">Landing Page Skill</div>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#overview">Overview & Triggers</a></li>
+                    <li><a href="#workflow">The 4-Stage Workflow</a></li>
+                    <li><a href="#presets">Aesthetic Presets</a></li>
+                    <li><a href="#taste">Taste & Anti-Slop Dials</a></li>
+                    <li><a href="#prompts">Example Prompts</a></li>
+                    <li><a href="#validation">Validation & Export</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <header>
+                <div class="eyebrow">Claude Desktop App Integration</div>
+                <h1>Divi 5 Landing Page Generator</h1>
+                <div class="lead">Produce production-ready, SEO-optimized, completely importable Divi 5 layouts. Built natively against rigorous design frameworks and deterministic validation schemas.</div>
+            </header>
+
+            <!-- Overview -->
+            <section id="overview">
+                <h2>Overview & Triggers</h2>
+                <p>This skill transforms Claude into an expert Divi 5 layout architect and SEO specialist. Instead of writing simple layout suggestions, Claude builds high-converting, fully customized <code>.json</code> exports that can be imported instantly into the Divi 5 dashboard.</p>
+                
+                <p style="margin-top: 24px; font-weight: 600; color: #FFF;">Trigger Phrases (Type any of these in Claude to engage the skill):</p>
+                <div style="margin-top: 12px;">
+                    <span class="trigger-tag">divi 5 landing page</span>
+                    <span class="trigger-tag">create divi layout</span>
+                    <span class="trigger-tag">generate divi json</span>
+                    <span class="trigger-tag">wordpress landing page</span>
+                    <span class="trigger-tag">seo landing page divi</span>
+                    <span class="trigger-tag">divi template</span>
+                    <span class="trigger-tag">divi import</span>
+                </div>
+            </section>
+
+            <!-- Workflow -->
+            <section id="workflow">
+                <h2>The 4-Stage Workflow</h2>
+                <p>The skill operates across a highly dependable four-phase design cycle to maintain absolute visual and engineering quality.</p>
+                
+                <div style="margin-top: 32px;">
+                    <div class="workflow-step" data-step="1">
+                        <h3>The Briefing Phase</h3>
+                        <p>Claude extracts deep context from your project. It queries your brand & offer, primary keywords for localized/global SEO, aesthetic configuration, layout selection (Hero, Bento Features, Testimonials, CTA Band, etc.), and checks if you have <strong>DiviTheatre</strong> installed for advanced scroll motion features.</p>
+                    </div>
+
+                    <div class="workflow-step" data-step="2">
+                        <h3>HTML Design Preview (Taste Gate)</h3>
+                        <p>Before any complex JSON structure is authored, Claude delivers an interactive, modern, ultra-high-fidelity <code>preview-[brand].html</code> layout right inside the Claude UI. This allows you to verify copy rhythms, spacing systems, and visual pacing instantly.</p>
+                    </div>
+
+                    <div class="workflow-step" data-step="3">
+                        <h3>JSON Generation Scripting</h3>
+                        <p>Once approved, Claude utilizes an advanced bundled script generator library (<code>divi-builder.js</code>) to assemble semantically perfect block hierarchies including global color mappings, responsive breakpoints, column fractions, and asset-validated image objects.</p>
+                    </div>
+
+                    <div class="workflow-step" data-step="4">
+                        <h3>Validation & Report Card</h3>
+                        <p>The output undergoes rigorous automated schema validation (<code>validate.js</code>) ensuring perfect structural health, exact h1/h2 text ratios, mobile-first structural scaling, zero em-dash copy violations, and comprehensive SEO completeness.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Presets -->
+            <section id="presets">
+                <h2>The 5 Core Aesthetic Presets</h2>
+                <p>Five pre-engineered, highly deliberate token sets crafted to bypass generic AI layouts and align perfectly with specific business intent.</p>
+                
+                <div class="grid-2">
+                    <!-- Preset A -->
+                    <div class="card preset-card">
+                        <div>
+                            <div class="card-title"><span style="color: var(--accent);">A</span> Organic Tech</div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Research lab meets luxury magazine. Ideal for premium consumer, wellness, clinical boutique, and sustainable brands.</p>
+                        </div>
+                        <div>
+                            <span class="font-badge">Plus Jakarta Sans</span>
+                            <span class="font-badge">Source Sans 3</span>
+                            <span class="font-badge">Cormorant Garamond Italic</span>
+                            <div class="color-palette">
+                                <div class="color-chip" style="background-color: #2E4036; color: #FFF;">#2E4036</div>
+                                <div class="color-chip" style="background-color: #CC5833; color: #FFF;">#CC5833</div>
+                                <div class="color-chip" style="background-color: #F2F0E9; color: #000;">#F2F0E9</div>
+                                <div class="color-chip" style="background-color: #1A1A1A; color: #FFF;">#1A1A1A</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preset B -->
+                    <div class="card preset-card">
+                        <div>
+                            <div class="card-title"><span style="color: var(--accent);">B</span> Midnight Luxe</div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Private members' club meets high-end watchmaker. Perfect for luxury commerce, finance, legal counsel, and dark editorial hubs.</p>
+                        </div>
+                        <div>
+                            <span class="font-badge">Inter Tight</span>
+                            <span class="font-badge">Inter</span>
+                            <span class="font-badge">Playfair Display Italic</span>
+                            <div class="color-palette">
+                                <div class="color-chip" style="background-color: #0D0D12; color: #FFF;">#0D0D12</div>
+                                <div class="color-chip" style="background-color: #C9A84C; color: #000;">#C9A84C</div>
+                                <div class="color-chip" style="background-color: #FAF8F5; color: #000;">#FAF8F5</div>
+                                <div class="color-chip" style="background-color: #2A2A35; color: #FFF;">#2A2A35</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preset C -->
+                    <div class="card preset-card">
+                        <div>
+                            <div class="card-title"><span style="color: var(--accent);">C</span> Brutalist Signal</div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Control room precision with maximum info density. Tailored for software engineering hubs, architecture firms, and modern agencies.</p>
+                        </div>
+                        <div>
+                            <span class="font-badge">Space Grotesk</span>
+                            <span class="font-badge">Inter</span>
+                            <span class="font-badge">DM Serif Display Italic</span>
+                            <div class="color-palette">
+                                <div class="color-chip" style="background-color: #E8E4DD; color: #000;">#E8E4DD</div>
+                                <div class="color-chip" style="background-color: #E63B2E; color: #FFF;">#E63B2E</div>
+                                <div class="color-chip" style="background-color: #F5F3EE; color: #000;">#F5F3EE</div>
+                                <div class="color-chip" style="background-color: #111111; color: #FFF;">#111111</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preset D -->
+                    <div class="card preset-card">
+                        <div>
+                            <div class="card-title"><span style="color: var(--accent);">D</span> Vapor Clinic</div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Neon high-contrast energy. Reserved specifically for cutting-edge biotech labs, Web3 networks, and gaming platforms.</p>
+                        </div>
+                        <div>
+                            <span class="font-badge">Sora</span>
+                            <span class="font-badge">DM Sans</span>
+                            <span class="font-badge">Newsreader Italic</span>
+                            <div class="color-palette">
+                                <div class="color-chip" style="background-color: #0A0A14; color: #FFF;">#0A0A14</div>
+                                <div class="color-chip" style="background-color: #7B61FF; color: #FFF;">#7B61FF</div>
+                                <div class="color-chip" style="background-color: #F0EFF4; color: #000;">#F0EFF4</div>
+                                <div class="color-chip" style="background-color: #18181B; color: #FFF;">#18181B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card preset-card" style="margin-top: 24px;">
+                    <div>
+                        <div class="card-title"><span style="color: var(--accent);">E</span> Minimal Editorial</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Swiss design principles meet high-end print typography. Highly flexible, completely clean white-label architecture suited for modern SaaS, digital commerce, and corporate authority layouts.</p>
+                    </div>
+                    <div>
+                        <span class="font-badge">Outfit</span>
+                        <span class="font-badge">Inter (Body)</span>
+                        <span class="font-badge" style="color: var(--accent);">No Drama Font (Scale Impact Only)</span>
+                        <div class="color-palette">
+                            <div class="color-chip" style="background-color: #FFFFFF; color: #000;">#FFFFFF</div>
+                            <div class="color-chip" style="background-color: #171717; color: #FFF;">#171717</div>
+                            <div class="color-chip" style="background-color: #F5F5F5; color: #000;">#F5F5F5</div>
+                            <div class="color-chip" style="background-color: #DC2626; color: #FFF;">#DC2626</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Taste Layer & Dials -->
+            <section id="taste">
+                <h2>Taste & Anti-Slop Dials</h2>
+                <p>Every layout maps configuration to an anti-slop engine. Claude configures three independent dials from <code>1–10</code> based on your project goals before rendering structural code.</p>
+                
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent);">VARIANCE</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">Drives structural rhythm. High values inject elegant asymmetric layout splits, offset text columns, and cinematic whitespace block grids over predictable center grids.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent);">MOTION</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">Drives interaction feedback. Governs element entrances, staggered lists, reveal hooks, and scroll animation integration mapping via Divi 5 native presets.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent);">DENSITY</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">Drives structural spacing. Balances layout breathing room. High density optimizes technical control rooms with hairline dividers, while low density spaces high-fashion viewports.</p>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <div class="callout-title">Non-Negotiable Guardrails Included</div>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.95rem; padding-left: 4px;">
+                        <li>🛡️ <strong>Exactly One H1 Per Page:</strong> Locked to the primary Hero Headline. No heading level skipping permitted.</li>
+                        <li>🛡️ <strong>No Fake AI Elements:</strong> Banned section-number eyebrows, decorative dots, scroll indicators, or dummy labels.</li>
+                        <li>🛡️ <strong>No Inter/Serif Abuse:</strong> <code>Inter</code> is discouraged as a prominent display heading font. Cliché serifs are strictly gatekept.</li>
+                        <li>🛡️ <strong>Zero Dash Slop:</strong> The structural validator automatically fails if em-dashes (<code>—</code>) or en-dashes (<code>–</code>) are present in page text copy.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Prompts -->
+            <section id="prompts">
+                <h2>Example Prompts to Try</h2>
+                <p>Copy and drop these exact prompt styles into your Claude Desktop chat workspace to instantly orchestrate custom high-performing templates.</p>
+                
+                <div class="card" style="margin-bottom: 16px;">
+                    <div class="eyebrow" style="margin-bottom: 4px;">Full Briefed Generation</div>
+                    <pre><code>Build a complete Divi 5 landing page for a boutique solar installation company named "Helios Array". 
+Our primary keyword is "Premium home solar Melbourne". 
+Let's use the Organic Tech aesthetic preset to lean into premium craftsmanship, and include Hero, Bento Feature Grid, Process Timeline, and an FAQ block with schema markup.</code></pre>
+                </div>
+
+                <div class="card">
+                    <div class="eyebrow" style="margin-bottom: 4px;">Interactive Setup Mode</div>
+                    <pre><code>I want to design a conversion-driven Divi 5 layout for a corporate security SaaS app. Let's start the interactive brief.</code></pre>
+                </div>
+            </section>
+
+            <!-- Validation -->
+            <section id="validation">
+                <h2>Validation & Importing</h2>
+                <p>Every layout delivers an independent set of three production-ready deployment assets in your active workspace:</p>
+                
+                <div style="margin: 20px 0;">
+                    <p>📦 <code>[brand]-landing-page.json</code> — The core layout library tree.</p>
+                    <p>📦 <code>[brand]-seo-meta.json</code> — Fully matching meta descriptions, slugs, and title tags.</p>
+                    <p>📦 <code>[brand]-schema.json</code> — Clean, automated JSON-LD schema integration for header deployment.</p>
+                </div>
+
+                <p>To deploy the file into WordPress, simply navigate to your <strong>Divi Library > Portability > Import</strong> dashboard, select the generated page layout file, and ensure <strong>"Import Presets" is checked</strong> to inherit the complete global color and typography styling matrix natively.</p>
+            </section>
+
+            <div class="guide-footer">
+                Divi 5 Layout Architect Engine • Built for the Claude Desktop Environment
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple active state tracker for sidebar navigation
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('nav ul li');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 120)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLi.forEach(li => {
+                li.classList.remove('active');
+                if (li.querySelector('a').getAttribute('href').substring(1) === current) {
+                    li.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

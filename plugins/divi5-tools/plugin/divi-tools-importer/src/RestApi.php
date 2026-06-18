@@ -21,6 +21,15 @@ class DTI_RestApi {
 			),
 		) );
 
+		register_rest_route( self::NAMESPACE, '/preview', array(
+			'methods'             => 'POST',
+			'callback'            => array( __CLASS__, 'handle_preview' ),
+			'permission_callback' => array( __CLASS__, 'authenticate' ),
+			'args'                => array(
+				'layout' => array( 'required' => true, 'type' => 'object' ),
+			),
+		) );
+
 		register_rest_route( self::NAMESPACE, '/ping', array(
 			'methods'             => 'GET',
 			'callback'            => array( __CLASS__, 'handle_ping' ),
@@ -46,6 +55,24 @@ class DTI_RestApi {
 		return true;
 	}
 
+	public static function handle_preview( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+		$layout = $request->get_param( 'layout' );
+
+		if ( ! is_array( $layout ) || empty( $layout ) ) {
+			return new WP_Error( 'invalid_layout', 'layout must be a non-empty JSON object.', array( 'status' => 400 ) );
+		}
+
+		try {
+			$result = DTI_PagePreviewer::preview( $layout );
+		} catch ( InvalidArgumentException $e ) {
+			return new WP_Error( 'validation_failed', $e->getMessage(), array( 'status' => 422 ) );
+		} catch ( RuntimeException $e ) {
+			return new WP_Error( 'preview_failed', $e->getMessage(), array( 'status' => 500 ) );
+		}
+
+		return new WP_REST_Response( $result, 200 );
+	}
+
 	public static function handle_ping( WP_REST_Request $request ): WP_REST_Response {
 		return new WP_REST_Response( array(
 			'status'      => 'ok',
@@ -69,6 +96,27 @@ class DTI_RestApi {
 			return new WP_Error( 'invalid_layout', 'layout must be a non-empty JSON object.', array( 'status' => 400 ) );
 		}
 
+		$context = $layout['context'] ?? '';
+
+		// Route to library importer for et_builder_layouts (sections, rows, modules).
+		if ( $context === 'et_builder_layouts' ) {
+			try {
+				$result = DTI_LibraryImporter::import( $layout );
+			} catch ( InvalidArgumentException $e ) {
+				return new WP_Error( 'validation_failed', $e->getMessage(), array( 'status' => 422 ) );
+			} catch ( RuntimeException $e ) {
+				return new WP_Error( 'import_failed', $e->getMessage(), array( 'status' => 500 ) );
+			}
+			DTI_Auth::log_import( array(
+				'slug'     => $result['imported'][0]['title'] ?? 'library',
+				'action'   => $result['imported'][0]['action'] ?? 'created',
+				'status'   => 'library',
+				'warnings' => $result['warnings'],
+			) );
+			return new WP_REST_Response( $result, 200 );
+		}
+
+		// Standard page import.
 		try {
 			$result = DTI_PageImporter::import( $layout, $seo, $publish );
 		} catch ( InvalidArgumentException $e ) {
