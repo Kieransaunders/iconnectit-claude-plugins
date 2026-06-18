@@ -326,22 +326,32 @@ function normaliseCustomAttrs(attrs) {
 // ─── structural modules ─────────────────────────────────────────────────────
 
 /**
- * section({ adminLabel, background, backgroundImage, backgroundImagePosition, padding:{top,bottom}, phonePadding, preset, theatre, theatreOpts, attrs }, rows)
+ * section({ adminLabel, bgColor, background, backgroundImage, backgroundImagePosition, padding:{top,bottom}, phonePadding, preset, theatre, theatreOpts, attrs }, rows)
+ * - bgColor: plain colour string → wrapped as single-layer background
+ * - background: raw decoration.background object (e.g. multi-layer array) — passed through directly
+ * - backgroundImage / backgroundImagePosition: legacy single-image shorthand (ignored when background is set)
  * theatre: DiviTheatre preset name (ONLY when user confirmed DiviTheatre installed)
  */
 function section(opts, rows) {
   const o = opts || {};
-  const bgValue = prune({
-    color: o.background,
-    image: o.backgroundImage
-      ? { url: o.backgroundImage, size: 'cover', position: o.backgroundImagePosition || 'center center' }
-      : undefined,
-  });
+  let sectionBg;
+  if (o.background) {
+    // raw passthrough — caller supplies the full decoration.background object
+    sectionBg = o.background;
+  } else {
+    const bgValue = prune({
+      color: o.bgColor,
+      image: o.backgroundImage
+        ? { url: o.backgroundImage, size: 'cover', position: o.backgroundImagePosition || 'center center' }
+        : undefined,
+    });
+    sectionBg = Object.keys(bgValue).length ? dv(bgValue) : undefined;
+  }
   let attrs = {
     module: {
       meta: o.adminLabel ? { adminLabel: dv(o.adminLabel) } : undefined,
       decoration: {
-        background: Object.keys(bgValue).length ? dv(bgValue) : undefined,
+        background: sectionBg,
         spacing: o.padding
           ? {
               desktop: { value: { padding: { top: o.padding.top, bottom: o.padding.bottom || o.padding.top, syncVertical: o.padding.bottom && o.padding.bottom !== o.padding.top ? 'off' : 'on', syncHorizontal: 'off' } } },
@@ -354,6 +364,36 @@ function section(opts, rows) {
   attrs = prune(merge(attrs, withTheatre(o)));
   if (o.preset) attrs.modulePreset = [o.preset];
   return block('section', attrs, rows);
+}
+
+/**
+ * overlaySection({ adminLabel, image:{src,parallax}, overlay:{color,blend,opacity}, padding, phonePadding, preset, theatre, theatreOpts }, rows)
+ * @param {{ top?: string, bottom?: string }} [opts.padding]
+ * Builds a section with a two-layer Divi 5 background: image layer (bottom) + colour overlay layer (top).
+ */
+function overlaySection(opts, rows) {
+  const o = opts || {};
+  const imgLayer = {
+    image: {
+      url: (o.image && o.image.src) || '',
+      parallax: (o.image && o.image.parallax) || 'off',
+    },
+  };
+  const colorLayer = {};
+  if (o.overlay) {
+    if (o.overlay.color != null) colorLayer.color = o.overlay.color;
+    if (o.overlay.blend != null) colorLayer.blend = o.overlay.blend;
+    if (o.overlay.opacity != null) colorLayer.opacity = o.overlay.opacity;
+  }
+  return section({
+    adminLabel: o.adminLabel,
+    theatre: o.theatre,
+    theatreOpts: o.theatreOpts,
+    preset: o.preset,
+    padding: o.padding,
+    phonePadding: o.phonePadding,
+    background: { desktop: { value: [imgLayer, colorLayer] } },
+  }, rows);
 }
 
 /**
@@ -672,7 +712,7 @@ function createBuilder(opts) {
 module.exports = {
   BUILDER_VERSION, CRLF,
   dv, block, placeholder, merge, prune, htmlContent,
-  section, row, column,
+  section, overlaySection, row, column,
   heading, text, eyebrow, button, blurb, image, icon, accordion, numberCounter, divider,
   theatreAttrs, theatrePartAttrs, withTheatre, normaliseCustomAttrs,
   isPinPreset, assertKnownPreset,
