@@ -259,6 +259,50 @@ for (const g of new Set(allGcidRefs)) {
 }
 if (definedColors.size) pass(`${definedColors.size} global colours defined, references checked`);
 
+// ─── ET design system token check ───────────────────────────────────────────
+// FAIL when a raw hex colour in the JSON matches a known Elegant Themes token.
+// Generators must use builder.colorRef('Label') instead of hard-coded hex.
+;(() => {
+  const path = require('path');
+  const tokenFile = path.join(__dirname, '../references/Divi design system JSON/divi-design-system.tokens.js');
+  if (!fs.existsSync(tokenFile)) return; // token file absent — skip silently
+
+  const etTokens = require(tokenFile);
+  const { colorHex = {}, colorId = {} } = etTokens;
+
+  // colorId maps label → gcid. Build reverse: gcid → label.
+  const gcidToLabel = {};
+  for (const [label, gcid] of Object.entries(colorId)) gcidToLabel[gcid] = label;
+
+  // Build hex → human label map (lowercase hex keys)
+  const hexToLabel = {};
+  for (const [gcid, val] of Object.entries(colorHex)) {
+    const hex = (typeof val === 'string' ? val : (val && val.resolvesTo) || null);
+    if (!hex) continue;
+    const label = gcidToLabel[gcid];
+    if (label) hexToLabel[hex.toLowerCase()] = label;
+  }
+
+  const hexRe = /#([0-9a-fA-F]{3,8})\b/g;
+  let tokenHits = 0;
+  for (const blockList of Object.values(tokensByKey)) {
+    for (const t of blockList) {
+      if (!t.attrs) continue;
+      const aStr = JSON.stringify(t.attrs);
+      let m;
+      const re = new RegExp(hexRe.source, hexRe.flags);
+      while ((m = re.exec(aStr)) !== null) {
+        const hex = m[0].toLowerCase();
+        if (hexToLabel[hex]) {
+          err(`TOKEN: raw colour ${m[0]} in ${t.name} matches ET token "${hexToLabel[hex]}" — use builder.colorRef('${hexToLabel[hex]}') instead`);
+          tokenHits++;
+        }
+      }
+    }
+  }
+  if (!tokenHits) pass('no raw hex values matched ET design system tokens');
+})();
+
 // ─── taste: banned-glyph scan (deterministic) ───────────────────────────────
 // The em-dash is the #1 AI tell. references/taste.md §11 bans it (and en-dash as
 // a separator) in all user-visible copy. Divi structure uses only ASCII, so any
