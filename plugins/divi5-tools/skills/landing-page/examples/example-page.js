@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const D = require('../scripts/divi-builder');
+const TOKENS = require('../references/Divi design system JSON/divi-design-system.tokens.js');
 
 const T = {
   dark: '#0D0D12',
@@ -32,7 +33,18 @@ const FEAT_IMGS = [
 ];
 const PROCESS_IMG = 'https://picsum.photos/seed/noloco-build-process/800/900';
 
-const b = D.createBuilder();
+const b = D.createBuilder({ tokens: TOKENS });
+
+// Brand-specific colours (NOT in ET design system) — registered as global colours
+const PRIMARY   = b.globalColor('brand-primary',  '#F95E00', 'Brand Primary');
+const DARK      = b.globalColor('brand-dark',      '#0D0D12', 'Brand Dark');
+const BODY_DARK = b.globalColor('brand-body-dark', '#BBBBBB', 'Brand Body Dark');
+
+// ET design-system colour references (resolved via token map)
+const WHITE   = b.colorRef('White');
+const GRAY_BG = b.colorRef('Background - Light Gray');
+
+// Keep legacy slugs so P.* presets that use b.colorVar() still work
 b.globalColor('accent', T.accent, 'Accent Orange');
 b.globalColor('dark', T.dark, 'Dark Base');
 b.globalColor('light-bg', T.gray, 'Light Background');
@@ -42,7 +54,7 @@ const P = {
     module: { decoration: { background: D.dv({ color: b.colorVar('dark') }), spacing: D.dv({ padding: { top: '6em', bottom: '6em', syncVertical: 'on', syncHorizontal: 'off' } }) } },
   }),
   sectionWhite: b.preset('divi/section', 'Section — White', {
-    module: { decoration: { background: D.dv({ color: T.white }), spacing: D.dv({ padding: { top: '6em', bottom: '6em', syncVertical: 'on', syncHorizontal: 'off' } }) } },
+    module: { decoration: { background: D.dv({ color: WHITE }), spacing: D.dv({ padding: { top: '6em', bottom: '6em', syncVertical: 'on', syncHorizontal: 'off' } }) } },
   }),
   sectionGray: b.preset('divi/section', 'Section — Light Gray', {
     module: { decoration: { background: D.dv({ color: b.colorVar('light-bg') }), spacing: D.dv({ padding: { top: '6em', bottom: '6em', syncVertical: 'on', syncHorizontal: 'off' } }) } },
@@ -69,12 +81,27 @@ const P = {
     content: { decoration: { bodyFont: { body: { font: D.dv({ family: T.bodyFont, size: '14px', lineHeight: '1.5em', color: T.onDarkBody, textAlign: 'left' }) } } } },
   }),
   btnPrimary: b.preset('divi/button', 'Button — Primary pill', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '16px', color: T.dark, weight: '600' }) }, background: D.dv({ color: T.white }), border: D.dv({ radius: { topLeft: '999px', topRight: '999px', bottomLeft: '999px', bottomRight: '999px', sync: 'on' } }) } },
+    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '16px', color: T.dark, weight: '600' }) }, background: D.dv({ color: WHITE }), border: D.dv({ radius: { topLeft: '999px', topRight: '999px', bottomLeft: '999px', bottomRight: '999px', sync: 'on' } }) } },
   }),
   btnGhost: b.preset('divi/button', 'Button — Ghost', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '16px', color: T.white, weight: '500' }) }, background: D.dv({ color: 'transparent' }) } },
+    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '16px', color: WHITE, weight: '500' }) }, background: D.dv({ color: 'transparent' }) } },
   }),
 };
+
+// A0 — Dark hero with overlay (token-aware demo: colorRef + overlaySection)
+const darkHero = D.overlaySection({
+  image: { src: HERO_IMG },
+  overlay: { color: b.colorRef('Background Overlay - Dark'), opacity: 0.82, blend: 'multiply' },
+  padding: { top: '8vw', bottom: '8vw' },
+  adminLabel: 'Hero (overlay variant)',
+}, [
+  D.row({}, [
+    D.column({ width: 50 }, [
+      D.heading({ text: 'Build faster with tokens', color: WHITE, level: 'h1' }),
+      D.text({ content: '<p>Design system colours, resolved server-side by Divi.</p>', color: WHITE }),
+    ]),
+  ]),
+]);
 
 // A — Asymmetric split hero (Floria pattern)
 // DiviTheatre motion (uncomment ONLY if user confirmed DiviTheatre installed):
@@ -84,7 +111,7 @@ const hero = D.section({ adminLabel: 'Hero', preset: P.sectionDark }, [
   D.row({ structure: 'equal-columns_2', alignItems: 'center', maxWidth: '1200px', columnGap: '48px' }, [
     D.column({ flexType: '12_24' }, [
       D.eyebrow('UK NOLOCO STUDIO', T.accent, { textAlign: 'left' }),
-      D.heading({ text: 'The Noloco Consultant Who Ships Portals in Weeks', level: 'h1', preset: P.heroH1 }),
+      D.heading({ text: 'The Noloco Consultant Who Ships Portals in Weeks', level: 'h2', preset: P.heroH1 }),
       D.text({
         html: '<p>UK Noloco consultant building Airtable-backed portals with automation included. Fixed scope, live in weeks.</p>',
         preset: P.bodyOnDark,
@@ -164,7 +191,7 @@ const faq = D.section({ adminLabel: 'FAQ', preset: P.sectionWhite }, [
   ]),
 ]);
 
-const content = D.placeholder([hero, features, process, faq]);
+const content = D.placeholder([darkHero, hero, features, process, faq]);
 const json = b.assemble({ context: 'et_builder', content, title: 'Example Landing Page' });
 fs.writeFileSync(path.join(__dirname, 'example-landing-page.json'), JSON.stringify(json));
 

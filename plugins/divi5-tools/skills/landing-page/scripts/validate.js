@@ -254,8 +254,21 @@ if (allPresetRefs.length) pass(`${allPresetRefs.length} preset references checke
 else warn('no modulePreset references found — presets are mandatory for maintainable layouts');
 
 const definedColors = new Set((doc.global_colors || []).map(c => c[0]));
+// Collect ET system gcids (pre-loaded on any Divi site, not stored in page global_colors)
+const etSystemGcids = (() => {
+  try {
+    const tokenPath = require('path').join(__dirname, '../references/Divi design system JSON/divi-design-system.tokens.js');
+    const T = require(tokenPath);
+    const ids = new Set();
+    for (const v of Object.values(T.colorRef || {})) {
+      const m = v.match(/gcid-[a-z0-9]+/);
+      if (m) ids.add(m[0]);
+    }
+    return ids;
+  } catch { return new Set(); }
+})();
 for (const g of new Set(allGcidRefs)) {
-  if (!definedColors.has(g)) err(`global colour "${g}" referenced but not defined in global_colors`);
+  if (!definedColors.has(g) && !etSystemGcids.has(g)) err(`global colour "${g}" referenced but not defined in global_colors`);
 }
 if (definedColors.size) pass(`${definedColors.size} global colours defined, references checked`);
 

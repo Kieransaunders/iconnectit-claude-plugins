@@ -524,7 +524,7 @@ function button(opts) {
     button: {
       innerContent: dv({ text: htmlContent(o.text), linkUrl: o.url || '#' }),
       decoration: {
-        font: { font: dv(prune({ family: o.fontFamily, size: o.fontSize || '16px', color: o.color || '#ffffff', weight: '600' })) },
+        font: { font: dv(prune({ family: o.fontFamily, size: o.fontSize || '16px', color: o.color || (o.preset ? undefined : '#ffffff'), weight: '600' })) },
         background: o.background ? dv({ color: o.background }) : undefined,
         border: o.radius ? dv({ radius: { topLeft: o.radius, topRight: o.radius, bottomLeft: o.radius, bottomRight: o.radius, sync: 'on' } }) : undefined,
         spacing: dv({ padding: { top: pad.v, bottom: pad.v, left: pad.h, right: pad.h, syncVertical: 'on', syncHorizontal: 'on' } }),
