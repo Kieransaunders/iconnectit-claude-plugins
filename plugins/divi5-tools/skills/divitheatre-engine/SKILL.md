@@ -1,23 +1,6 @@
 ---
 name: divitheatre-engine
-description: >-
-  Theatre.js (@theatre/core 0.7.0) reference for building and debugging the DiviTheatre WordPress
-  plugin's animation engine and motion presets. Use this skill whenever the work touches
-  DiviTheatre's motion layer: writing or editing a preset in src/presets/, working in
-  src/engine.js or src/preset-registry.js, baking Theatre.js sequence/keyframe state as JSON (so
-  @theatre/studio never ships on the frontend), or wiring getProject / sheet.object / sequence.play
-  / sequence.position / onValuesChange / createRafDriver / a scroll-pinned scene. Also trigger on
-  the silent-failure symptoms DiviTheatre presets produce, even when Theatre.js is not named: "the
-  animation never plays", project.ready hangs or never resolves, an element stuck hidden at opacity
-  0 after a skip, onValuesChange not firing, a definitionVersion or baked-state validation
-  mismatch, or a parallax/scroll preset that will not scrub. Fires on Theatre.js, @theatre/core,
-  getProject, sheet.object, sequence, onValuesChange, rafDriver, baked state, data-theatre, or
-  "DiviTheatre preset / add an animation to DiviTheatre". This is the MOTION layer ONLY — defer to
-  the sibling skills for everything else: divi-5-module-development / divi-plugin-dev for Divi
-  module scaffolding (module.json, ModuleRegistration, Visual Builder components, PHP
-  render_callback), landing-page for generating Divi page JSON, design-review for auditing an
-  export, style-variables for brand tokens, import-to-local for Local WP imports. Do NOT use it for
-  non-DiviTheatre Theatre.js work such as React Three Fiber / @theatre/r3f 3D scenes.
+description: "Theatre.js (@theatre/core 0.7.0) reference for building and debugging the DiviTheatre WordPress plugin's animation engine and motion presets. Use whenever work touches DiviTheatre's motion layer: writing or editing presets in src/presets/, src/engine.js or src/preset-registry.js, baking Theatre.js sequence/keyframe state as JSON, or wiring getProject, sheet.object, sequence.play, onValuesChange, createRafDriver, or scroll-pinned scenes. Also fires on silent-failure symptoms: the animation never plays, project.ready hangs, an element stuck hidden at opacity 0, or a definitionVersion / baked-state mismatch. Triggers: Theatre.js, @theatre/core, getProject, sheet.object, sequence, onValuesChange, rafDriver, baked state, data-theatre, DiviTheatre preset. MOTION layer only — not for module scaffolding, page JSON, design audits, or non-DiviTheatre Theatre.js work (e.g. @theatre/r3f)."
 ---
 
 # DiviTheatre engine — building with @theatre/core

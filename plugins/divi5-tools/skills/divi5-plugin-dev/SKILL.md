@@ -1,16 +1,6 @@
 ---
 name: divi5-plugin-dev
-description: >
-  Divi 5 third-party plugin and custom module developer. Use this skill whenever
-  the user is building, scaffolding, extending, or debugging a Divi 5 plugin that
-  adds custom modules to the Divi Builder. Trigger when the user mentions: Divi 5
-  module, Divi custom module, Divi extension, Divi plugin development, divi/module,
-  ModuleRegistration, divi_module_library_modules_dependency_tree, module.json,
-  registerModule (in a Divi context), Visual Builder component, DependencyInterface,
-  ModuleContainer, StyleContainer, elementClassnames, PackageBuildManager, or any
-  task that involves adding a new draggable element to the Divi Builder. Also
-  trigger for: "create a Divi block", "add a module to Divi", "custom Divi element",
-  "Divi 5 plugin", "et_builder_d5_enabled".
+description: "Divi 5 third-party plugin and custom module developer. Use this skill whenever the user is building, scaffolding, extending, or debugging a Divi 5 plugin that adds custom modules to the Divi Builder. Trigger when the user mentions: Divi 5 module, Divi custom module, Divi extension, Divi plugin development, divi/module, ModuleRegistration, divi_module_library_modules_dependency_tree, module.json, registerModule (in a Divi context), Visual Builder component, DependencyInterface, ModuleContainer, StyleContainer, elementClassnames, PackageBuildManager, or any task that involves adding a new draggable element to the Divi Builder. Also trigger for: create a Divi block, add a module to Divi, custom Divi element, Divi 5 plugin, et_builder_d5_enabled."
 ---
 
 # Divi 5 Plugin Developer
