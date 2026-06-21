@@ -75,11 +75,36 @@
         <input type="text" name="ctaUrl" placeholder="https://…">
       </div>
 
-      <div class="section-label" style="margin-top:4px">DiviTheatre Motion</div>
+      <div class="section-label" style="margin-top:4px">
+        DiviTheatre Motion
+        <button type="button" class="info-toggle" id="theatreInfoToggle" aria-expanded="false">What is this?</button>
+      </div>
+
+      <div class="info-box" id="theatreInfo" hidden>
+        <p><strong>DiviTheatre</strong> is a free WordPress plugin that adds cinematic scroll animations to Divi 5 — fade-up, stagger, parallax, hero-reveal, and more. It runs on Theatre.js and requires no page builders or shortcodes.</p>
+        <p style="margin-top:8px"><strong>Animations it adds:</strong></p>
+        <ul class="info-list">
+          <li><strong>fade-up</strong> — text and sections fade in as they scroll into view</li>
+          <li><strong>stagger</strong> — card grids animate in sequence, 100ms apart</li>
+          <li><strong>parallax-scroll</strong> — hero images drift as you scroll</li>
+          <li><strong>hero-reveal</strong> — choreographed hero: background → headline → body → CTA</li>
+          <li><strong>hover-grow</strong> — buttons and cards gently scale on hover</li>
+          <li><strong>scale-in</strong> — images and blurbs zoom in from 90%</li>
+        </ul>
+        <p style="margin-top:8px"><strong>How to install:</strong></p>
+        <ol class="info-list">
+          <li>Download the plugin ZIP from your iConnectIT account</li>
+          <li>WordPress admin → Plugins → Add New → Upload Plugin</li>
+          <li>Upload the ZIP and click <em>Install Now</em>, then <em>Activate</em></li>
+          <li>No configuration needed — it activates automatically on Divi 5 pages</li>
+        </ol>
+        <p style="margin-top:8px;color:var(--muted);font-size:0.75rem">If you select "Not installed but I want it", the generator builds a static page and notes exactly which elements should get animations once you install it.</p>
+      </div>
+
       <div class="radio-group">
-        <label><input type="radio" name="motion" value="no" checked> No (static page)</label>
-        <label><input type="radio" name="motion" value="yes"> Yes — DiviTheatre installed</label>
-        <label><input type="radio" name="motion" value="want"> Not installed but I want it</label>
+        <label><input type="radio" name="motion" value="no" checked> No — static page only</label>
+        <label><input type="radio" name="motion" value="yes"> Yes — DiviTheatre is installed</label>
+        <label><input type="radio" name="motion" value="want"> Not installed — add motion notes to output</label>
       </div>
 
       <div class="section-label" style="margin-top:4px">Designer Export <span style="font-size:0.7rem;color:var(--muted)">(optional — enables style check)</span></div>

@@ -233,6 +233,22 @@ async function loadGeneration(id) {
   }
 }
 
+// ─── DiviTheatre info toggle ─────────────────────────────────────────────────
+const theatreToggle = document.getElementById('theatreInfoToggle');
+const theatreInfo   = document.getElementById('theatreInfo');
+theatreToggle.addEventListener('click', () => {
+  const open = theatreInfo.hasAttribute('hidden');
+  if (open) {
+    theatreInfo.removeAttribute('hidden');
+    theatreToggle.textContent = 'Hide';
+    theatreToggle.setAttribute('aria-expanded', 'true');
+  } else {
+    theatreInfo.setAttribute('hidden', '');
+    theatreToggle.textContent = 'What is this?';
+    theatreToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
 // ─── Init ────────────────────────────────────────────────────────────────────
 checkPrereqs();
 loadHistory();
