@@ -233,6 +233,49 @@ async function loadGeneration(id) {
   }
 }
 
+// ─── Tab switching ────────────────────────────────────────────────────────────
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.dataset.tab;
+    document.getElementById('tab-generate').hidden = target !== 'generate';
+    document.getElementById('tab-settings').hidden  = target !== 'settings';
+  });
+});
+
+// ─── Settings load / save ─────────────────────────────────────────────────────
+async function loadSettings() {
+  try {
+    const s = await fetch('/settings').then(r => r.json());
+    if (s.siteUrl) document.getElementById('siteUrl').value = s.siteUrl;
+    if (s.apiKey)  document.getElementById('apiKey').value  = s.apiKey;
+  } catch {}
+}
+
+document.getElementById('saveSettings').addEventListener('click', async () => {
+  const siteUrl = document.getElementById('siteUrl').value.trim();
+  const apiKey  = document.getElementById('apiKey').value.trim();
+  await fetch('/settings', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ siteUrl, apiKey }),
+  });
+  const confirm = document.getElementById('settingsSaved');
+  confirm.removeAttribute('hidden');
+  setTimeout(() => confirm.setAttribute('hidden', ''), 2500);
+});
+
+// ─── Plugin info toggle ───────────────────────────────────────────────────────
+const pluginToggle = document.getElementById('pluginInfoToggle');
+const pluginInfo   = document.getElementById('pluginInfo');
+pluginToggle.addEventListener('click', () => {
+  const open = pluginInfo.hasAttribute('hidden');
+  pluginInfo.toggleAttribute('hidden', !open);
+  pluginToggle.textContent = open ? 'Hide' : 'How to install';
+  pluginToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+
 // ─── DiviTheatre info toggle ─────────────────────────────────────────────────
 const theatreToggle = document.getElementById('theatreInfoToggle');
 const theatreInfo   = document.getElementById('theatreInfo');
@@ -252,3 +295,4 @@ theatreToggle.addEventListener('click', () => {
 // ─── Init ────────────────────────────────────────────────────────────────────
 checkPrereqs();
 loadHistory();
+loadSettings();

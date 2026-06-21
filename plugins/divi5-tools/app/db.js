@@ -13,6 +13,11 @@ fs.mkdirSync(EXPORTS_DIR, { recursive: true });
 const db = new Database(path.join(DATA_DIR, 'history.db'));
 
 db.exec(`
+  CREATE TABLE IF NOT EXISTS settings (
+    key   TEXT PRIMARY KEY,
+    value TEXT NOT NULL
+  );
+
   CREATE TABLE IF NOT EXISTS generations (
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
     created_at      TEXT NOT NULL DEFAULT (datetime('now')),

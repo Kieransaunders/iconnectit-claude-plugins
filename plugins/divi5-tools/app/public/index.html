@@ -16,6 +16,13 @@
       <div class="tagline">AI-powered page generation for Divi 5</div>
     </div>
 
+    <div class="tab-bar">
+      <button type="button" class="tab active" data-tab="generate">Generate</button>
+      <button type="button" class="tab" data-tab="settings">Settings</button>
+    </div>
+
+    <!-- ── Generate tab ── -->
+    <div id="tab-generate">
     <form id="genForm">
 
       <div class="section-label">Brand &amp; Brief</div>
@@ -132,6 +139,63 @@
       <div class="section-label">Prerequisites</div>
       <div id="prereqs" style="display:flex;flex-direction:column;gap:6px"></div>
     </div>
+
+    </div><!-- /tab-generate -->
+
+    <!-- ── Settings tab ── -->
+    <div id="tab-settings" hidden>
+
+      <div class="section-label">WordPress Site</div>
+
+      <div class="field">
+        <label>Site URL</label>
+        <input type="text" id="siteUrl" placeholder="https://yoursite.com" autocomplete="off">
+        <span class="field-hint">The WordPress site where you'll import pages</span>
+      </div>
+
+      <div class="field">
+        <label>API Key</label>
+        <input type="password" id="apiKey" placeholder="Paste your API key" autocomplete="off">
+        <span class="field-hint">Found in WordPress → Settings → Divi Tools Importer</span>
+      </div>
+
+      <button type="button" class="btn-generate" id="saveSettings">Save Settings</button>
+      <div id="settingsSaved" class="save-confirm" hidden>Settings saved ✓</div>
+
+      <div class="section-label" style="margin-top:20px">
+        Install the Import Plugin
+        <button type="button" class="info-toggle" id="pluginInfoToggle" aria-expanded="false">How to install</button>
+      </div>
+
+      <div class="info-box" id="pluginInfo" hidden>
+        <p>The <strong>Divi Tools Importer</strong> plugin lets you push generated JSON pages directly into any WordPress site — no FTP or WP-CLI needed.</p>
+
+        <p style="margin-top:10px"><strong>Step 1 — Download the plugin ZIP</strong></p>
+        <p style="margin-top:4px">The plugin is bundled with this app. Click below to download it:</p>
+        <a href="/download-plugin" class="btn-dl" style="display:inline-block;margin-top:8px">Download divi-tools-importer.zip</a>
+
+        <p style="margin-top:12px"><strong>Step 2 — Install in WordPress</strong></p>
+        <ol class="info-list" style="margin-top:6px">
+          <li>Go to <strong>WordPress admin → Plugins → Add New Plugin</strong></li>
+          <li>Click <strong>Upload Plugin</strong></li>
+          <li>Choose the downloaded ZIP and click <strong>Install Now</strong></li>
+          <li>Click <strong>Activate Plugin</strong></li>
+        </ol>
+
+        <p style="margin-top:12px"><strong>Step 3 — Get your API key</strong></p>
+        <ol class="info-list" style="margin-top:6px">
+          <li>Go to <strong>WordPress admin → Settings → Divi Tools Importer</strong></li>
+          <li>Copy the <strong>Site URL</strong> and <strong>API Key</strong> shown there</li>
+          <li>Paste both into the fields above and click Save</li>
+        </ol>
+
+        <p style="margin-top:10px"><strong>What it does:</strong> After generating a page, the app sends the JSON to your site via the plugin's REST API. The page is created as a <em>draft</em> — you preview it in Divi, then publish when happy. No manual file copying needed.</p>
+
+        <p style="margin-top:8px;color:var(--muted);font-size:0.75rem">Works with any WordPress host — Local, Kinsta, WP Engine, SiteGround, or any other. The site just needs to be reachable from this Mac.</p>
+      </div>
+
+    </div><!-- /tab-settings -->
+
   </aside>
 
   <!-- ── Main panel ─────────────────────────────────────────────────── -->

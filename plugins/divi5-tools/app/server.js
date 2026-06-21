@@ -203,6 +203,40 @@ app.get('/exports', (req, res) => {
   res.json(db.prepare('SELECT * FROM designer_exports ORDER BY id DESC').all());
 });
 
+// ─── GET /download-plugin — serve the importer plugin ZIP ────────────────────
+app.get('/download-plugin', (req, res) => {
+  const zip = path.join(PLUGIN_DIR, 'divi-tools-importer.zip');
+  if (fs.existsSync(zip)) return res.download(zip, 'divi-tools-importer.zip');
+  // Fallback: build it on the fly if the zip doesn't exist yet
+  const buildScript = path.join(PLUGIN_DIR, 'plugin', 'build-zip.sh');
+  if (!fs.existsSync(buildScript)) return res.status(404).json({ error: 'Plugin ZIP not found' });
+  try {
+    execSync(`bash "${buildScript}"`, { cwd: PLUGIN_DIR });
+    res.download(zip, 'divi-tools-importer.zip');
+  } catch (e) {
+    res.status(500).json({ error: 'Could not build plugin ZIP' });
+  }
+});
+
+// ─── GET /settings ───────────────────────────────────────────────────────────
+app.get('/settings', (req, res) => {
+  const rows = db.prepare('SELECT key, value FROM settings').all();
+  const out  = {};
+  rows.forEach(r => { out[r.key] = r.value; });
+  // Never expose the raw API key — send a masked version
+  if (out.apiKey) out.apiKey = out.apiKey.replace(/.(?=.{4})/g, '•');
+  res.json(out);
+});
+
+// ─── POST /settings ───────────────────────────────────────────────────────────
+app.post('/settings', (req, res) => {
+  const { siteUrl, apiKey } = req.body;
+  const upsert = db.prepare('INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value=excluded.value');
+  if (siteUrl !== undefined) upsert.run('siteUrl', siteUrl.trim());
+  if (apiKey  !== undefined && !apiKey.includes('•')) upsert.run('apiKey', apiKey.trim());
+  res.json({ ok: true });
+});
+
 // ─── GET /prereqs — check claude is installed ────────────────────────────────
 app.get('/prereqs', (req, res) => {
   const claudeBin = findClaude();

@@ -266,6 +266,27 @@ select option { background: var(--surface); }
 .history-item .h-brand { font-size: 0.875rem; font-weight: 600; }
 .history-item .h-meta  { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
 
+/* ── Tab bar ── */
+.tab-bar { display: flex; gap: 4px; }
+.tab {
+  flex: 1;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 7px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tab:hover { border-color: var(--accent); color: var(--text); }
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ── Settings ── */
+.field-hint { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+.save-confirm { font-size: 0.8125rem; color: var(--success); text-align: center; margin-top: 8px; }
+
 /* ── Info box ── */
 .info-toggle {
   background: none;
