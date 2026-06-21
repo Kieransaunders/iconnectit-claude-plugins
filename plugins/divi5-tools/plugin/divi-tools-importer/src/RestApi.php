@@ -30,6 +30,34 @@ class DTI_RestApi {
 			),
 		) );
 
+		register_rest_route( self::NAMESPACE, '/export', array(
+			'methods'             => 'GET',
+			'callback'            => array( __CLASS__, 'handle_export' ),
+			'permission_callback' => array( __CLASS__, 'authenticate' ),
+			'args'                => array(
+				'id'   => array( 'required' => false, 'type' => 'integer', 'default' => 0 ),
+				'slug' => array( 'required' => false, 'type' => 'string',  'default' => '' ),
+			),
+		) );
+
+		register_rest_route( self::NAMESPACE, '/presets/import', array(
+			'methods'             => 'POST',
+			'callback'            => array( __CLASS__, 'handle_presets_import' ),
+			'permission_callback' => array( __CLASS__, 'authenticate' ),
+			'args'                => array(
+				'presets' => array( 'required' => true, 'type' => 'object' ),
+			),
+		) );
+
+		register_rest_route( self::NAMESPACE, '/presets', array(
+			'methods'             => 'GET',
+			'callback'            => array( __CLASS__, 'handle_presets_list' ),
+			'permission_callback' => array( __CLASS__, 'authenticate' ),
+			'args'                => array(
+				'module' => array( 'required' => false, 'type' => 'string', 'default' => '' ),
+			),
+		) );
+
 		register_rest_route( self::NAMESPACE, '/ping', array(
 			'methods'             => 'GET',
 			'callback'            => array( __CLASS__, 'handle_ping' ),
@@ -68,6 +96,49 @@ class DTI_RestApi {
 			return new WP_Error( 'validation_failed', $e->getMessage(), array( 'status' => 422 ) );
 		} catch ( RuntimeException $e ) {
 			return new WP_Error( 'preview_failed', $e->getMessage(), array( 'status' => 500 ) );
+		}
+
+		return new WP_REST_Response( $result, 200 );
+	}
+
+	public static function handle_export( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+		$id   = (int) $request->get_param( 'id' );
+		$slug = sanitize_text_field( (string) $request->get_param( 'slug' ) );
+
+		try {
+			$result = DTI_PageExporter::export( $id, $slug );
+		} catch ( InvalidArgumentException $e ) {
+			return new WP_Error( 'not_found', $e->getMessage(), array( 'status' => 404 ) );
+		} catch ( RuntimeException $e ) {
+			return new WP_Error( 'export_failed', $e->getMessage(), array( 'status' => 500 ) );
+		}
+
+		return new WP_REST_Response( $result, 200 );
+	}
+
+	public static function handle_presets_import( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+		$presets = $request->get_param( 'presets' );
+
+		if ( ! is_array( $presets ) || empty( $presets ) ) {
+			return new WP_Error( 'invalid_presets', 'presets must be a non-empty JSON object.', array( 'status' => 400 ) );
+		}
+
+		try {
+			$result = DTI_PresetManager::import_presets( $presets );
+		} catch ( RuntimeException $e ) {
+			return new WP_Error( 'import_failed', $e->getMessage(), array( 'status' => 500 ) );
+		}
+
+		return new WP_REST_Response( $result, 200 );
+	}
+
+	public static function handle_presets_list( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+		$module = sanitize_text_field( (string) $request->get_param( 'module' ) );
+
+		try {
+			$result = DTI_PresetManager::list_presets( $module );
+		} catch ( RuntimeException $e ) {
+			return new WP_Error( 'list_failed', $e->getMessage(), array( 'status' => 500 ) );
 		}
 
 		return new WP_REST_Response( $result, 200 );

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divi 5 Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Sidebar / Form ─────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo">Divi 5 <span>Generator</span></div>
+      <div class="tagline">AI-powered page generation for Divi 5</div>
+    </div>
+
+    <form id="genForm">
+
+      <div class="section-label">Brand &amp; Brief</div>
+
+      <div class="field">
+        <label>Brand name <span class="req">*</span></label>
+        <input type="text" name="brand" placeholder="Acme Corp" required>
+      </div>
+
+      <div class="field">
+        <label>What it does / who it's for</label>
+        <textarea name="whatItDoes" placeholder="We help small businesses automate their invoicing…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Primary SEO keyword <span class="req">*</span></label>
+        <input type="text" name="keyword" placeholder="invoice software for small business" required>
+      </div>
+
+      <div class="field">
+        <label>Secondary keywords</label>
+        <input type="text" name="secondaryKeywords" placeholder="online invoicing, billing software">
+      </div>
+
+      <div class="section-label" style="margin-top:4px">Sections</div>
+      <div class="checkbox-grid">
+        <label><input type="checkbox" name="sections" value="Hero" checked> Hero</label>
+        <label><input type="checkbox" name="sections" value="About"> About</label>
+        <label><input type="checkbox" name="sections" value="Features" checked> Features</label>
+        <label><input type="checkbox" name="sections" value="Process"> Process</label>
+        <label><input type="checkbox" name="sections" value="Testimonials"> Testimonials</label>
+        <label><input type="checkbox" name="sections" value="Pricing"> Pricing</label>
+        <label><input type="checkbox" name="sections" value="Stats"> Stats</label>
+        <label><input type="checkbox" name="sections" value="FAQ" checked> FAQ</label>
+        <label><input type="checkbox" name="sections" value="CTA Band" checked> CTA Band</label>
+        <label><input type="checkbox" name="sections" value="Contact"> Contact</label>
+        <label><input type="checkbox" name="sections" value="Footer"> Footer</label>
+      </div>
+
+      <div class="section-label" style="margin-top:4px">Aesthetic</div>
+      <div class="radio-group">
+        <label><input type="radio" name="aesthetic" value="Minimal Editorial" checked> Minimal Editorial</label>
+        <label><input type="radio" name="aesthetic" value="Midnight Luxe"> Midnight Luxe</label>
+        <label><input type="radio" name="aesthetic" value="Organic Tech"> Organic Tech</label>
+        <label><input type="radio" name="aesthetic" value="Brutalist Signal"> Brutalist Signal</label>
+        <label><input type="radio" name="aesthetic" value="Vapor Clinic"> Vapor Clinic</label>
+      </div>
+
+      <div class="section-label" style="margin-top:4px">Primary CTA</div>
+      <div class="field">
+        <label>Button label</label>
+        <input type="text" name="ctaLabel" placeholder="Get Started Free">
+      </div>
+      <div class="field">
+        <label>URL</label>
+        <input type="text" name="ctaUrl" placeholder="https://…">
+      </div>
+
+      <div class="section-label" style="margin-top:4px">DiviTheatre Motion</div>
+      <div class="radio-group">
+        <label><input type="radio" name="motion" value="no" checked> No (static page)</label>
+        <label><input type="radio" name="motion" value="yes"> Yes — DiviTheatre installed</label>
+        <label><input type="radio" name="motion" value="want"> Not installed but I want it</label>
+      </div>
+
+      <div class="section-label" style="margin-top:4px">Designer Export <span style="font-size:0.7rem;color:var(--muted)">(optional — enables style check)</span></div>
+      <div class="drop-zone" id="dropZone">
+        <input type="file" name="exportFile" accept=".json" id="exportInput">
+        <div id="dropLabel">Drop Divi export JSON here or click to browse</div>
+        <div class="file-name" id="exportName"></div>
+      </div>
+      <div class="field" id="exportLabelField" style="display:none">
+        <label>Export label</label>
+        <input type="text" name="exportLabel" placeholder="Client Homepage Export">
+      </div>
+
+      <div class="section-label" style="margin-top:4px">Output Folder</div>
+      <div class="field">
+        <label>Where to save generated files</label>
+        <input type="text" name="outputDir" placeholder="~/Desktop/divi-output">
+      </div>
+
+      <button type="submit" class="btn-generate" id="genBtn">Generate Page</button>
+
+    </form>
+
+    <div style="margin-top:auto">
+      <div class="section-label">Prerequisites</div>
+      <div id="prereqs" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
+  </aside>
+
+  <!-- ── Main panel ─────────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Progress + log (hidden until generation starts) -->
+    <div class="panel" id="progressPanel" style="display:none">
+      <div class="panel-title">Generation Progress</div>
+      <div class="steps" id="steps">
+        <div class="step" id="step-brief"><span class="dot"></span> Stage 1 — Brief</div>
+        <div class="step" id="step-preview"><span class="dot"></span> Stage 2 — HTML Preview</div>
+        <div class="step" id="step-generate"><span class="dot"></span> Stage 3 — Generate + Validate</div>
+        <div class="step" id="step-stylecheck"><span class="dot"></span> Gate 1 — Style Check</div>
+      </div>
+    </div>
+
+    <div class="panel" id="logPanel" style="display:none">
+      <div class="panel-title">Live Output</div>
+      <div class="log-wrap" id="logBox"></div>
+    </div>
+
+    <!-- Output files -->
+    <div class="panel" id="outputPanel" style="display:none">
+      <div class="panel-title" style="display:flex;align-items:center;justify-content:space-between">
+        Output Files
+        <div id="verdicts" style="display:flex;gap:8px"></div>
+      </div>
+      <div class="file-list" id="fileList"></div>
+    </div>
+
+    <!-- History -->
+    <div class="panel" id="historyPanel">
+      <div class="panel-title">Recent Generations</div>
+      <div class="history-list" id="historyList">
+        <div class="empty">No generations yet — fill in the form and click Generate.</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

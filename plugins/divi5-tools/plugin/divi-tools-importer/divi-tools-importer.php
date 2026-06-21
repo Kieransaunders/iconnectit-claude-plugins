@@ -25,7 +25,9 @@ require_once DTI_DIR . 'src/SchemaInjector.php';
 require_once DTI_DIR . 'src/SeoWriter.php';
 require_once DTI_DIR . 'src/PageImporter.php';
 require_once DTI_DIR . 'src/PagePreviewer.php';
+require_once DTI_DIR . 'src/PageExporter.php';
 require_once DTI_DIR . 'src/LibraryImporter.php';
+require_once DTI_DIR . 'src/PresetManager.php';
 require_once DTI_DIR . 'src/RestApi.php';
 require_once DTI_DIR . 'admin/SettingsPage.php';
 

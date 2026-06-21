@@ -1,33 +1,21 @@
 {
   "version": "1.0",
-  "timestamp": "2026-06-15T18:30:00.000Z",
-  "source": "hand-scaffold",
-  "partial": false,
-  "phase": "0",
-  "phase_name": "Prep & Emitter Hardening",
-  "phase_dir": ".planning/phases/00-prep-emitter-hardening",
-  "plan": "00-01",
+  "timestamp": "2026-06-21T08:30:09.952Z",
+  "source": "auto-postool",
+  "partial": true,
+  "phase": null,
+  "phase_name": null,
+  "phase_dir": null,
+  "plan": null,
   "task": null,
-  "total_tasks": 6,
-  "status": "planned",
+  "total_tasks": null,
+  "status": "auto-checkpoint",
   "completed_tasks": [],
-  "remaining_tasks": ["T1", "T2", "T3", "T4", "T5", "T6"],
+  "remaining_tasks": [],
   "blockers": [],
   "human_actions_pending": [],
-  "decisions": [
-    "Separate render-safety.js module called by validate.js",
-    "Harden emitter in Phase 0, not just lint",
-    "Confirm raw-quote mechanism before designing its auto-fix",
-    "RS-CONTRAST WARN-first (deviation from spec §7.2)"
-  ],
-  "uncommitted_files": [
-    ".planning/PROJECT.md",
-    ".planning/REQUIREMENTS.md",
-    ".planning/ROADMAP.md",
-    ".planning/STATE.md",
-    ".planning/config.json",
-    ".planning/phases/00-prep-emitter-hardening/00-01-PLAN.md"
-  ],
-  "next_action": "/gsd:execute-phase 0",
-  "context_notes": "GSD project hand-scaffolded into divi5-tools from skills/landing-page/RENDER-FAULT-FINDER-SPEC.md. Roadmap is spec §6. Phase 0 plan folded in."
+  "decisions": [],
+  "uncommitted_files": [],
+  "next_action": null,
+  "context_notes": ""
 }

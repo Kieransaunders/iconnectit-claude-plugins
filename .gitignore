@@ -24,3 +24,14 @@ generate-*.js
 
 # ...but keep the bundled example generator
 !plugins/divi5-tools/skills/landing-page/examples/example-page.js
+
+# Local working notes (not committed)
+*.notes.md
+
+# Extractor output from style-variables/extract-from-export.js
+*.tokens.js
+*.variables.json
+*.presets.json
+# ...but keep bundled examples/fixtures
+!plugins/divi5-tools/skills/**/examples/**
+!plugins/divi5-tools/skills/**/__fixtures__/**

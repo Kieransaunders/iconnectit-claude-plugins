@@ -1,5 +1,11 @@
 # DiviTheatre Presets + Landing-Page Skill Integration Plan
 
+> **✅ STATUS: COMPLETE (2026-06-17).** Both workstreams delivered and verified.
+> - **Part A (DiviTheatre plugin):** trigger system + all 8 presets shipped (fade-up/left/right, scale-in, stagger, parallax-scroll, hover-grow, hero-reveal), plus extras (blur-in, product-reveal). Plugin at v1.1.0.
+> - **Part B (landing-page skill):** `theatreAttrs()` helper, SKILL.md consent gate, divi-theatre.md catalogue, taste.md + layout-patterns.md + example-page.js updates. Validator passes 0 errors / 0 warnings; unit tests 2/2 pass.
+>
+> Retained for historical reference only — do not re-execute.
+
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
 **Goal:** Complete the DiviTheatre preset library (FR-014 through FR-028) and integrate DiviTheatre as an optional motion layer in the divi5-tools landing-page JSON generator, with a mandatory user-consent gate before emitting any `data-theatre` attributes.
@@ -325,14 +331,14 @@ Show which limitations DiviTheatre solves.
 
 ## Delivery Checklist
 
-- [ ] Part A: All 7 DiviTheatre presets implemented and tested
-- [ ] Part A: Trigger system (onScroll, onLoad, onClick, delay, duration, mobile) working
-- [ ] Part A: Reduced-motion and mobile guards verified on every preset
-- [ ] Part A: Zero scroll event listeners in parallax-scroll (rAF only)
-- [ ] Part B: `theatreAttrs()` helper in divi-builder.js
-- [ ] Part B: SKILL.md consent gate (Yes / No but want it / No)
-- [ ] Part B: `references/divi-theatre.md` preset catalogue
-- [ ] Part B: taste.md and layout-patterns.md updated
-- [ ] Part B: example-page.js shows commented DiviTheatre usage
-- [ ] Part B: validator passes on example output
-- [ ] Part B: No `data-theatre` attributes emitted without explicit user consent
+- [x] Part A: All 7 DiviTheatre presets implemented and tested
+- [x] Part A: Trigger system (onScroll, onLoad, onClick, delay, duration, mobile) working
+- [x] Part A: Reduced-motion and mobile guards verified on every preset
+- [x] Part A: Zero scroll event listeners in parallax-scroll (rAF only)
+- [x] Part B: `theatreAttrs()` helper in divi-builder.js
+- [x] Part B: SKILL.md consent gate (Yes / No but want it / No)
+- [x] Part B: `references/divi-theatre.md` preset catalogue
+- [x] Part B: taste.md and layout-patterns.md updated
+- [x] Part B: example-page.js shows commented DiviTheatre usage
+- [x] Part B: validator passes on example output
+- [x] Part B: No `data-theatre` attributes emitted without explicit user consent

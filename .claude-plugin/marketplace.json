@@ -14,15 +14,33 @@
       "name": "divi5-tools",
       "source": "./plugins/divi5-tools",
       "description": "Divi 5 toolkit: SEO-optimised landing page JSON generator, design/SEO reviewer, brand-guide-to-global-variables converter, one-command import into Local WP sites, a Divi 5 plugin/custom-module developer skill, and a Theatre.js motion-engine reference for the DiviTheatre animation plugin.",
-      "version": "0.5.0",
-      "keywords": ["divi", "divi-5", "wordpress", "landing-page", "seo", "localwp", "plugin-development", "theatre-js", "divitheatre", "animation"]
+      "version": "0.5.1",
+      "keywords": [
+        "divi",
+        "divi-5",
+        "wordpress",
+        "divi5-page-generator",
+        "seo",
+        "localwp",
+        "plugin-development",
+        "theatre-js",
+        "divitheatre",
+        "animation"
+      ]
     },
     {
       "name": "wp-dev-tools",
       "source": "./plugins/wp-dev-tools",
       "description": "WordPress plugin/theme go-to-market asset generator plus a pre-submission audit against the WordPress.org Plugin Directory guidelines.",
       "version": "0.1.0",
-      "keywords": ["wordpress", "plugin", "theme", "marketing", "wordpress-org", "submission"]
+      "keywords": [
+        "wordpress",
+        "plugin",
+        "theme",
+        "marketing",
+        "wordpress-org",
+        "submission"
+      ]
     },
     {
       "name": "noloco-api",
@@ -30,7 +48,13 @@
       "description": "Work with Noloco's per-app GraphQL data API — schema introspection, CRUD queries and mutations, pagination, and WordPress sync patterns.",
       "version": "1.0.0",
       "category": "development",
-      "keywords": ["noloco", "graphql", "api", "wordpress", "sync"]
+      "keywords": [
+        "noloco",
+        "graphql",
+        "api",
+        "wordpress",
+        "sync"
+      ]
     }
   ]
 }

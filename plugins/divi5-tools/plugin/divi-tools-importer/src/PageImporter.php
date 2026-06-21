@@ -60,6 +60,11 @@ class DTI_PageImporter {
 				}
 			}
 			$presets_imported = true;
+			// Mirror what GlobalPreset::save_data() does: clear Divi's CSS cache so
+			// newly imported preset IDs get their CSS rules generated on next load.
+			if ( class_exists( 'ET_Core_PageResource' ) ) {
+				ET_Core_PageResource::remove_static_resources( 'all', 'all', true, 'all', true );
+			}
 		} elseif ( empty( $layout['presets'] ) ) {
 			$warnings[] = 'Export contains no presets.';
 		}
@@ -109,11 +114,10 @@ class DTI_PageImporter {
 		// -----------------------------------------------------------------------
 		$existing = get_page_by_path( $slug, OBJECT, 'page' );
 		$postarr  = array(
-			'post_type'    => 'page',
-			'post_title'   => sanitize_text_field( $title ),
-			'post_name'    => sanitize_title( $slug ),
-			'post_content' => $content,
-			'post_status'  => $publish ? 'publish' : 'draft',
+			'post_type'   => 'page',
+			'post_title'  => sanitize_text_field( $title ),
+			'post_name'   => sanitize_title( $slug ),
+			'post_status' => $publish ? 'publish' : 'draft',
 		);
 
 		if ( $existing ) {
@@ -132,8 +136,23 @@ class DTI_PageImporter {
 			throw new RuntimeException( 'Page save failed: ' . $page_id->get_error_message() );
 		}
 
+		// Write Divi 5 block markup directly to bypass wp_kses_post() / balanceTags(),
+		// which corrupt block comment delimiters when JSON values contain HTML tags.
+		global $wpdb;
+		$wpdb->update( $wpdb->posts, array( 'post_content' => $content ), array( 'ID' => $page_id ) );
+		clean_post_cache( $page_id );
+
+		// Clear the page-specific Divi CSS cache. Divi generates per-page preset CSS
+		// in et-cache/{post_id}/et-core-unified-{post_id}.min.css — if a stale file
+		// exists from a previous import with different preset IDs, the new preset
+		// classes won't render until the cache is regenerated.
+		self::clear_page_css_cache( $page_id );
+
 		update_post_meta( $page_id, '_et_pb_use_builder', 'on' );
 		update_post_meta( $page_id, '_et_pb_use_divi_5', 'on' );
+		update_post_meta( $page_id, '_wp_page_template', 'page-template-blank.php' );
+		update_post_meta( $page_id, '_et_pb_page_layout', 'et_full_width_page' );
+		update_post_meta( $page_id, '_et_pb_built_for_post_type', array( 'page' ) );
 
 		// -----------------------------------------------------------------------
 		// 7. SEO meta.
@@ -143,19 +162,40 @@ class DTI_PageImporter {
 			$warnings[] = 'No Yoast or RankMath detected — SEO values stored in post meta (dti_seo_title / dti_seo_description). Set them manually in your SEO plugin.';
 		}
 
-		return array(
+		return [
 			'page_id'            => $page_id,
 			'action'             => $action,
 			'slug'               => $slug,
 			'status'             => get_post_status( $page_id ),
 			'preview_url'        => get_preview_post_link( $page_id ),
 			'edit_url'           => admin_url( 'post.php?post=' . $page_id . '&action=edit' ),
-			'builder_url'        => add_query_arg( array( 'p' => $page_id, 'et_fb' => '1' ), home_url( '/' ) ),
+			'builder_url'        => add_query_arg( [ 'p' => $page_id, 'et_fb' => '1' ], home_url( '/' ) ),
 			'presets_imported'   => $presets_imported,
 			'colors_imported'    => $colors_imported,
 			'variables_imported' => $variables_imported,
 			'seo_plugin'         => $seo_plugin,
 			'warnings'           => $warnings,
-		);
+		];
+	}
+
+	/**
+	 * Delete the page-specific Divi CSS cache files so preset classes are regenerated
+	 * on next page load. Divi writes per-page CSS into:
+	 *   et-cache/{post_id}/et-core-unified-{post_id}.min.css
+	 *   et-cache/{post_id}/et-core-unified-deferred-{post_id}.min.css
+	 * These are NOT cleared by ET_Core_PageResource::remove_static_resources() — that
+	 * only clears the global/builder cache, not the rendered page CSS.
+	 */
+	private static function clear_page_css_cache( int $post_id ): void {
+		$cache_dir = WP_CONTENT_DIR . '/et-cache/' . $post_id;
+		if ( ! is_dir( $cache_dir ) ) {
+			return;
+		}
+		$files = glob( $cache_dir . '/*.css' );
+		if ( $files ) {
+			foreach ( $files as $file ) {
+				@unlink( $file );
+			}
+		}
 	}
 }

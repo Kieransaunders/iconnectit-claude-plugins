@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divi 5 Tools — User Flow</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle {
+      color: #94a3b8;
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+    }
+    .diagram-wrap {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2rem;
+      overflow-x: auto;
+    }
+    .diagram-wrap .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      color: #cbd5e1;
+    }
+    .swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 2px solid;
+      flex-shrink: 0;
+    }
+    .swatch-blue   { background: #f0f4ff; border-color: #4a6cf7; }
+    .swatch-amber  { background: #fff8e1; border-color: #f59e0b; }
+    .swatch-red    { background: #fff0f0; border-color: #ef4444; }
+    .swatch-green  { background: #f0fff4; border-color: #22c55e; }
+    .swatch-dark   { background: #1e293b; border-color: #1e293b; }
+
+    .gates {
+      margin-top: 1.5rem;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .gates table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+    }
+    .gates th {
+      background: #1e293b;
+      color: #94a3b8;
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+    }
+    .gates td {
+      padding: 0.65rem 1rem;
+      border-top: 1px solid #1e293b;
+      color: #cbd5e1;
+      vertical-align: top;
+    }
+    .gates tr:nth-child(even) td { background: #0f172a22; }
+    code {
+      background: #1e293b;
+      color: #7dd3fc;
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-size: 0.8em;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Divi 5 Tools — User Flow</h1>
+  <p class="subtitle">From brief to delivered page, including QA gates</p>
+
+  <div class="diagram-wrap">
+    <div class="mermaid">
+flowchart TD
+    START([Start]) --> Q1{Do you have an\nexisting Divi site\nor export?}
+
+    Q1 -->|Yes| A1["/divi5-tools:divi5-extract-style\nhomepage-export.json"]
+    A1 --> A2["Outputs:\nClientBrand.tokens.js\nClientBrand.variables.json"]
+    A2 --> Q2{Fresh site\nor existing?}
+    Q2 -->|Fresh site| A3["Import ClientBrand.variables.json\nDivi Library → Import Global Variables\n\nImport original export\nwith 'Import Presets' checked"]
+    Q2 -->|Existing site| A4["Presets already live —\nno import needed"]
+    A3 --> GEN
+    A4 --> GEN
+
+    Q1 -->|"No — have brand guide"| B1["/divi5-tools:divi5-extract-style\n'Primary #1A2744, Accent #F97316,\nfont Space Grotesk…'"]
+    B1 --> B2["Outputs:\nBrand_Global-Variables.json"]
+    B2 --> B3["Import via\nDivi Library → Import Global Variables"]
+    B3 --> GEN
+
+    Q1 -->|"No — start from scratch"| GEN
+
+    GEN["/divi5-tools:divi5-page-generator\nbrand · keyword · sections · CTA"]
+    GEN --> BRIEF["Stage 1 — Brief\nDetect tokens.js → reuse designer IDs\nSet Design Read + dials"]
+    BRIEF --> PREVIEW["Stage 2 — HTML Preview\nBuild preview-brand.html\nTaste pre-flight checklist\nScreenshot → user approves"]
+    PREVIEW --> APPROVED{Approved?}
+    APPROVED -->|"No — iterate"| PREVIEW
+    APPROVED -->|Yes| BUILD["Stage 3 — Generate + Validate\nWrite generate-brand.js\nRun validator --keyword --meta\nFix all FAILs"]
+
+    BUILD --> Q3{Designer export\npresent?}
+    Q3 -->|Yes| STYLECHECK["/divi5-tools:divi5-style-check\noriginal-export.json  new-page.json"]
+    STYLECHECK --> SC_RESULT{Result?}
+    SC_RESULT -->|"INCONSISTENT — FAILs"| FIX1["Fix generator script\nRegenerate"]
+    FIX1 --> STYLECHECK
+    SC_RESULT -->|"CONSISTENT ✓ or WARN-only"| IMPORT
+    Q3 -->|No| IMPORT
+
+    IMPORT["/divi5-tools:import-to-local\nbrand-page.json"]
+    IMPORT --> LIVE_PREVIEW["Divi renders page\nStage 4 — Playwright screenshot\nCompare live vs HTML mockup"]
+    LIVE_PREVIEW --> RENDER_OK{Render matches\nmockup?}
+    RENDER_OK -->|"No — render bug"| FIX2["Fix preset CSS / button enable /\ncache / shortcode token\nRe-import"]
+    FIX2 --> LIVE_PREVIEW
+    RENDER_OK -->|Yes| PUBLISH["Publish page"]
+
+    PUBLISH --> EXPORT_PAGE["Export live page from Divi\nexported-page.json"]
+    EXPORT_PAGE --> Q4{Brief or spec\ndocument exists?}
+    Q4 -->|Yes| SPECCHECK["/divi5-tools:design-review\nexported-page.json --spec brief.md"]
+    SPECCHECK --> SC2_RESULT{Result?}
+    SC2_RESULT -->|"NON-COMPLIANT — FAILs"| FIX3["Fix missing sections / CTAs / copy\nin generator, regenerate + re-import"]
+    FIX3 --> SPECCHECK
+    SC2_RESULT -->|"COMPLIANT ✓"| DELIVER
+    Q4 -->|No| DELIVER
+
+    DELIVER(["✓ Deliver\nbrand-page.json\nbrand-seo-meta.json\nbrand-schema.json"])
+
+    style STYLECHECK fill:#f0f4ff,stroke:#4a6cf7,color:#000
+    style SPECCHECK  fill:#f0f4ff,stroke:#4a6cf7,color:#000
+    style SC_RESULT  fill:#fff8e1,stroke:#f59e0b,color:#000
+    style SC2_RESULT fill:#fff8e1,stroke:#f59e0b,color:#000
+    style FIX1       fill:#fff0f0,stroke:#ef4444,color:#000
+    style FIX2       fill:#fff0f0,stroke:#ef4444,color:#000
+    style FIX3       fill:#fff0f0,stroke:#ef4444,color:#000
+    style DELIVER    fill:#f0fff4,stroke:#22c55e,color:#000
+    style START      fill:#1e293b,stroke:#1e293b,color:#fff
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="swatch swatch-dark"></span> Start / entry point</div>
+    <div class="legend-item"><span class="swatch swatch-blue"></span> QA gate skill — must pass before proceeding</div>
+    <div class="legend-item"><span class="swatch swatch-amber"></span> Decision / gate result</div>
+    <div class="legend-item"><span class="swatch swatch-red"></span> Fix loop — return to previous step</div>
+    <div class="legend-item"><span class="swatch swatch-green"></span> Delivery — all gates passed</div>
+  </div>
+
+  <div class="gates">
+    <table>
+      <thead>
+        <tr>
+          <th>Gate</th>
+          <th>Skill</th>
+          <th>When required</th>
+          <th>Blocks on</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gate 1</strong> — Style consistency</td>
+          <td><code>/divi5-style-check</code></td>
+          <td>Designer export present</td>
+          <td>FAIL: new preset IDs or off-palette colours</td>
+        </tr>
+        <tr>
+          <td><strong>Gate 2</strong> — Spec compliance</td>
+          <td><code>/design-review --spec</code></td>
+          <td>Brief or spec document exists</td>
+          <td>FAIL: missing sections, wrong CTAs, absent content</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', flowchart: { curve: 'basis', padding: 20 } });
+  </script>
+</body>
+</html>

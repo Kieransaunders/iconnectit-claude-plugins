@@ -1,0 +1,273 @@
+/Volumes/External/iConnectIT claude plugins/.claude-plugin/marketplace.json
+/Volumes/External/iConnectIT claude plugins/.claude/settings.local.json
+/Volumes/External/iConnectIT claude plugins/.opencode/opencode-swarm.json
+/Volumes/External/iConnectIT claude plugins/.opencode/package.json
+/Volumes/External/iConnectIT claude plugins/.planning/HANDOFF.json
+/Volumes/External/iConnectIT claude plugins/.swarm/checkpoints.json
+/Volumes/External/iConnectIT claude plugins/.swarm/config.example.json
+/Volumes/External/iConnectIT claude plugins/.swarm/evidence/agent-tools-init-1781541968319.json
+/Volumes/External/iConnectIT claude plugins/.swarm/evidence/agent-tools-init-1781548227648.json
+/Volumes/External/iConnectIT claude plugins/.swarm/evidence/agent-tools-init-1781674542338.json
+/Volumes/External/iConnectIT claude plugins/.swarm/repo-graph.json
+/Volumes/External/iConnectIT claude plugins/.swarm/session/state.json
+/Volumes/External/iConnectIT claude plugins/_demos/divitheatre-landing/payload.json
+/Volumes/External/iConnectIT claude plugins/_demos/itimedit/import.sh
+/Volumes/External/iConnectIT claude plugins/_demos/itimedit/payload.json
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/admin/SettingsPage.php
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/divi-tools-importer.php
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/Auth.php
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/PageImporter.php
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/RestApi.php
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/SchemaInjector.php
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/SeoWriter.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.claude-plugin/plugin.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.opencode/opencode-swarm.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/HANDOFF.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/config.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/checkpoints.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/config.example.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/evidence/agent-tools-init-1781537242316.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/repo-graph.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/session/state.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/build-zip.sh
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/admin/SettingsPage.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/deploy.sh
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/divi-tools-importer.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/Auth.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/LibraryImporter.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PageExporter.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PageImporter.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PagePreviewer.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PresetManager.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/RestApi.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/SchemaInjector.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/SeoWriter.php
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/design-review/scripts/validate.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-extract-style/scripts/extract-from-export.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/divitheatre-landing-page.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/divitheatre-schema.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/divitheatre-seo-meta.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-divitheatre-page.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-landing-page.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-page.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-seo-meta.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/iConnectITHomepage.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/preset-first-workflow.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_All-Sections_Layouts.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Global-Variables.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Pages.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Premade-Layouts.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Preset-Pages.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Presets.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Theme-Builder-Templates.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Theme-Customizer.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_404_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_About_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Accordion-Toggle_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_App-Download_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Banner_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Blog_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Call-To-Action_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Carousel_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Category_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Comparison-Table_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Contact_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Countdown-Timer_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Courses_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Event_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_FAQ_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Features_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Footer_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Gallery_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Graph_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Header_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Hero_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_How-It-Works_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Job-Listing_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_List_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Login_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Person_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Portfolio_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Pricing-Menu_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Pricing_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Privacy-Policy_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Project_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Quote_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Resume_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Services_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Shop_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Slider_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Social-Media_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Statistics_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Subscribe_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Table_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Team_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Terms-of-Service_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Testimonial_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Text-and-Image_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Text_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Timeline_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Under-Construction_Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/Divi-5-Launch-Freebie_All-Individual-Sections.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/et-preset-registry.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/rub-you-well-registry.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/attr-path.fail-advanced.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/attr-path.fail-map.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/attr-path.pass.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/generate.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/glyph.fail.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/glyph.pass.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/raw-quote.fail.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/raw-quote.pass.json
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__tests__/phase0.test.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__tests__/smoke.test.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/divi-builder.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/glyphs.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/preview.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/setup-et-presets.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/validate.js
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/evals/evals.json
+/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/.claude-plugin/plugin.json
+/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/skills/noloco-api/scripts/noloco_graphql.py
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.claude-plugin/marketplace.json
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.claude-plugin/plugin.json
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skill.sh
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/.claude-plugin/plugin.json
+/Volumes/External/iConnectIT claude plugins/setup-github.sh
+/Volumes/External/iConnectIT claude plugins/.swarm/context.md
+/Volumes/External/iConnectIT claude plugins/README.md
+/Volumes/External/iConnectIT claude plugins/divi-tools-importer/readme.txt
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/PROJECT.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/REQUIREMENTS.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/ROADMAP.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/STATE.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/phases/00-prep-emitter-hardening/00-01-PLAN.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/context.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/README.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/divi5-css-generation-rules.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/plans/2026-06-15-presets-and-landing-page-integration.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/plans/2026-06-18-variable-first-builder-design.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/plans/2026-06-18-variable-first-builder-implementation.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/product-overview.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/readme.txt
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/design-review/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/design-review/references/taste.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-extract-style/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-43-18-348Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-48-25-376Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-50-44-880Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-54-29-135Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-55-20-802Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-58-50-892Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-59-14-018Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-59-40-676Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-00-30-776Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-04-06-258Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-04-18-885Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-14-29-860Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-15-38-797Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-43-38-705Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T07-18-58-543Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-19-19-842Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-19-29-379Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-21-03-473Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-23-53-551Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-24-05-070Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-31-35-536Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-31-43-991Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-11-36-601Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-19-31-307Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-23-32-397Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-25-00-498Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-35-51-914Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-38-26-874Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-45-33-295Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-21T06-50-59-247Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-21T07-05-38-346Z.yml
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/RENDER-FAULT-FINDER-SPEC.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/RENDER-SAFETY-PHASE-0-PLAN.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/landing-page-guide.html
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/aesthetics.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/content-strategy.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/divi-theatre.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/layout-patterns.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/module-reference.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/seo.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/taste.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/build-config.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/conversion-outline.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/dynamic-content.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/dynamic-options.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/extending-core-modules.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/jsx-component.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/module-json-fields.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/php-server.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/preset-resolution.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/vb-state-and-hooks.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/references/baked-state-schema.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/references/core-api.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/references/preset-authoring.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/import-to-local/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/README.md
+/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/skills/noloco-api/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/skills/noloco-api/references/graphql-patterns.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.github/FUNDING.yml
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.github/copilot-instructions.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/CHANGELOG.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/README.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/README.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/README.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/findings/empirical-results.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/findings/references.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/architectural-patterns.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/parameter-tuning.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/prompt-engineering.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/reference-prompts.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/cognitive-shortcuts.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/output-limits.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/rlhf-and-compute.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/training-data-bias.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/brandkit/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/brutalist-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/gpt-tasteskill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/image-to-code-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/imagegen-frontend-mobile/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/imagegen-frontend-web/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/llms.txt
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/minimalist-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/output-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/redesign-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/soft-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/stitch-skill/DESIGN.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/stitch-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/taste-skill-v1/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/taste-skill/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/README.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/channels.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/mvc-assets.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/prioritisation.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/product-website.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/wordpress-org.md
+/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-submission-check/SKILL.md
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v2.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v3.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v4.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v5.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v6.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-live.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-mock.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/pet-rescue-verified.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/preview-pet-rescue.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/preview-rub-you-well.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/floria-bottom.png
+/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/floria-top.png
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/assets/readme-banner.png
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/assets/taste-skill-logo.webp
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/examples/floria-bottom.webp
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/examples/floria-full.webp
+/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/examples/floria-top.webp

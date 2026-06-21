@@ -1,0 +1,1367 @@
+{
+  "/Volumes/External/iConnectIT claude plugins/.claude-plugin/marketplace.json": {
+    "mtime": 1782028114.9315984,
+    "ast_hash": "021d732e8ff3ff2ce79efff60370423e",
+    "semantic_hash": "021d732e8ff3ff2ce79efff60370423e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.claude/settings.local.json": {
+    "mtime": 1781675388.5009446,
+    "ast_hash": "b17ac94780638373c425475cac74bdee",
+    "semantic_hash": "b17ac94780638373c425475cac74bdee"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.opencode/opencode-swarm.json": {
+    "mtime": 1781541968.3166988,
+    "ast_hash": "8a80554c91d9fca8acb82f023de02f11",
+    "semantic_hash": "8a80554c91d9fca8acb82f023de02f11"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.opencode/package.json": {
+    "mtime": 1781548227.5064545,
+    "ast_hash": "24478eaec7f80842193599e20ed2e5ae",
+    "semantic_hash": "24478eaec7f80842193599e20ed2e5ae"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.planning/HANDOFF.json": {
+    "mtime": 1782029385.899921,
+    "ast_hash": "d397fc026a21dbd4b52def9635074fdc",
+    "semantic_hash": "d397fc026a21dbd4b52def9635074fdc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/checkpoints.json": {
+    "mtime": 1781549003.4340322,
+    "ast_hash": "bf6e9508dd3df098217c68efccc4c817",
+    "semantic_hash": "bf6e9508dd3df098217c68efccc4c817"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/config.example.json": {
+    "mtime": 1781541968.316538,
+    "ast_hash": "4add27fb2abb3fb7ebb993a800ea3993",
+    "semantic_hash": "4add27fb2abb3fb7ebb993a800ea3993"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/evidence/agent-tools-init-1781541968319.json": {
+    "mtime": 1781541968.3364406,
+    "ast_hash": "5e63ec04d9eae0760dae88ba6ac06172",
+    "semantic_hash": "5e63ec04d9eae0760dae88ba6ac06172"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/evidence/agent-tools-init-1781548227648.json": {
+    "mtime": 1781548227.667136,
+    "ast_hash": "2e22e8c7907dbf77c919ec109ec3d4a0",
+    "semantic_hash": "2e22e8c7907dbf77c919ec109ec3d4a0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/evidence/agent-tools-init-1781674542338.json": {
+    "mtime": 1781674542.3521807,
+    "ast_hash": "1e1b82420811d069d7ffddc4c74d2c72",
+    "semantic_hash": "1e1b82420811d069d7ffddc4c74d2c72"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/repo-graph.json": {
+    "mtime": 1781674542.2947063,
+    "ast_hash": "5a34b9cef44e7bfeefd16374112f396c",
+    "semantic_hash": "5a34b9cef44e7bfeefd16374112f396c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/session/state.json": {
+    "mtime": 1781590049.244214,
+    "ast_hash": "fd1b79ff5266a0eeea44b39f0da2aa21",
+    "semantic_hash": "fd1b79ff5266a0eeea44b39f0da2aa21"
+  },
+  "/Volumes/External/iConnectIT claude plugins/_demos/divitheatre-landing/payload.json": {
+    "mtime": 1781544945.4898489,
+    "ast_hash": "49d794d20e22b448faac68551fc674af",
+    "semantic_hash": "49d794d20e22b448faac68551fc674af"
+  },
+  "/Volumes/External/iConnectIT claude plugins/_demos/itimedit/import.sh": {
+    "mtime": 1781531455.3022408,
+    "ast_hash": "037aaf95c893bdc5f72a6f07590f7382",
+    "semantic_hash": "037aaf95c893bdc5f72a6f07590f7382"
+  },
+  "/Volumes/External/iConnectIT claude plugins/_demos/itimedit/payload.json": {
+    "mtime": 1781531429.7680652,
+    "ast_hash": "9182b2fd27dc97c3cb157dbc93d07201",
+    "semantic_hash": "9182b2fd27dc97c3cb157dbc93d07201"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/admin/SettingsPage.php": {
+    "mtime": 1781426708.0,
+    "ast_hash": "8fcc5d31b0995ec4cce7190e0c7ed3b2",
+    "semantic_hash": "8fcc5d31b0995ec4cce7190e0c7ed3b2"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/divi-tools-importer.php": {
+    "mtime": 1781426609.0,
+    "ast_hash": "3d00f662f1f79adb448246487e56dc6b",
+    "semantic_hash": "3d00f662f1f79adb448246487e56dc6b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/Auth.php": {
+    "mtime": 1781426619.0,
+    "ast_hash": "6e4e3a812f05d79b5dab943692f26c12",
+    "semantic_hash": "6e4e3a812f05d79b5dab943692f26c12"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/PageImporter.php": {
+    "mtime": 1781426662.0,
+    "ast_hash": "74e9c5f79738743a18399e8b385320df",
+    "semantic_hash": "74e9c5f79738743a18399e8b385320df"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/RestApi.php": {
+    "mtime": 1781426678.0,
+    "ast_hash": "c9b4d5cfb7b80d026cdc9e05aa8a46c9",
+    "semantic_hash": "c9b4d5cfb7b80d026cdc9e05aa8a46c9"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/SchemaInjector.php": {
+    "mtime": 1781426626.0,
+    "ast_hash": "a3d25e74ab582d52cf19b1f5fc135ab1",
+    "semantic_hash": "a3d25e74ab582d52cf19b1f5fc135ab1"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/src/SeoWriter.php": {
+    "mtime": 1781426634.0,
+    "ast_hash": "9347c8757f0ab42d0cd2c8aa8654dc06",
+    "semantic_hash": "9347c8757f0ab42d0cd2c8aa8654dc06"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.claude-plugin/plugin.json": {
+    "mtime": 1781627162.5388813,
+    "ast_hash": "46597b2f3aa7918785f5b7a408009eca",
+    "semantic_hash": "46597b2f3aa7918785f5b7a408009eca"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.opencode/opencode-swarm.json": {
+    "mtime": 1781537242.312622,
+    "ast_hash": "8a80554c91d9fca8acb82f023de02f11",
+    "semantic_hash": "8a80554c91d9fca8acb82f023de02f11"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/HANDOFF.json": {
+    "mtime": 1782028932.7936537,
+    "ast_hash": "dbbb914741c6b7036ec2b42387622851",
+    "semantic_hash": "dbbb914741c6b7036ec2b42387622851"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/config.json": {
+    "mtime": 1781627162.5434098,
+    "ast_hash": "55ba92fcb75cc9eb285163e2e5672873",
+    "semantic_hash": "55ba92fcb75cc9eb285163e2e5672873"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/checkpoints.json": {
+    "mtime": 1781537703.638165,
+    "ast_hash": "a3b81975a0ee48e00e82efbdfd77a405",
+    "semantic_hash": "a3b81975a0ee48e00e82efbdfd77a405"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/config.example.json": {
+    "mtime": 1781537242.3122735,
+    "ast_hash": "4add27fb2abb3fb7ebb993a800ea3993",
+    "semantic_hash": "4add27fb2abb3fb7ebb993a800ea3993"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/evidence/agent-tools-init-1781537242316.json": {
+    "mtime": 1781537242.3312428,
+    "ast_hash": "96c22d69618c9a1fb0a3330c20dee74c",
+    "semantic_hash": "96c22d69618c9a1fb0a3330c20dee74c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/repo-graph.json": {
+    "mtime": 1781538770.341806,
+    "ast_hash": "07a7d8208135cf0b4d5d7140079808a2",
+    "semantic_hash": "07a7d8208135cf0b4d5d7140079808a2"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/session/state.json": {
+    "mtime": 1781538823.8381999,
+    "ast_hash": "c9e36727dbf5b37769bd3dedb353415a",
+    "semantic_hash": "c9e36727dbf5b37769bd3dedb353415a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/build-zip.sh": {
+    "mtime": 1781427813.410142,
+    "ast_hash": "509c7d94e2086ed5054febd9ac5fcc0a",
+    "semantic_hash": "509c7d94e2086ed5054febd9ac5fcc0a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/admin/SettingsPage.php": {
+    "mtime": 1781426708.738823,
+    "ast_hash": "8fcc5d31b0995ec4cce7190e0c7ed3b2",
+    "semantic_hash": "8fcc5d31b0995ec4cce7190e0c7ed3b2"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/deploy.sh": {
+    "mtime": 1781861563.0036447,
+    "ast_hash": "405cf18c674b95e083659ece88e274c0",
+    "semantic_hash": "405cf18c674b95e083659ece88e274c0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/divi-tools-importer.php": {
+    "mtime": 1781861243.2212837,
+    "ast_hash": "b5440f6e65781197f0fc606f15d41c76",
+    "semantic_hash": "b5440f6e65781197f0fc606f15d41c76"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/Auth.php": {
+    "mtime": 1781426619.6303477,
+    "ast_hash": "6e4e3a812f05d79b5dab943692f26c12",
+    "semantic_hash": "6e4e3a812f05d79b5dab943692f26c12"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/LibraryImporter.php": {
+    "mtime": 1781800041.5916638,
+    "ast_hash": "22ceb819aab249df79fdcadeb5c0ebb0",
+    "semantic_hash": "22ceb819aab249df79fdcadeb5c0ebb0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PageExporter.php": {
+    "mtime": 1781857823.2011738,
+    "ast_hash": "6d0f05dc2def510f10bbe39ca34b3c0e",
+    "semantic_hash": "6d0f05dc2def510f10bbe39ca34b3c0e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PageImporter.php": {
+    "mtime": 1782023468.4476733,
+    "ast_hash": "4dae261ec51653e31cbf6518e5dbfedb",
+    "semantic_hash": "4dae261ec51653e31cbf6518e5dbfedb"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PagePreviewer.php": {
+    "mtime": 1781799440.9747386,
+    "ast_hash": "a9469fabe96a755cd23d110f90e2ebee",
+    "semantic_hash": "a9469fabe96a755cd23d110f90e2ebee"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/PresetManager.php": {
+    "mtime": 1781861211.228338,
+    "ast_hash": "6b41e0c8b74505f552a9469386b79201",
+    "semantic_hash": "6b41e0c8b74505f552a9469386b79201"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/RestApi.php": {
+    "mtime": 1781861224.669112,
+    "ast_hash": "3a45da373d98a90891b676229241a666",
+    "semantic_hash": "3a45da373d98a90891b676229241a666"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/SchemaInjector.php": {
+    "mtime": 1781426626.3064914,
+    "ast_hash": "a3d25e74ab582d52cf19b1f5fc135ab1",
+    "semantic_hash": "a3d25e74ab582d52cf19b1f5fc135ab1"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/src/SeoWriter.php": {
+    "mtime": 1781426634.6773918,
+    "ast_hash": "9347c8757f0ab42d0cd2c8aa8654dc06",
+    "semantic_hash": "9347c8757f0ab42d0cd2c8aa8654dc06"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/design-review/scripts/validate.js": {
+    "mtime": 1781423239.596289,
+    "ast_hash": "3a282991fde470ed216ddb05f9267df6",
+    "semantic_hash": "3a282991fde470ed216ddb05f9267df6"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-extract-style/scripts/extract-from-export.js": {
+    "mtime": 1781688991.9204261,
+    "ast_hash": "e80dae7955fd0946925ecac53025c1fb",
+    "semantic_hash": "e80dae7955fd0946925ecac53025c1fb"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/divitheatre-landing-page.json": {
+    "mtime": 1781675800.2773173,
+    "ast_hash": "9bc7b2d0768ca655522d86dc24934d0e",
+    "semantic_hash": "9bc7b2d0768ca655522d86dc24934d0e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/divitheatre-schema.json": {
+    "mtime": 1781675800.278437,
+    "ast_hash": "dea0dadeacfd8819b6587ddfc28578f5",
+    "semantic_hash": "dea0dadeacfd8819b6587ddfc28578f5"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/divitheatre-seo-meta.json": {
+    "mtime": 1781675800.2782364,
+    "ast_hash": "0bbbb5f2aba70217e8c88eeacf1209fd",
+    "semantic_hash": "0bbbb5f2aba70217e8c88eeacf1209fd"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-divitheatre-page.js": {
+    "mtime": 1781627162.5500903,
+    "ast_hash": "8b5b6740cefe83ff05650207b4bd304f",
+    "semantic_hash": "8b5b6740cefe83ff05650207b4bd304f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-landing-page.json": {
+    "mtime": 1781806181.4662328,
+    "ast_hash": "c8bd89d7b08ec8e2176976fdc9021923",
+    "semantic_hash": "c8bd89d7b08ec8e2176976fdc9021923"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-page.js": {
+    "mtime": 1781803378.1837175,
+    "ast_hash": "927149b85344036ce961bcfca034d59f",
+    "semantic_hash": "927149b85344036ce961bcfca034d59f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/example-seo-meta.json": {
+    "mtime": 1781806181.4675303,
+    "ast_hash": "8886ffcc7d01c96cb08982178200b78e",
+    "semantic_hash": "8886ffcc7d01c96cb08982178200b78e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/iConnectITHomepage.json": {
+    "mtime": 1781708416.6061049,
+    "ast_hash": "d3c4f39a1f26d5d825c86409ea78a048",
+    "semantic_hash": "d3c4f39a1f26d5d825c86409ea78a048"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/examples/preset-first-workflow.js": {
+    "mtime": 1781861417.8665137,
+    "ast_hash": "898621ce7e055d64c64b84701cf6089b",
+    "semantic_hash": "898621ce7e055d64c64b84701cf6089b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_All-Sections_Layouts.json": {
+    "mtime": 1770825588.0,
+    "ast_hash": "a359b0549aaf203f61d3e7b92367a3d4",
+    "semantic_hash": "a359b0549aaf203f61d3e7b92367a3d4"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Global-Variables.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "a25787fc1d77bd00621406404d1b7820",
+    "semantic_hash": "a25787fc1d77bd00621406404d1b7820"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Pages.json": {
+    "mtime": 1770825590.0,
+    "ast_hash": "f0d3446334d8242c204cb9f0e3770dee",
+    "semantic_hash": "f0d3446334d8242c204cb9f0e3770dee"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Premade-Layouts.json": {
+    "mtime": 1770825590.0,
+    "ast_hash": "3b8a6382f66fc7a7788b1fc0bc7d65ae",
+    "semantic_hash": "3b8a6382f66fc7a7788b1fc0bc7d65ae"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Preset-Pages.json": {
+    "mtime": 1770825590.0,
+    "ast_hash": "b384f2e24a49a6da0b8980ce066fd7cf",
+    "semantic_hash": "b384f2e24a49a6da0b8980ce066fd7cf"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Presets.json": {
+    "mtime": 1770825590.0,
+    "ast_hash": "5f43885c8325a9c1f2d5d528907f6732",
+    "semantic_hash": "5f43885c8325a9c1f2d5d528907f6732"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Theme-Builder-Templates.json": {
+    "mtime": 1770825592.0,
+    "ast_hash": "5367db19d695e03091ffa0fc898165d7",
+    "semantic_hash": "5367db19d695e03091ffa0fc898165d7"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Divi-5-Launch-Freebie_Theme-Customizer.json": {
+    "mtime": 1770825590.0,
+    "ast_hash": "92e52850918d18a4b924ac928e840ff2",
+    "semantic_hash": "92e52850918d18a4b924ac928e840ff2"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_404_Sections.json": {
+    "mtime": 1770825579.0,
+    "ast_hash": "fde8987c501211079a09cff384e97b07",
+    "semantic_hash": "fde8987c501211079a09cff384e97b07"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_About_Sections.json": {
+    "mtime": 1770825579.0,
+    "ast_hash": "bc4435a76065e3a0d81a309def99942e",
+    "semantic_hash": "bc4435a76065e3a0d81a309def99942e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Accordion-Toggle_Sections.json": {
+    "mtime": 1770825577.0,
+    "ast_hash": "28f2601b1791111c99b59283f10564fc",
+    "semantic_hash": "28f2601b1791111c99b59283f10564fc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_App-Download_Sections.json": {
+    "mtime": 1770825579.0,
+    "ast_hash": "341ea06ee29c82fdc37542bc44866a0b",
+    "semantic_hash": "341ea06ee29c82fdc37542bc44866a0b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Banner_Sections.json": {
+    "mtime": 1770825579.0,
+    "ast_hash": "a426a9446734ab84f71b0b357f2bf9a2",
+    "semantic_hash": "a426a9446734ab84f71b0b357f2bf9a2"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Blog_Sections.json": {
+    "mtime": 1770825579.0,
+    "ast_hash": "12951b504b95fbe4b57d8bd14b5c3c14",
+    "semantic_hash": "12951b504b95fbe4b57d8bd14b5c3c14"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Call-To-Action_Sections.json": {
+    "mtime": 1770825579.0,
+    "ast_hash": "45413d6c6236ae54d2818a8c3807153e",
+    "semantic_hash": "45413d6c6236ae54d2818a8c3807153e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Carousel_Sections.json": {
+    "mtime": 1770825580.0,
+    "ast_hash": "82d584fbb90961fdebfc566c2c19fc43",
+    "semantic_hash": "82d584fbb90961fdebfc566c2c19fc43"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Category_Sections.json": {
+    "mtime": 1770825581.0,
+    "ast_hash": "ee226a0ae07f3dc025fcad2a0b763d2c",
+    "semantic_hash": "ee226a0ae07f3dc025fcad2a0b763d2c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Comparison-Table_Sections.json": {
+    "mtime": 1770825580.0,
+    "ast_hash": "9b30fd6dbedf9b508189a814e1f089a7",
+    "semantic_hash": "9b30fd6dbedf9b508189a814e1f089a7"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Contact_Sections.json": {
+    "mtime": 1770825579.0,
+    "ast_hash": "9957e32be5c660d46ebc714094424323",
+    "semantic_hash": "9957e32be5c660d46ebc714094424323"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Countdown-Timer_Sections.json": {
+    "mtime": 1770825580.0,
+    "ast_hash": "43442b969730148c6be869c1bec8d07f",
+    "semantic_hash": "43442b969730148c6be869c1bec8d07f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Courses_Sections.json": {
+    "mtime": 1770825580.0,
+    "ast_hash": "86d0aeeb7d5da6c0b293593c280dc866",
+    "semantic_hash": "86d0aeeb7d5da6c0b293593c280dc866"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Event_Sections.json": {
+    "mtime": 1770825580.0,
+    "ast_hash": "7af0adf3482e14d551f1e90455e0f5de",
+    "semantic_hash": "7af0adf3482e14d551f1e90455e0f5de"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_FAQ_Sections.json": {
+    "mtime": 1770825582.0,
+    "ast_hash": "bf0bf13a1c30864940ea4eece90dbdb7",
+    "semantic_hash": "bf0bf13a1c30864940ea4eece90dbdb7"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Features_Sections.json": {
+    "mtime": 1770825581.0,
+    "ast_hash": "33ab715e3bb248c06b8d2b4b51cd3313",
+    "semantic_hash": "33ab715e3bb248c06b8d2b4b51cd3313"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Footer_Sections.json": {
+    "mtime": 1770825581.0,
+    "ast_hash": "0f669ccf9a48430bb7510aeec7160c84",
+    "semantic_hash": "0f669ccf9a48430bb7510aeec7160c84"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Gallery_Sections.json": {
+    "mtime": 1770825581.0,
+    "ast_hash": "6f6c2ea117b5e83d5b895c19a150823d",
+    "semantic_hash": "6f6c2ea117b5e83d5b895c19a150823d"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Graph_Sections.json": {
+    "mtime": 1770825581.0,
+    "ast_hash": "b1fa13f4361439e11f06b300beb6a8ee",
+    "semantic_hash": "b1fa13f4361439e11f06b300beb6a8ee"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Header_Sections.json": {
+    "mtime": 1770825581.0,
+    "ast_hash": "b749c2fb0af135a0064bf732c5919e52",
+    "semantic_hash": "b749c2fb0af135a0064bf732c5919e52"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Hero_Sections.json": {
+    "mtime": 1770825582.0,
+    "ast_hash": "38189102efe0355b08d70e3ba84cbe4e",
+    "semantic_hash": "38189102efe0355b08d70e3ba84cbe4e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_How-It-Works_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "51d004da37b2a5ed153c3d0efbb36a0e",
+    "semantic_hash": "51d004da37b2a5ed153c3d0efbb36a0e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Job-Listing_Sections.json": {
+    "mtime": 1770825582.0,
+    "ast_hash": "cd397abb2c08b6fb18474f0b75dfd42a",
+    "semantic_hash": "cd397abb2c08b6fb18474f0b75dfd42a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_List_Sections.json": {
+    "mtime": 1770825582.0,
+    "ast_hash": "c411d032237f4da7560a2a06b22f32bd",
+    "semantic_hash": "c411d032237f4da7560a2a06b22f32bd"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Login_Sections.json": {
+    "mtime": 1770825582.0,
+    "ast_hash": "7b3dfdbea7a8a4a37f3caabde1814d30",
+    "semantic_hash": "7b3dfdbea7a8a4a37f3caabde1814d30"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Person_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "991a0e6bfbaff3e0050cfaf404f91a0e",
+    "semantic_hash": "991a0e6bfbaff3e0050cfaf404f91a0e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Portfolio_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "c1bd52064eca39391c50f86035c306cd",
+    "semantic_hash": "c1bd52064eca39391c50f86035c306cd"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Pricing-Menu_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "0bc2bfb5f55f1b1a00a5dccf51c24425",
+    "semantic_hash": "0bc2bfb5f55f1b1a00a5dccf51c24425"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Pricing_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "2b5a40db32159a05312e9214f394787b",
+    "semantic_hash": "2b5a40db32159a05312e9214f394787b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Privacy-Policy_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "b27301cc9d6e2fd43d79df893e7d00dc",
+    "semantic_hash": "b27301cc9d6e2fd43d79df893e7d00dc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Project_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "b0dbc539997b3033377fc0c4141752b7",
+    "semantic_hash": "b0dbc539997b3033377fc0c4141752b7"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Quote_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "8f38d6fd5fba3c7b0b1d8f3eebf6f56d",
+    "semantic_hash": "8f38d6fd5fba3c7b0b1d8f3eebf6f56d"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Resume_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "21f96443d7194f2784633cce68b14b1c",
+    "semantic_hash": "21f96443d7194f2784633cce68b14b1c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Services_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "4f81f545ec31de0e14af794860295ab3",
+    "semantic_hash": "4f81f545ec31de0e14af794860295ab3"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Shop_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "37ec9a8abe4c18f1baa3bfafbd03f0e2",
+    "semantic_hash": "37ec9a8abe4c18f1baa3bfafbd03f0e2"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Slider_Sections.json": {
+    "mtime": 1770825584.0,
+    "ast_hash": "767beafb523b139760b6f7beb0017c48",
+    "semantic_hash": "767beafb523b139760b6f7beb0017c48"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Social-Media_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "8bf430e4664bf4dc305409398e5075cc",
+    "semantic_hash": "8bf430e4664bf4dc305409398e5075cc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Statistics_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "f48f921fd357fb9e9084a74cec41e4be",
+    "semantic_hash": "f48f921fd357fb9e9084a74cec41e4be"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Subscribe_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "c845aef8b9054b3e50551860293cefcb",
+    "semantic_hash": "c845aef8b9054b3e50551860293cefcb"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Table_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "6d4063c55af50c9ac3c7bae54be50af9",
+    "semantic_hash": "6d4063c55af50c9ac3c7bae54be50af9"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Team_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "412db91165435118a86d0b60b0e3f721",
+    "semantic_hash": "412db91165435118a86d0b60b0e3f721"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Terms-of-Service_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "b9420c189f67687fd090de7b8c59a5b4",
+    "semantic_hash": "b9420c189f67687fd090de7b8c59a5b4"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Testimonial_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "a7931890d71cc06a3cf91777191465f5",
+    "semantic_hash": "a7931890d71cc06a3cf91777191465f5"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Text-and-Image_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "58720200ef445772e49026865f997739",
+    "semantic_hash": "58720200ef445772e49026865f997739"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Text_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "8bb6d1f78cf958f3a907576786158448",
+    "semantic_hash": "8bb6d1f78cf958f3a907576786158448"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Timeline_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "13a29cbdf8f49a05f89bd35d2042a4d6",
+    "semantic_hash": "13a29cbdf8f49a05f89bd35d2042a4d6"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/By Section Type/Divi-5-Launch-Freebie_Under-Construction_Sections.json": {
+    "mtime": 1770825586.0,
+    "ast_hash": "22eb6eaf7bd6a9e054aed2692325e3eb",
+    "semantic_hash": "22eb6eaf7bd6a9e054aed2692325e3eb"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/Divi design system JSON/Individual Sections/Divi-5-Launch-Freebie_All-Individual-Sections.json": {
+    "mtime": 1770825588.0,
+    "ast_hash": "79963ddd68c579049c988fd18a34c5bd",
+    "semantic_hash": "79963ddd68c579049c988fd18a34c5bd"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/et-preset-registry.json": {
+    "mtime": 1781861480.920191,
+    "ast_hash": "63dacd6bee1bdd614ec076a2c37908e0",
+    "semantic_hash": "63dacd6bee1bdd614ec076a2c37908e0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/rub-you-well-registry.json": {
+    "mtime": 1781861683.1294103,
+    "ast_hash": "3e81946249d5b1efdbc84f811ff98d61",
+    "semantic_hash": "3e81946249d5b1efdbc84f811ff98d61"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/attr-path.fail-advanced.json": {
+    "mtime": 1781627162.5509927,
+    "ast_hash": "0bc0960d50e9d550362f6fcd244a0d7d",
+    "semantic_hash": "0bc0960d50e9d550362f6fcd244a0d7d"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/attr-path.fail-map.json": {
+    "mtime": 1781627162.5512643,
+    "ast_hash": "3a4108a2ad89cb26496b03eee80e0d0f",
+    "semantic_hash": "3a4108a2ad89cb26496b03eee80e0d0f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/attr-path.pass.json": {
+    "mtime": 1781627162.5515382,
+    "ast_hash": "33cee27da5f3e38cc0a511a82f79ba04",
+    "semantic_hash": "33cee27da5f3e38cc0a511a82f79ba04"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/generate.js": {
+    "mtime": 1781627162.5518522,
+    "ast_hash": "9a42b898aaaad68fa4b11e71cc96e021",
+    "semantic_hash": "9a42b898aaaad68fa4b11e71cc96e021"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/glyph.fail.json": {
+    "mtime": 1781627162.552121,
+    "ast_hash": "f3cc98f231637f3937d14b1df58fd4a0",
+    "semantic_hash": "f3cc98f231637f3937d14b1df58fd4a0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/glyph.pass.json": {
+    "mtime": 1781627162.5523727,
+    "ast_hash": "a954aa353a8d239cd7fd8785327f108a",
+    "semantic_hash": "a954aa353a8d239cd7fd8785327f108a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/raw-quote.fail.json": {
+    "mtime": 1781627162.5526276,
+    "ast_hash": "6b3830b4c8486ca5a2b3db907f5a8d6a",
+    "semantic_hash": "6b3830b4c8486ca5a2b3db907f5a8d6a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__fixtures__/render-safety/raw-quote.pass.json": {
+    "mtime": 1781627162.5528975,
+    "ast_hash": "b9c4da9aa99579ccbc0ea365d111b807",
+    "semantic_hash": "b9c4da9aa99579ccbc0ea365d111b807"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__tests__/phase0.test.js": {
+    "mtime": 1781627162.5532587,
+    "ast_hash": "58d0568755efcb63530064991d229382",
+    "semantic_hash": "58d0568755efcb63530064991d229382"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/__tests__/smoke.test.js": {
+    "mtime": 1781627162.553616,
+    "ast_hash": "2b4ca448d6df7431988a894356276c01",
+    "semantic_hash": "2b4ca448d6df7431988a894356276c01"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/divi-builder.js": {
+    "mtime": 1781861262.6731813,
+    "ast_hash": "daa1867dca5a2e2f937d83a48b256a86",
+    "semantic_hash": "daa1867dca5a2e2f937d83a48b256a86"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/glyphs.js": {
+    "mtime": 1781627162.5548244,
+    "ast_hash": "637b90646d47b2102264462c0a3d46fa",
+    "semantic_hash": "637b90646d47b2102264462c0a3d46fa"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/preview.js": {
+    "mtime": 1781798256.726334,
+    "ast_hash": "7b6cbed613d8845d5839ad7215fd0aba",
+    "semantic_hash": "7b6cbed613d8845d5839ad7215fd0aba"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/setup-et-presets.js": {
+    "mtime": 1781861475.4835565,
+    "ast_hash": "7997f19231076126573fc869b0398368",
+    "semantic_hash": "7997f19231076126573fc869b0398368"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/scripts/validate.js": {
+    "mtime": 1781861712.3223188,
+    "ast_hash": "cb2b90a901aa9dcf6f2fe40f660ec3c9",
+    "semantic_hash": "cb2b90a901aa9dcf6f2fe40f660ec3c9"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/evals/evals.json": {
+    "mtime": 1781627162.5479054,
+    "ast_hash": "e0b01b41571510b268917324e4b57dad",
+    "semantic_hash": "e0b01b41571510b268917324e4b57dad"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/.claude-plugin/plugin.json": {
+    "mtime": 1781424416.0196505,
+    "ast_hash": "a0b32108b0b434c7b80ffa6a70da95df",
+    "semantic_hash": "a0b32108b0b434c7b80ffa6a70da95df"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/skills/noloco-api/scripts/noloco_graphql.py": {
+    "mtime": 1781424416.0263271,
+    "ast_hash": "5052e58decaeda720eef7198f7cd04ef",
+    "semantic_hash": "5052e58decaeda720eef7198f7cd04ef"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.claude-plugin/marketplace.json": {
+    "mtime": 1781248270.0,
+    "ast_hash": "8425d40d9d5e8bde6f033822b835139d",
+    "semantic_hash": "8425d40d9d5e8bde6f033822b835139d"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.claude-plugin/plugin.json": {
+    "mtime": 1781248270.0,
+    "ast_hash": "8a9b3b5df3161b3ef0fa9b0f9295dc1e",
+    "semantic_hash": "8a9b3b5df3161b3ef0fa9b0f9295dc1e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skill.sh": {
+    "mtime": 1781248270.0,
+    "ast_hash": "5a32361ae5ded8773417f02699b4edb7",
+    "semantic_hash": "5a32361ae5ded8773417f02699b4edb7"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/.claude-plugin/plugin.json": {
+    "mtime": 1781423320.5467129,
+    "ast_hash": "d9662fb19344d788609c6bb43cf312b1",
+    "semantic_hash": "d9662fb19344d788609c6bb43cf312b1"
+  },
+  "/Volumes/External/iConnectIT claude plugins/setup-github.sh": {
+    "mtime": 1781424317.873146,
+    "ast_hash": "1af51013ac62c6b75b93f2dc007472e4",
+    "semantic_hash": "1af51013ac62c6b75b93f2dc007472e4"
+  },
+  "/Volumes/External/iConnectIT claude plugins/.swarm/context.md": {
+    "mtime": 1781553667.9330153,
+    "ast_hash": "bac31e6905646f2ed4c1d0ea223b0222",
+    "semantic_hash": "bac31e6905646f2ed4c1d0ea223b0222"
+  },
+  "/Volumes/External/iConnectIT claude plugins/README.md": {
+    "mtime": 1781424565.1103203,
+    "ast_hash": "e87cdf6b05aca92c2272ac5ed223fce8",
+    "semantic_hash": "e87cdf6b05aca92c2272ac5ed223fce8"
+  },
+  "/Volumes/External/iConnectIT claude plugins/divi-tools-importer/readme.txt": {
+    "mtime": 1781426727.0,
+    "ast_hash": "b4c1fca9592f3db0cbe420471d64b752",
+    "semantic_hash": "b4c1fca9592f3db0cbe420471d64b752"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/PROJECT.md": {
+    "mtime": 1781627162.5397754,
+    "ast_hash": "27dea2e2241ada61c6d2993067978c8a",
+    "semantic_hash": "27dea2e2241ada61c6d2993067978c8a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/REQUIREMENTS.md": {
+    "mtime": 1781627162.5404003,
+    "ast_hash": "2e58b36f2578788c2f5e653d2791c32a",
+    "semantic_hash": "2e58b36f2578788c2f5e653d2791c32a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/ROADMAP.md": {
+    "mtime": 1781627162.5407941,
+    "ast_hash": "61e31775521710d8b0e2f0e91e75d8aa",
+    "semantic_hash": "61e31775521710d8b0e2f0e91e75d8aa"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/STATE.md": {
+    "mtime": 1781627162.5416632,
+    "ast_hash": "7547f256748558e560ba028e33a55c16",
+    "semantic_hash": "7547f256748558e560ba028e33a55c16"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.planning/phases/00-prep-emitter-hardening/00-01-PLAN.md": {
+    "mtime": 1781627162.5438526,
+    "ast_hash": "7419f977ecf2b57ade08324782339e87",
+    "semantic_hash": "7419f977ecf2b57ade08324782339e87"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/.swarm/context.md": {
+    "mtime": 1781538763.282871,
+    "ast_hash": "a1d25a1184403ca18bbadc938a9c5213",
+    "semantic_hash": "a1d25a1184403ca18bbadc938a9c5213"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/README.md": {
+    "mtime": 1782029047.406186,
+    "ast_hash": "621104da5ffe8928ec5c3e9691483a98",
+    "semantic_hash": "621104da5ffe8928ec5c3e9691483a98"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/divi5-css-generation-rules.md": {
+    "mtime": 1781862405.7474563,
+    "ast_hash": "2d451b87f94aa7b8757f97cedfb0a505",
+    "semantic_hash": "2d451b87f94aa7b8757f97cedfb0a505"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/plans/2026-06-15-presets-and-landing-page-integration.md": {
+    "mtime": 1781675858.681394,
+    "ast_hash": "419f233b9b8ff2e5c939eba305d33c14",
+    "semantic_hash": "419f233b9b8ff2e5c939eba305d33c14"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/plans/2026-06-18-variable-first-builder-design.md": {
+    "mtime": 1781802211.6367736,
+    "ast_hash": "a79c4732d7c5d99ae824688dff439a6d",
+    "semantic_hash": "a79c4732d7c5d99ae824688dff439a6d"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/plans/2026-06-18-variable-first-builder-implementation.md": {
+    "mtime": 1781802510.107126,
+    "ast_hash": "cbb8b4685244e9cc3d9f68b43d70759b",
+    "semantic_hash": "cbb8b4685244e9cc3d9f68b43d70759b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/docs/product-overview.md": {
+    "mtime": 1782023788.4463155,
+    "ast_hash": "880d65ea97a153440eb43710d76b1441",
+    "semantic_hash": "880d65ea97a153440eb43710d76b1441"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/plugin/divi-tools-importer/readme.txt": {
+    "mtime": 1781426727.7327027,
+    "ast_hash": "b4c1fca9592f3db0cbe420471d64b752",
+    "semantic_hash": "b4c1fca9592f3db0cbe420471d64b752"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/design-review/SKILL.md": {
+    "mtime": 1782028939.281329,
+    "ast_hash": "749f7a6197d63677679cf3e8df58f7dc",
+    "semantic_hash": "749f7a6197d63677679cf3e8df58f7dc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/design-review/references/taste.md": {
+    "mtime": 1781765422.2538488,
+    "ast_hash": "621bde53014a511e427bb0846ea6cb10",
+    "semantic_hash": "621bde53014a511e427bb0846ea6cb10"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-extract-style/SKILL.md": {
+    "mtime": 1782028344.3911173,
+    "ast_hash": "dbca0c7d79272b5fa1c0bf8ce4afb3e3",
+    "semantic_hash": "dbca0c7d79272b5fa1c0bf8ce4afb3e3"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-43-18-348Z.yml": {
+    "mtime": 1781804598.3511434,
+    "ast_hash": "619e915ae34429981f4891e2e96c0d3e",
+    "semantic_hash": "619e915ae34429981f4891e2e96c0d3e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-48-25-376Z.yml": {
+    "mtime": 1781804905.3768592,
+    "ast_hash": "1bcbb7f601fd05307480054b36189db0",
+    "semantic_hash": "1bcbb7f601fd05307480054b36189db0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-50-44-880Z.yml": {
+    "mtime": 1781805044.882078,
+    "ast_hash": "619e915ae34429981f4891e2e96c0d3e",
+    "semantic_hash": "619e915ae34429981f4891e2e96c0d3e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-54-29-135Z.yml": {
+    "mtime": 1781805269.1491468,
+    "ast_hash": "a2480845e8f3362a596eb01229b10c3b",
+    "semantic_hash": "a2480845e8f3362a596eb01229b10c3b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-55-20-802Z.yml": {
+    "mtime": 1781805320.8030987,
+    "ast_hash": "619e915ae34429981f4891e2e96c0d3e",
+    "semantic_hash": "619e915ae34429981f4891e2e96c0d3e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-58-50-892Z.yml": {
+    "mtime": 1781805530.8927746,
+    "ast_hash": "8e3540ce9cba168557cd29cc589e65c5",
+    "semantic_hash": "8e3540ce9cba168557cd29cc589e65c5"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-59-14-018Z.yml": {
+    "mtime": 1781805554.0219352,
+    "ast_hash": "5d4c9c24d5352aa8fa3a6cb4ee477f11",
+    "semantic_hash": "5d4c9c24d5352aa8fa3a6cb4ee477f11"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T17-59-40-676Z.yml": {
+    "mtime": 1781805580.6765661,
+    "ast_hash": "3ad8fbdee829eb23d521b415c274101d",
+    "semantic_hash": "3ad8fbdee829eb23d521b415c274101d"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-00-30-776Z.yml": {
+    "mtime": 1781805630.7770464,
+    "ast_hash": "619e915ae34429981f4891e2e96c0d3e",
+    "semantic_hash": "619e915ae34429981f4891e2e96c0d3e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-04-06-258Z.yml": {
+    "mtime": 1781805846.2595153,
+    "ast_hash": "c22b1c5516ba41abb96d3111edd6a798",
+    "semantic_hash": "c22b1c5516ba41abb96d3111edd6a798"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-04-18-885Z.yml": {
+    "mtime": 1781805858.886373,
+    "ast_hash": "619e915ae34429981f4891e2e96c0d3e",
+    "semantic_hash": "619e915ae34429981f4891e2e96c0d3e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-14-29-860Z.yml": {
+    "mtime": 1781806469.8616028,
+    "ast_hash": "c22b1c5516ba41abb96d3111edd6a798",
+    "semantic_hash": "c22b1c5516ba41abb96d3111edd6a798"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-15-38-797Z.yml": {
+    "mtime": 1781806538.7981598,
+    "ast_hash": "7d39e19dc60b4d65432da8f4317650af",
+    "semantic_hash": "7d39e19dc60b4d65432da8f4317650af"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-18T18-43-38-705Z.yml": {
+    "mtime": 1781808218.7100248,
+    "ast_hash": "eace167059b20588db31dc607838f020",
+    "semantic_hash": "eace167059b20588db31dc607838f020"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T07-18-58-543Z.yml": {
+    "mtime": 1781853538.5447168,
+    "ast_hash": "5887d3125140ba03f303db4e6597463b",
+    "semantic_hash": "5887d3125140ba03f303db4e6597463b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-19-19-842Z.yml": {
+    "mtime": 1781857159.8587346,
+    "ast_hash": "5887d3125140ba03f303db4e6597463b",
+    "semantic_hash": "5887d3125140ba03f303db4e6597463b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-19-29-379Z.yml": {
+    "mtime": 1781857169.3831027,
+    "ast_hash": "f89ac47a32ba471402a2d690fae08229",
+    "semantic_hash": "f89ac47a32ba471402a2d690fae08229"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-21-03-473Z.yml": {
+    "mtime": 1781857263.4734547,
+    "ast_hash": "32f0346f1cdf6078c548d09c167154cc",
+    "semantic_hash": "32f0346f1cdf6078c548d09c167154cc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-23-53-551Z.yml": {
+    "mtime": 1781857433.5520995,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-24-05-070Z.yml": {
+    "mtime": 1781857445.0713909,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-31-35-536Z.yml": {
+    "mtime": 1781857895.537454,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T08-31-43-991Z.yml": {
+    "mtime": 1781857903.9922082,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-11-36-601Z.yml": {
+    "mtime": 1781860296.6022952,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-19-31-307Z.yml": {
+    "mtime": 1781860771.3089087,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-23-32-397Z.yml": {
+    "mtime": 1781861012.397426,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-25-00-498Z.yml": {
+    "mtime": 1781861100.4991987,
+    "ast_hash": "a7ca2627f29bbad705219fc728c59620",
+    "semantic_hash": "a7ca2627f29bbad705219fc728c59620"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-35-51-914Z.yml": {
+    "mtime": 1781861751.9156308,
+    "ast_hash": "28053b41578cc576f1b8732819bd5123",
+    "semantic_hash": "28053b41578cc576f1b8732819bd5123"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-38-26-874Z.yml": {
+    "mtime": 1781861906.875071,
+    "ast_hash": "28053b41578cc576f1b8732819bd5123",
+    "semantic_hash": "28053b41578cc576f1b8732819bd5123"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-19T09-45-33-295Z.yml": {
+    "mtime": 1781862333.296498,
+    "ast_hash": "28053b41578cc576f1b8732819bd5123",
+    "semantic_hash": "28053b41578cc576f1b8732819bd5123"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-21T06-50-59-247Z.yml": {
+    "mtime": 1782024659.2512403,
+    "ast_hash": "092f7a3d39d301e15f0bd2f1007f7ce1",
+    "semantic_hash": "092f7a3d39d301e15f0bd2f1007f7ce1"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/.playwright-mcp/page-2026-06-21T07-05-38-346Z.yml": {
+    "mtime": 1782025538.3462358,
+    "ast_hash": "60b9bdb4c6cec8d8b84bb71961237bc5",
+    "semantic_hash": "60b9bdb4c6cec8d8b84bb71961237bc5"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/RENDER-FAULT-FINDER-SPEC.md": {
+    "mtime": 1781627162.5492444,
+    "ast_hash": "ef5b4017a28604647a22fdbec9de4f02",
+    "semantic_hash": "ef5b4017a28604647a22fdbec9de4f02"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/RENDER-SAFETY-PHASE-0-PLAN.md": {
+    "mtime": 1781627162.5497386,
+    "ast_hash": "7e9d2e92f73696f234185171be66e034",
+    "semantic_hash": "7e9d2e92f73696f234185171be66e034"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/SKILL.md": {
+    "mtime": 1782028952.5511107,
+    "ast_hash": "b9ff9b097a7b13524334c304d2b0c0b6",
+    "semantic_hash": "b9ff9b097a7b13524334c304d2b0c0b6"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/landing-page-guide.html": {
+    "mtime": 1781797167.1717248,
+    "ast_hash": "c59b6b8647c48d1d7520af73c38cd760",
+    "semantic_hash": "c59b6b8647c48d1d7520af73c38cd760"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/aesthetics.md": {
+    "mtime": 1781765422.243662,
+    "ast_hash": "0c216bec8f7b7b5a38fc7bff4f8d9650",
+    "semantic_hash": "0c216bec8f7b7b5a38fc7bff4f8d9650"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/content-strategy.md": {
+    "mtime": 1781766163.3621962,
+    "ast_hash": "6f042f896eb90c3f44b2858f192ab24c",
+    "semantic_hash": "6f042f896eb90c3f44b2858f192ab24c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/divi-theatre.md": {
+    "mtime": 1781627162.5506287,
+    "ast_hash": "6ee4ecdfe5c98ed696014aea99da4a51",
+    "semantic_hash": "6ee4ecdfe5c98ed696014aea99da4a51"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/layout-patterns.md": {
+    "mtime": 1781765422.243692,
+    "ast_hash": "5ba0f5dd7ba29833ccd4b33c77ce3f71",
+    "semantic_hash": "5ba0f5dd7ba29833ccd4b33c77ce3f71"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/module-reference.md": {
+    "mtime": 1781423019.852401,
+    "ast_hash": "df0bba6406f44dcb0be7a083276071c3",
+    "semantic_hash": "df0bba6406f44dcb0be7a083276071c3"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/seo.md": {
+    "mtime": 1781423066.0925462,
+    "ast_hash": "852d23dc75b7f27e2245facedc783603",
+    "semantic_hash": "852d23dc75b7f27e2245facedc783603"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/taste.md": {
+    "mtime": 1781765422.2436943,
+    "ast_hash": "8f69d948102717630cc61de102860a77",
+    "semantic_hash": "8f69d948102717630cc61de102860a77"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/SKILL.md": {
+    "mtime": 1781789270.004231,
+    "ast_hash": "dbf1a8b0f17ecb59dc19370f6c6c035a",
+    "semantic_hash": "dbf1a8b0f17ecb59dc19370f6c6c035a"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/build-config.md": {
+    "mtime": 1781676801.367245,
+    "ast_hash": "9dde3f3098e117a3d80dbe5144c932e4",
+    "semantic_hash": "9dde3f3098e117a3d80dbe5144c932e4"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/conversion-outline.md": {
+    "mtime": 1781676239.1938255,
+    "ast_hash": "742b886f29b33c689009dfef8cbf885f",
+    "semantic_hash": "742b886f29b33c689009dfef8cbf885f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/dynamic-content.md": {
+    "mtime": 1781676792.2491953,
+    "ast_hash": "ce841d39f6bdd8f581d6527e1d535a8b",
+    "semantic_hash": "ce841d39f6bdd8f581d6527e1d535a8b"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/dynamic-options.md": {
+    "mtime": 1781676767.1001341,
+    "ast_hash": "1a5eee014aff5ac8745ab7e766a76bd7",
+    "semantic_hash": "1a5eee014aff5ac8745ab7e766a76bd7"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/extending-core-modules.md": {
+    "mtime": 1781676206.1552699,
+    "ast_hash": "b09f2307efc5e45b9c63ef12f15db3e8",
+    "semantic_hash": "b09f2307efc5e45b9c63ef12f15db3e8"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/jsx-component.md": {
+    "mtime": 1781627162.5460489,
+    "ast_hash": "508f8fb3cd9a1ecd4204c1a7ba1b0a15",
+    "semantic_hash": "508f8fb3cd9a1ecd4204c1a7ba1b0a15"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/module-json-fields.md": {
+    "mtime": 1781627162.546631,
+    "ast_hash": "1a7e1238a162b3013386bf8db10fff53",
+    "semantic_hash": "1a7e1238a162b3013386bf8db10fff53"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/php-server.md": {
+    "mtime": 1781627162.5468965,
+    "ast_hash": "cb4c1a389abffd4a9c6332e0059f9e05",
+    "semantic_hash": "cb4c1a389abffd4a9c6332e0059f9e05"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/preset-resolution.md": {
+    "mtime": 1781676223.5125704,
+    "ast_hash": "dc403d0040efbd704291cd5b7ad6e402",
+    "semantic_hash": "dc403d0040efbd704291cd5b7ad6e402"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-plugin-dev/references/vb-state-and-hooks.md": {
+    "mtime": 1781676253.6576452,
+    "ast_hash": "21ff7b393835f666c01f1d542d17b674",
+    "semantic_hash": "21ff7b393835f666c01f1d542d17b674"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/SKILL.md": {
+    "mtime": 1781789330.9974203,
+    "ast_hash": "3919a1e17b386d79288c7197d397ad7c",
+    "semantic_hash": "3919a1e17b386d79288c7197d397ad7c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/references/baked-state-schema.md": {
+    "mtime": 1781627162.548311,
+    "ast_hash": "a04cacb29d949efa890254a4cabbe17c",
+    "semantic_hash": "a04cacb29d949efa890254a4cabbe17c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/references/core-api.md": {
+    "mtime": 1781627162.5486085,
+    "ast_hash": "c8d3bfefcf83050022fbe0ec33e19ee0",
+    "semantic_hash": "c8d3bfefcf83050022fbe0ec33e19ee0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divitheatre-engine/references/preset-authoring.md": {
+    "mtime": 1781627162.5488865,
+    "ast_hash": "3081d76c799823fcb93a43cc47c7399e",
+    "semantic_hash": "3081d76c799823fcb93a43cc47c7399e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/import-to-local/SKILL.md": {
+    "mtime": 1781799971.9034386,
+    "ast_hash": "449f344134d266ad9e3c0f2e29a58f3f",
+    "semantic_hash": "449f344134d266ad9e3c0f2e29a58f3f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/README.md": {
+    "mtime": 1781424436.7905347,
+    "ast_hash": "958e3a146bbd417a4b2f97aee9f23c82",
+    "semantic_hash": "958e3a146bbd417a4b2f97aee9f23c82"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/skills/noloco-api/SKILL.md": {
+    "mtime": 1781424416.0207307,
+    "ast_hash": "d47074889be799e763ee63089aa160fc",
+    "semantic_hash": "d47074889be799e763ee63089aa160fc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/noloco-api/skills/noloco-api/references/graphql-patterns.md": {
+    "mtime": 1781424416.0221558,
+    "ast_hash": "7158d18e545292a92cee4a677257c599",
+    "semantic_hash": "7158d18e545292a92cee4a677257c599"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.github/FUNDING.yml": {
+    "mtime": 1781248270.0,
+    "ast_hash": "01f20a5fb523f9da0994851203a0ab59",
+    "semantic_hash": "01f20a5fb523f9da0994851203a0ab59"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/.github/copilot-instructions.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "75538c28b3505123d5532d8c497d57cd",
+    "semantic_hash": "75538c28b3505123d5532d8c497d57cd"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/CHANGELOG.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "8d3aa79e36a4abebe56584d628b926cd",
+    "semantic_hash": "8d3aa79e36a4abebe56584d628b926cd"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/README.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "2c25234c7e0938805c807cd197fb0952",
+    "semantic_hash": "2c25234c7e0938805c807cd197fb0952"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/README.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "09caa9d1f6ea712c568184bea92458bc",
+    "semantic_hash": "09caa9d1f6ea712c568184bea92458bc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/README.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "769beea3fb7adb0df24db0aaf2cac8d3",
+    "semantic_hash": "769beea3fb7adb0df24db0aaf2cac8d3"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/findings/empirical-results.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "7682fa3ceef9cd8340c38e7295774af0",
+    "semantic_hash": "7682fa3ceef9cd8340c38e7295774af0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/findings/references.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "24c5427e195b0ab8b924a9d180e3d107",
+    "semantic_hash": "24c5427e195b0ab8b924a9d180e3d107"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/architectural-patterns.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "0d597f878a5b00389f4b96191aae699f",
+    "semantic_hash": "0d597f878a5b00389f4b96191aae699f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/parameter-tuning.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "acecccbe3705482bf4984036bb9d4369",
+    "semantic_hash": "acecccbe3705482bf4984036bb9d4369"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/prompt-engineering.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "14f9e939f63af32ad6382a7d475fb7b0",
+    "semantic_hash": "14f9e939f63af32ad6382a7d475fb7b0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/remediation/reference-prompts.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "fe3f4eeaee13b0cba83928bbb4ed13f0",
+    "semantic_hash": "fe3f4eeaee13b0cba83928bbb4ed13f0"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/cognitive-shortcuts.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "143f0ed3b18991960380ae3a25777324",
+    "semantic_hash": "143f0ed3b18991960380ae3a25777324"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/output-limits.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "939ddd143b7d7cc9de53aef0e2bba228",
+    "semantic_hash": "939ddd143b7d7cc9de53aef0e2bba228"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/rlhf-and-compute.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "58f8d55b8ccfb7dcfe8c442932453bcc",
+    "semantic_hash": "58f8d55b8ccfb7dcfe8c442932453bcc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/research/laziness/root-causes/training-data-bias.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "3804445812a997896a8cf2110dae5738",
+    "semantic_hash": "3804445812a997896a8cf2110dae5738"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/brandkit/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "cd3701c774e9bd7ce4fc9078377d517f",
+    "semantic_hash": "cd3701c774e9bd7ce4fc9078377d517f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/brutalist-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "9e673477ecc2eaf4a230c8326cbc2f0d",
+    "semantic_hash": "9e673477ecc2eaf4a230c8326cbc2f0d"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/gpt-tasteskill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "0968d17fda872b36dc35e6bcc0c9af36",
+    "semantic_hash": "0968d17fda872b36dc35e6bcc0c9af36"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/image-to-code-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "442613e4710f0005b94f1c4b1d3ac246",
+    "semantic_hash": "442613e4710f0005b94f1c4b1d3ac246"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/imagegen-frontend-mobile/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "4c84e37e50e610779a71e0fb0a198963",
+    "semantic_hash": "4c84e37e50e610779a71e0fb0a198963"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/imagegen-frontend-web/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "208c5866f7320c7f842283b312a00e17",
+    "semantic_hash": "208c5866f7320c7f842283b312a00e17"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/llms.txt": {
+    "mtime": 1781248270.0,
+    "ast_hash": "279fc7a2c654eb5c071eb4f1afcb3305",
+    "semantic_hash": "279fc7a2c654eb5c071eb4f1afcb3305"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/minimalist-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "c7f814d7df4b1b0e3eebf706a6d74adf",
+    "semantic_hash": "c7f814d7df4b1b0e3eebf706a6d74adf"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/output-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "5ed528ceb72c5d089757ba70c5a434e8",
+    "semantic_hash": "5ed528ceb72c5d089757ba70c5a434e8"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/redesign-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "31d802d02ccb9f5da82d99156af36317",
+    "semantic_hash": "31d802d02ccb9f5da82d99156af36317"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/soft-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "269e37851b3a17693d8052f5f8002cfc",
+    "semantic_hash": "269e37851b3a17693d8052f5f8002cfc"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/stitch-skill/DESIGN.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "ee7cc02dcc99eda38299a5a6f6727563",
+    "semantic_hash": "ee7cc02dcc99eda38299a5a6f6727563"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/stitch-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "82dc71a62461f956b5666c1041efc886",
+    "semantic_hash": "82dc71a62461f956b5666c1041efc886"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/taste-skill-v1/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "d0ee97b35983cf5e786e5b65994a2ecb",
+    "semantic_hash": "d0ee97b35983cf5e786e5b65994a2ecb"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/skills/taste-skill/SKILL.md": {
+    "mtime": 1781248270.0,
+    "ast_hash": "6f73606d20cd948b471b1ce1767aab50",
+    "semantic_hash": "6f73606d20cd948b471b1ce1767aab50"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/README.md": {
+    "mtime": 1781423325.8181906,
+    "ast_hash": "076600865e216884a1e77991f8ae9c04",
+    "semantic_hash": "076600865e216884a1e77991f8ae9c04"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/SKILL.md": {
+    "mtime": 1781423256.573077,
+    "ast_hash": "e3fab4757df5e20b773f9950ec4cedc9",
+    "semantic_hash": "e3fab4757df5e20b773f9950ec4cedc9"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/channels.md": {
+    "mtime": 1781423312.5477614,
+    "ast_hash": "d8196520447fafde2bcc578fd5825237",
+    "semantic_hash": "d8196520447fafde2bcc578fd5825237"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/mvc-assets.md": {
+    "mtime": 1781423312.5466206,
+    "ast_hash": "34772f1a1539b161aff024831be98238",
+    "semantic_hash": "34772f1a1539b161aff024831be98238"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/prioritisation.md": {
+    "mtime": 1781423312.5451834,
+    "ast_hash": "deb73a9df40305a8fdd5767ac6bf6b5c",
+    "semantic_hash": "deb73a9df40305a8fdd5767ac6bf6b5c"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/product-website.md": {
+    "mtime": 1781423312.5492291,
+    "ast_hash": "6d2b468c4c8b20931c8ec54f5dd701d1",
+    "semantic_hash": "6d2b468c4c8b20931c8ec54f5dd701d1"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-marketing/references/wordpress-org.md": {
+    "mtime": 1781423312.5504107,
+    "ast_hash": "f1b72752bcfd5b8ece157521511b1a7e",
+    "semantic_hash": "f1b72752bcfd5b8ece157521511b1a7e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/wp-dev-tools/skills/wp-plugin-submission-check/SKILL.md": {
+    "mtime": 1781423312.542752,
+    "ast_hash": "f48780acaf36b86e261d3441de292e9e",
+    "semantic_hash": "f48780acaf36b86e261d3441de292e9e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v2.png": {
+    "mtime": 1781857268.7759902,
+    "ast_hash": "fdc9707b7c31b0cd8ebec9d886f7ea93",
+    "semantic_hash": "fdc9707b7c31b0cd8ebec9d886f7ea93"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v3.png": {
+    "mtime": 1781857449.4948344,
+    "ast_hash": "41e5842624c0ee2a7aa528696b05824e",
+    "semantic_hash": "41e5842624c0ee2a7aa528696b05824e"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v4.png": {
+    "mtime": 1781857909.3653922,
+    "ast_hash": "4ebc4f1b5493d3e40b5f61780badfd3f",
+    "semantic_hash": "4ebc4f1b5493d3e40b5f61780badfd3f"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v5.png": {
+    "mtime": 1781862343.6817474,
+    "ast_hash": "af24cd8903a6b9c03d62909cf88faf63",
+    "semantic_hash": "af24cd8903a6b9c03d62909cf88faf63"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi-v6.png": {
+    "mtime": 1781860774.940187,
+    "ast_hash": "bbc3fa84f087018b84a97c0989f4a928",
+    "semantic_hash": "bbc3fa84f087018b84a97c0989f4a928"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-divi.png": {
+    "mtime": 1781857177.039065,
+    "ast_hash": "8f5cf9a539ab8136933e6e77f780b2b1",
+    "semantic_hash": "8f5cf9a539ab8136933e6e77f780b2b1"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-live.png": {
+    "mtime": 1782025542.3862293,
+    "ast_hash": "b348bb0759dfc0e4f3212419dc870298",
+    "semantic_hash": "b348bb0759dfc0e4f3212419dc870298"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/compare-mock.png": {
+    "mtime": 1781857164.2014916,
+    "ast_hash": "df38c6bb41b5b049f1f3301762857541",
+    "semantic_hash": "df38c6bb41b5b049f1f3301762857541"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/pet-rescue-verified.png": {
+    "mtime": 1781804615.2274063,
+    "ast_hash": "45edc6566726c314713892f5fc5f2447",
+    "semantic_hash": "45edc6566726c314713892f5fc5f2447"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/preview-pet-rescue.png": {
+    "mtime": 1782024661.75538,
+    "ast_hash": "68fe142c1851c53e4776dc40b81c82be",
+    "semantic_hash": "68fe142c1851c53e4776dc40b81c82be"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/preview-rub-you-well.png": {
+    "mtime": 1781853543.4299607,
+    "ast_hash": "df38c6bb41b5b049f1f3301762857541",
+    "semantic_hash": "df38c6bb41b5b049f1f3301762857541"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/floria-bottom.png": {
+    "mtime": 1781536931.4082685,
+    "ast_hash": "06779d6624acd934194c48fe2603a608",
+    "semantic_hash": "06779d6624acd934194c48fe2603a608"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/divi5-tools/skills/divi5-page-generator/references/floria-top.png": {
+    "mtime": 1781536931.4119606,
+    "ast_hash": "b97133c539b7879d86a2ae469bd73b69",
+    "semantic_hash": "b97133c539b7879d86a2ae469bd73b69"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/assets/readme-banner.png": {
+    "mtime": 1781248270.0,
+    "ast_hash": "5edbdfcb470d674bc6b7fdc33ee04804",
+    "semantic_hash": "5edbdfcb470d674bc6b7fdc33ee04804"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/assets/taste-skill-logo.webp": {
+    "mtime": 1781248270.0,
+    "ast_hash": "7a48c8636acedaf6c543ad15070ea9da",
+    "semantic_hash": "7a48c8636acedaf6c543ad15070ea9da"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/examples/floria-bottom.webp": {
+    "mtime": 1781248270.0,
+    "ast_hash": "494aec8ff020666fd5daa01034d71154",
+    "semantic_hash": "494aec8ff020666fd5daa01034d71154"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/examples/floria-full.webp": {
+    "mtime": 1781248270.0,
+    "ast_hash": "e7e7f375b7e7d2a82b7c79bf2e6cb898",
+    "semantic_hash": "e7e7f375b7e7d2a82b7c79bf2e6cb898"
+  },
+  "/Volumes/External/iConnectIT claude plugins/plugins/taste-skill/examples/floria-top.webp": {
+    "mtime": 1781248270.0,
+    "ast_hash": "c250dd801dcf76e50a6c77b77d00e95c",
+    "semantic_hash": "c250dd801dcf76e50a6c77b77d00e95c"
+  }
+}
