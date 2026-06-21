@@ -93,7 +93,7 @@ app.post('/generate', upload.single('exportFile'), (req, res) => {
     `Build a landing page for ${brand}. ${whatItDoes || ''}`,
     `Primary keyword: ${keyword}.${secondary}`,
     `Sections: ${sectionList}.`,
-    `Aesthetic: ${aesthetic || 'Minimal Editorial'}.`,
+    aesthetic ? `Aesthetic: ${aesthetic}.` : '',
     `Primary CTA: "${ctaLabel || 'Get Started'}" linking to ${ctaUrl || '#'}.`,
     motionLine,
   ].filter(Boolean).join(' ');
