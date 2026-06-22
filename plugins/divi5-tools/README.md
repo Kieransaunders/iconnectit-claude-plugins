@@ -135,47 +135,24 @@ See [docs/user-flow.md](docs/user-flow.md) for a full Mermaid flowchart covering
 
 ## Installation
 
-### WordPress plugin
-
-The plugin zip is bundled inside the `import-to-local` skill. After running `install-skills.sh` it will be at:
+### The Claude Code plugin
 
 ```
-~/.claude/skills/import-to-local/divi-tools-importer.zip
+/plugin marketplace add Kieransaunders/iconnectit-claude-plugins
+/plugin install divi5-tools@iconnectit-claude-plugins
 ```
 
-1. **WordPress Admin → Plugins → Add New → Upload Plugin**
-2. Choose that zip → **Install Now** → **Activate**
-3. Go to **Settings → Divi Tools Importer** to get your site URL and API key
+Restart Claude Code and the skills are available as `/divi5-tools:<skill>`. Node.js must be on your PATH — the builder and validator scripts use it.
 
-The plugin provides the REST API that the `import-to-local` skill uses to push generated pages into WordPress.
+### The WordPress importer plugin
 
----
+`import-to-local` pushes pages into WordPress through the **Divi Tools Importer** plugin. Build the installable zip any time:
 
-### Claude Code skills
-
-The skills run inside Claude Code (desktop app, CLI, or IDE extension). They live in `~/.claude/skills/` and are invoked with `/skill-name`.
-
-**Option A — install script (recommended)**
-
-Clone or download this repo, then run:
-
-```bash
-bash plugins/divi5-tools/install-skills.sh
+```
+/divi5-tools:help
 ```
 
-Restart Claude Code. All 7 skills are immediately available.
-
-**Option B — manual copy**
-
-Copy any individual skill folder into `~/.claude/skills/`:
-
-```bash
-cp -r plugins/divi5-tools/skills/divi5-page-generator ~/.claude/skills/
-```
-
-Restart Claude Code, then use `/divi5-page-generator` in any session.
-
-**Requirements:** Node.js must be available in your shell (used by the bundled builder and validator scripts).
+That writes `divi-tools-importer.zip` to `~/Downloads`. In WordPress: **Plugins → Add New → Upload Plugin → Activate**, then copy your site URL and API key from **Settings → Divi Tools Importer**. _(Coming soon to the WordPress.org plugin directory — then it's a one-click install.)_
 
 ---
 

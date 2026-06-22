@@ -8,7 +8,7 @@ One marketplace, multiple plugins — install only what you need.
 
 | Plugin | Skills | What it does |
 |--------|--------|--------------|
-| **divi5-tools** | `landing-page`, `design-review`, `style-variables`, `import-to-local` | Generate, review, and import SEO-optimised Divi 5 landing pages. |
+| **divi5-tools** | `divi5-page-generator`, `divi5-extract-style`, `divi5-style-check`, `design-review`, `import-to-local`, `divi5-plugin-dev`, `divitheatre-engine` | Generate, review, and import SEO-optimised Divi 5 pages; build Divi 5 plugins and motion. |
 | **wp-dev-tools** | `wp-plugin-marketing`, `wp-plugin-submission-check` | Market a WordPress plugin/theme and audit it for WordPress.org submission. |
 | **noloco-api** | `noloco-api` | Work with Noloco's per-app GraphQL data API — introspection, CRUD, pagination, WordPress sync. |
 
@@ -16,12 +16,14 @@ One marketplace, multiple plugins — install only what you need.
 
 Production-ready Divi 5 work, end to end.
 
-- **landing-page** — generates complete, importable Divi 5 JSON via a Node builder library (no hand-written escaped JSON), with five aesthetic presets, an HTML preview approval gate, and a deterministic SEO report card.
-- **design-review** — audits any Divi 5 export against structural rules, SEO requirements, and a professional design checklist.
-- **style-variables** — turns a brand guide or design tokens into an importable Divi 5 Global Variables JSON.
-- **import-to-local** — imports a generated page into a running [Local](https://localwp.com) site as a draft, previews it, and publishes only on explicit accept.
+- **divi5-page-generator** — generates complete, importable Divi 5 JSON via a Node builder library (no hand-written escaped JSON), with five aesthetic presets, an HTML preview approval gate, and a deterministic SEO report card.
+- **divi5-extract-style** — turns a brand guide into importable Divi 5 Global Variables, or extracts the design system from an existing Divi export so new pages match it.
+- **divi5-style-check** — QA gate: verifies a generated page reuses the designer's exact presets, colours, and fonts before import.
+- **design-review** — audits any Divi 5 export against structural rules, SEO requirements, and a design checklist; `--spec` mode checks an imported page against the original brief.
+- **import-to-local** — imports a generated page into any WordPress site (Local or hosted) as a draft, previews it, and publishes only on explicit accept.
+- **divi5-plugin-dev** / **divitheatre-engine** — build Divi 5 custom-module plugins and Theatre.js-driven motion.
 
-Requires Node.js in the working environment.
+**Using it:** a typical run is `/divi5-tools:divi5-page-generator` → approve the HTML preview → `/divi5-tools:import-to-local` to push it live. See the [divi5-tools README](plugins/divi5-tools/README.md) for the full workflows (existing design / brand guide / from scratch) and QA gates. Requires Node.js.
 
 ### wp-dev-tools
 
@@ -69,7 +71,7 @@ claude --plugin-dir "/Volumes/External/iConnectIT claude plugins/plugins/noloco-
 ├── plugins/
 │   ├── divi5-tools/
 │   │   ├── .claude-plugin/plugin.json
-│   │   └── skills/{landing-page,design-review,style-variables,import-to-local}/
+│   │   └── skills/{divi5-page-generator,divi5-extract-style,divi5-style-check,design-review,import-to-local,divi5-plugin-dev,divitheatre-engine}/
 │   ├── wp-dev-tools/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── skills/{wp-plugin-marketing,wp-plugin-submission-check}/
