@@ -10,11 +10,12 @@ allowed-tools: Bash(node *), mcp__plugin_playwright_playwright__browser_navigate
 
 You are a Divi 5 layout architect, senior creative technologist, and SEO specialist. You produce production-ready, importable Divi 5 JSON — every layout intentionally designed, semantically correct, and validated before delivery.
 
-This skill runs in two modes. **Detect the mode from the prompt before doing anything else:**
+This skill runs in three modes. **Detect the mode from the prompt before doing anything else:**
 
 | Signal | Mode |
 |---|---|
 | "add a [type] section", "create a features section", "I need a pricing section", `--section` flag | **Section mode** — single reusable section, `et_builder_layouts` context |
+| "edit this page", "update the copy on", "change the hero", "swap the colour", "from this export", `--mutate` flag, or a `.json` file path with a change description | **Mutate mode** — round-trip edit of an existing export JSON |
 | Everything else (full page brief, SEO keywords, landing page, multi-section) | **Page mode** — full landing page, `et_builder` context |
 
 ---
@@ -60,6 +61,71 @@ Fix all FAILs. The h1 rule does NOT apply to sections — use h2 for the section
 
 ---
 
+## Mutate mode
+
+Edit an existing Divi 5 export JSON — change copy, swap colours, or reorder sections — without touching preset IDs, global colour definitions, or structural layout.
+
+### When to use
+
+The user has an exported Divi 5 page (or you just generated one with Stage 0 clone) and wants specific targeted changes: hero copy, accent colour, button label, section copy, etc. **This is the right workflow for ET pack clones** — clone with `et-pages.js`, then mutate the copy and brand colours rather than rebuilding from scratch.
+
+### Mutate workflow
+
+**Step 1 — Ingest.** Run `ingest.js` to produce the three companion artefacts:
+```bash
+node ${CLAUDE_SKILL_DIR}/scripts/ingest.js <export.json>
+# → <name>.tokens.js   (colour/variable/preset label maps)
+# → <name>.presets.json (preset subtree for builder + validator)
+# → <name>.outline.json (section-by-section structure map)
+```
+
+Read `<name>.outline.json` to understand the page structure — section labels, module types, and copy text — before writing the changes spec.
+
+**Step 2 — Write a `changes.json` spec.** Three mutation types are supported:
+
+```json
+{
+  "texts": [
+    { "find": "Transform Your Business", "replace": "IT Support That Never Sleeps" },
+    { "find": "Get Started Today",        "replace": "Book a Free Call" }
+  ],
+  "globalColors": [
+    { "label": "Accent Color", "hex": "#FF6B35" }
+  ],
+  "gcidColors": [
+    { "gcid": "gcid-accent", "hex": "#FF6B35" }
+  ]
+}
+```
+
+- `texts` — exact copy swaps. Use the text from the outline. JSON string escaping is handled automatically.
+- `globalColors` — patch by ET colour label (from `<name>.tokens.js` `colorId` keys).
+- `gcidColors` — patch by gcid slug (use when the label is unknown).
+
+**Step 3 — Apply mutations.**
+```bash
+node ${CLAUDE_SKILL_DIR}/scripts/mutate.js <export.json> changes.json [output.json]
+```
+
+The script:
+1. Applies all text replacements to the serialised page content.
+2. Patches the `global_colors` array entries for colour changes.
+3. Runs a **preservation check** — if any preset ID from the source is missing from the output, it exits 1 and refuses to write. Fix the changes spec, never override this check.
+
+**Step 4 — Validate.** Run the standard validator on the output JSON:
+```bash
+node ${CLAUDE_SKILL_DIR}/scripts/validate.js <output.json>
+```
+For a mutated ET pack clone, omit `--keyword` and `--meta` unless the user wants SEO checks.
+
+**Step 5 — Import.** Use the `import-to-local` skill to push the mutated JSON to the local WordPress. Run the live preview or Playwright screenshot to confirm exactly the requested changes and nothing else.
+
+### Preservation contract
+
+The mutator guarantees that **every `modulePreset` ID in the source JSON survives unchanged** in the output. If a mutation accidentally deletes or rewrites a preset reference, the script exits 1 with a diff. Never bypass this — a lost preset ID silently breaks the live render.
+
+---
+
 ## Page mode
 
 ## Non-negotiable rules
@@ -73,6 +139,43 @@ Fix all FAILs. The h1 rule does NOT apply to sections — use h2 for the section
 7. **Pass the taste layer.** Every page is built against [references/taste.md](references/taste.md) and composed with [references/layout-patterns.md](references/layout-patterns.md). Study the quality bar screenshots [references/floria-top.png](references/floria-top.png) and [references/floria-bottom.png](references/floria-bottom.png) before designing. Two parts are hard gates: **zero em-dashes (`—`) or en-dash separators (`–`) in any visible copy** (the validator FAILs on these — use a hyphen `-`), and the **taste pre-flight checklist** (taste.md §14) must pass before JSON is generated.
 
 ## Workflow
+
+### Stage 0 — ET pack clone (default starting point)
+
+**Check for a matching ET template before doing anything else.** The 24 premade pages in `references/Divi design system JSON/Divi-5-Launch-Freebie_Pages.json` are production-ready Divi 5 layouts. Cloning one as a base is faster and structurally sounder than building from scratch.
+
+```bash
+# See what's available
+node ${CLAUDE_SKILL_DIR}/scripts/et-pages.js list
+
+# Find best match for the brief
+node ${CLAUDE_SKILL_DIR}/scripts/et-pages.js match "<page type keyword>"
+
+# Clone to an importable JSON file
+node ${CLAUDE_SKILL_DIR}/scripts/et-pages.js clone "<keyword>" [brand]-base-page.json
+```
+
+**Available page types** (run `list` for section outlines):
+`about`, `contact`, `events`, `feature`, `features`, `gallery`, `home`, `job-listings`, `login`, `portfolio`, `pricing`, `pricing-menu`, `privacy-policy`, `project`, `projects`, `resume`, `service`, `services`, `team`, `terms-of-service`, `blog-module`, `blog-loop-builder`, `shop-module`, `shop-loop-builder`
+
+**Decision tree:**
+
+| Situation | Action |
+|---|---|
+| A page type from the list matches the brief | Clone it → use as the delivery base, note sections to user |
+| Brief combines multiple page types (e.g. services + pricing) | Clone the closest match, note which sections come from the template and which need generating |
+| Brief is highly bespoke / no match (`match` returns "No match") | Skip Stage 0, build from scratch in Stage 3 |
+
+**When a match is found:**
+1. Run `clone` to produce `[brand]-base-page.json`. This is a complete, importable Divi 5 page.
+2. Tell the user: *"Starting from the ET '[Title]' template. It includes: [sections]. I'll customise the copy and branding in Stage 3."*
+3. Continue to Stage 1 for the brief (copy, brand, SEO keyword).
+4. In Stage 3: use the cloned JSON as the deliverable base. Apply brand mutations (copy, colours, section additions/removals) to it — do NOT generate a new page from scratch. Phase 2's mutator (when available) handles this automatically; until then, describe which sections need client copy replacement and deliver the structural clone.
+5. Still run Stage 2 HTML preview and Stage 4 Playwright screenshot — the clone gives structure, but the taste and render gates still apply.
+
+The clone output includes the ET design system presets, global colours, and global variables. The importer remaps preset IDs if they already exist on the target site, so re-importing is safe.
+
+---
 
 ### Stage 1 — Brief
 

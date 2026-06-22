@@ -136,3 +136,9 @@ See [docs/user-flow.md](docs/user-flow.md) for a full Mermaid flowchart covering
 ## Requirements
 
 Node.js available in the working environment (used by the bundled builder and validator scripts).
+
+---
+
+## For developers
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) for project structure, environment setup, build/deploy flows, and current development state.

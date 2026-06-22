@@ -1,0 +1,245 @@
+{
+  "source": "iConnectITHomepage.json",
+  "sections": [
+    {
+      "adminLabel": "Hero",
+      "presetId": null,
+      "modules": [
+        {
+          "type": "text",
+          "preview": "<p>AI-Forward Agency</p>"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Build smarter. Connect faster. Scale effortlessly."
+        },
+        {
+          "type": "text",
+          "preview": "<p>We're a low/no-code AI agency that eliminates complexity and crafts intentional, scalable systems — so your team can "
+        },
+        {
+          "type": "button",
+          "text": ""
+        },
+        {
+          "type": "button",
+          "text": ""
+        },
+        {
+          "type": "number-counter",
+          "preview": "Projects delivered"
+        },
+        {
+          "type": "number-counter",
+          "preview": "Faster than dev teams"
+        },
+        {
+          "type": "number-counter",
+          "preview": "Client retention"
+        }
+      ]
+    },
+    {
+      "adminLabel": "Tools Strip",
+      "presetId": "aku4eoy8is",
+      "modules": [
+        {
+          "type": "text",
+          "preview": "<p>BUILT ON THE BEST NO-CODE &amp; AI PLATFORMS</p>"
+        },
+        {
+          "type": "text",
+          "preview": "<p style=\\"
+        }
+      ]
+    },
+    {
+      "adminLabel": "About",
+      "presetId": "qz8hqz8hqz",
+      "modules": [
+        {
+          "type": "text",
+          "preview": "<p>About</p>"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "We harness AI to slice through complexity and craft systems that work."
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "text",
+          "preview": "<p>From automating repetitive workflows to deploying intelligent AI agents, we connect the tools your business already l"
+        },
+        {
+          "type": "text",
+          "preview": "<p style=\\"
+        }
+      ]
+    },
+    {
+      "adminLabel": "Services",
+      "presetId": "qz8hqz8hqz",
+      "modules": [
+        {
+          "type": "text",
+          "preview": "<p>Services</p>"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Everything you need to move faster."
+        },
+        {
+          "type": "text",
+          "preview": "<p>We deliver end-to-end solutions — from strategy to deployment — using the best platforms available today.</p>"
+        },
+        {
+          "type": "blurb",
+          "preview": "Replace repetitive, manual processes with intelligent pipelines that learn, adapt, and scale — powered by the latest AI "
+        },
+        {
+          "type": "blurb",
+          "preview": "Full-featured web applications built without traditional code. From customer portals to internal tools — deployed in wee"
+        },
+        {
+          "type": "blurb",
+          "preview": "Connect your CRM, ERP, marketing tools, and databases into one seamless ecosystem. Eliminate data silos and manual hando"
+        },
+        {
+          "type": "blurb",
+          "preview": "Not sure where to start? We audit your current stack, identify the highest-impact AI opportunities, and deliver a priori"
+        }
+      ]
+    },
+    {
+      "adminLabel": "Process",
+      "presetId": "qz8hqz8hqz",
+      "modules": [
+        {
+          "type": "text",
+          "preview": "<p>Process</p>"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Our process is simple, purposeful, and adaptable."
+        },
+        {
+          "type": "text",
+          "preview": "<p><strong style=\\"
+        },
+        {
+          "type": "text",
+          "preview": "<p style=\\"
+        }
+      ]
+    },
+    {
+      "adminLabel": "Work",
+      "presetId": "aku4eoy8is",
+      "modules": [
+        {
+          "type": "text",
+          "preview": "<p>Work</p>"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Recent projects."
+        },
+        {
+          "type": "button",
+          "text": ""
+        },
+        {
+          "type": "blurb",
+          "preview": "AI pipeline that scores, enriches, and routes inbound leads — reducing SDR time by 70% for a B2B SaaS company."
+        },
+        {
+          "type": "blurb",
+          "preview": "Full-featured Bubble application replacing a 12-step manual process with a self-serve portal, slashing onboarding from 2"
+        },
+        {
+          "type": "blurb",
+          "preview": "Connected HubSpot, Xero, and a custom Airtable base into a single source of truth — eliminating 15 hours of manual repor"
+        },
+        {
+          "type": "blurb",
+          "preview": "A 90-day transformation plan for a 50-person professional services firm — identifying $400K in annual automation savings"
+        }
+      ]
+    },
+    {
+      "adminLabel": "CTA",
+      "presetId": "u5gr2dozal",
+      "modules": [
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Ready to build something great?"
+        },
+        {
+          "type": "text",
+          "preview": "<p>Tell us about your project and we'll get back to you within 24 hours. No pressure, no jargon — just a real conversati"
+        },
+        {
+          "type": "button",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "adminLabel": "Footer",
+      "presetId": "6emu2aiqy6",
+      "modules": [
+        {
+          "type": "text",
+          "preview": "<p><strong style=\\"
+        },
+        {
+          "type": "text",
+          "preview": "<p>Low/no-code AI agency.<br>We build systems that connect, automate, and scale.</p>"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Services"
+        },
+        {
+          "type": "text",
+          "preview": "<p><a href=\\"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Company"
+        },
+        {
+          "type": "text",
+          "preview": "<p><a href=\\"
+        },
+        {
+          "type": "heading",
+          "level": "h2",
+          "text": "Contact"
+        },
+        {
+          "type": "text",
+          "preview": "<p><a href=\\"
+        },
+        {
+          "type": "text",
+          "preview": "<p>© 2025 iConnectIT. All rights reserved.</p>"
+        },
+        {
+          "type": "text",
+          "preview": "<p>Built with no-code. Powered by AI.</p>"
+        }
+      ]
+    }
+  ]
+}

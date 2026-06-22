@@ -54,7 +54,8 @@ class DTI_RestApi {
 			'callback'            => array( __CLASS__, 'handle_presets_list' ),
 			'permission_callback' => array( __CLASS__, 'authenticate' ),
 			'args'                => array(
-				'module' => array( 'required' => false, 'type' => 'string', 'default' => '' ),
+				'module'     => array( 'required' => false, 'type' => 'string',  'default' => '' ),
+				'with_attrs' => array( 'required' => false, 'type' => 'boolean', 'default' => false ),
 			),
 		) );
 
@@ -133,10 +134,11 @@ class DTI_RestApi {
 	}
 
 	public static function handle_presets_list( WP_REST_Request $request ): WP_REST_Response|WP_Error {
-		$module = sanitize_text_field( (string) $request->get_param( 'module' ) );
+		$module     = sanitize_text_field( (string) $request->get_param( 'module' ) );
+		$with_attrs = (bool) $request->get_param( 'with_attrs' );
 
 		try {
-			$result = DTI_PresetManager::list_presets( $module );
+			$result = DTI_PresetManager::list_presets( $module, $with_attrs );
 		} catch ( RuntimeException $e ) {
 			return new WP_Error( 'list_failed', $e->getMessage(), array( 'status' => 500 ) );
 		}

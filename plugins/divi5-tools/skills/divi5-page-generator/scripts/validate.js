@@ -246,11 +246,42 @@ const presetIndex = {};
 for (const [mod, group] of Object.entries(doc.presets?.module || {})) {
   for (const id of Object.keys(group.items || {})) presetIndex[id] = mod;
 }
+const path = require('path');
 const presetFirstMode = !doc.presets || Object.keys(doc.presets.module || {}).length === 0;
 if (presetFirstMode && allPresetRefs.length) {
-  // Preset-first workflow: presets are registered on the site, not bundled in the JSON.
-  // Trust the IDs from the registry — skip the not-defined check.
-  pass(`${allPresetRefs.length} preset references checked (preset-first mode — IDs from site registry)`);
+  // Preset-first workflow: presets must exist on the site. Require a registry file on disk
+  // so we can cross-check IDs — silent trust of any ID was the phantom-ID bug (spec §1C).
+  const dir = path.dirname(path.resolve(file));
+  const candidates = [
+    path.join(dir, 'et-preset-registry.json'),
+    ...fs.readdirSync(dir).filter(f => f.endsWith('.presets.json')).map(f => path.join(dir, f)),
+  ];
+  const registryFile = candidates.find(p => fs.existsSync(p));
+
+  if (!registryFile) {
+    err(`PRESETS: ${allPresetRefs.length} modulePreset reference(s) in preset-first mode but no registry file found. ` +
+        `Provide et-preset-registry.json or *.presets.json alongside the page, or bundle presets in the JSON instead.`);
+  } else {
+    const reg = JSON.parse(fs.readFileSync(registryFile, 'utf8'));
+    // Registry shape: { presets: { "divi/x": { "Name": "id" | { id, attrs } } } } or bare map
+    const regMap = reg.presets || reg;
+    const registryIds = new Set();
+    for (const moduleMap of Object.values(regMap)) {
+      if (typeof moduleMap !== 'object') continue;
+      for (const v of Object.values(moduleMap)) {
+        if (typeof v === 'string') registryIds.add(v);
+        else if (v && v.id) registryIds.add(String(v.id));
+      }
+    }
+    let phantoms = 0;
+    for (const ref of allPresetRefs) {
+      if (!registryIds.has(String(ref.id))) {
+        err(`PRESETS: modulePreset "${ref.id}" (${ref.module}) not found in ${path.basename(registryFile)} — phantom ID`);
+        phantoms++;
+      }
+    }
+    if (!phantoms) pass(`${allPresetRefs.length} preset references cross-checked against ${path.basename(registryFile)}`);
+  }
 } else {
   for (const ref of allPresetRefs) {
     if (!presetIndex[ref.id]) err(`modulePreset "${ref.id}" (${ref.module}) not defined in presets`);
@@ -274,6 +305,17 @@ const etSystemGcids = (() => {
     return ids;
   } catch { return new Set(); }
 })();
+// In preset-first mode, require a *.variables.json alongside the page so gcid refs
+// can be validated — silently trusting any gcid was masking undefined variable bugs.
+if (presetFirstMode && allGcidRefs.length) {
+  const dir2 = path.dirname(path.resolve(file));
+  const varFiles = fs.readdirSync(dir2).filter(f => f.endsWith('.variables.json'));
+  if (!varFiles.length) {
+    err(`GCID: ${allGcidRefs.length} gcid reference(s) in preset-first mode but no *.variables.json found alongside the page. ` +
+        `Provide the matching variables file (from the style-variables skill or site export) or bundle global_colors in the JSON.`);
+  }
+}
+
 for (const g of new Set(allGcidRefs)) {
   if (!definedColors.has(g) && !etSystemGcids.has(g)) {
     // In preset-first mode, custom brand colours (gcid-ryw-*, gcid-brand-*) are
@@ -313,12 +355,14 @@ if (definedColors.size) pass(`${definedColors.size} global colours defined, refe
   for (const blockList of Object.values(tokensByKey)) {
     for (const t of blockList) {
       if (!t.attrs) continue;
-      // Preset background/border/button attrs require raw hex (Divi's preset CSS generator
-      // doesn't resolve variable refs). Only flag hex in non-background paths.
-      // Strip decoration.background and button.decoration.background from the scan string.
+      // Variable refs resolve in: font, text, link, icon, divider colour paths.
+      // They do NOT resolve in: background, button, border, boxShadow — those require raw hex.
+      // Only flag raw hex in paths where refs would actually work, to avoid false positives.
       const aStr = JSON.stringify(t.attrs)
         .replace(/"background":\{[^}]+\}/g, '"background":{}')
-        .replace(/"button":\{"desktop":[^}]+\}/g, '"button":{}');
+        .replace(/"button":\{"desktop":[^}]+\}/g, '"button":{}')
+        .replace(/"border":\{[^}]+\}/g, '"border":{}')
+        .replace(/"boxShadow":\{[^}]+\}/g, '"boxShadow":{}');
       let m;
       const re = new RegExp(hexRe.source, hexRe.flags);
       while ((m = re.exec(aStr)) !== null) {

@@ -177,7 +177,8 @@ All endpoints at `/wp-json/divi-tools/v1/*`. **All require** `X-Divi-Tools-Key` 
 ## Current development state
 
 - **Phase -1 (DONE):** Rebuilt stale zip from v1.2.0 source, removed duplicate repo-root directory. Committed in `6785d33` (2026-06-22).
-- **Phases 0–4:** Planned, not started. Full plan at `docs/plans/2026-06-22-amazing-generator-from-new-or-existing.md`.
+- **Phase 0 (DONE):** ET pack clone-first path. `scripts/et-pages.js` indexes the 24 premade pages and outputs importable JSON. SKILL.md Stage 0 makes the generator default to cloning from the ET pack before building from scratch.
+- **Phases 1–4:** Planned, not started. Full plan at `docs/plans/2026-06-22-amazing-generator-from-new-or-existing.md`.
 
 ## Key decisions (don't re-litigate)
 

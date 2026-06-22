@@ -674,48 +674,105 @@ function createBuilder(opts) {
     },
 
     colorRef(label) {
-      if (!tokens) throw new Error(`builder.colorRef('${label}'): no tokens loaded — pass { tokens: require('./divi-design-system.tokens.js') } to createBuilder()`);
+      if (!tokens) {
+        console.warn(`builder.colorRef('${label}'): no tokens loaded — returning undefined`);
+        return undefined;
+      }
       const ref = tokens.colorRef[label];
-      if (!ref) throw new Error(`builder.colorRef('${label}'): unknown label. Known labels: ${Object.keys(tokens.colorRef).join(', ')}`);
+      if (!ref) {
+        // Try hex fallback via colorId → colorHex chain
+        const gcid = tokens.colorId && tokens.colorId[label];
+        const hex  = gcid && tokens.colorHex && tokens.colorHex[gcid];
+        const fallback = typeof hex === 'string' ? hex : (hex && hex.resolvesTo) || undefined;
+        console.warn(`builder.colorRef('${label}'): unknown label${fallback ? `, using hex fallback ${fallback}` : ' — returning undefined'}`);
+        return fallback;
+      }
       return ref;
     },
 
     variableRef(label) {
-      if (!tokens) throw new Error(`builder.variableRef('${label}'): no tokens loaded — pass { tokens: require('./divi-design-system.tokens.js') } to createBuilder()`);
+      if (!tokens) {
+        console.warn(`builder.variableRef('${label}'): no tokens loaded — returning undefined`);
+        return undefined;
+      }
       const ref = tokens.variableRef && tokens.variableRef[label];
-      if (!ref) throw new Error(`builder.variableRef('${label}'): unknown label. Known labels: ${tokens.variableRef ? Object.keys(tokens.variableRef).join(', ') : 'none'}`);
+      if (!ref) {
+        console.warn(`builder.variableRef('${label}'): unknown label — returning undefined`);
+        return undefined;
+      }
       return ref;
     },
 
     /**
+     * Unified colour accessor. Accepts a label (ET token name), a raw hex string,
+     * or a gcid-* slug. Never throws — unknown inputs warn and return undefined.
+     *
+     * b.color('Primary Color')   → variable ref via colorRef
+     * b.color('#ff6600')         → '#ff6600' (pass-through)
+     * b.color('gcid-abc123')     → colorVar('gcid-abc123') variable ref string
+     */
+    color(input) {
+      if (!input) return undefined;
+      if (typeof input !== 'string') return undefined;
+      if (/^gcid-/.test(input)) return this.colorVar(input);
+      if (/^#[0-9a-fA-F]{3,8}$/.test(input)) return input;
+      // Try as ET token label
+      if (tokens && tokens.colorRef && tokens.colorRef[input]) return tokens.colorRef[input];
+      if (tokens && tokens.colorId && tokens.colorId[input]) return this.colorVar(tokens.colorId[input]);
+      console.warn(`builder.color('${input}'): not a recognised label, hex, or gcid — returning undefined`);
+      return undefined;
+    },
+
+    /**
      * Load a preset registry fetched from GET /wp-json/divi-tools/v1/presets.
-     * After loading, use presetRef() to reference existing presets by name instead
-     * of minting new ones. The page import will then send an empty presets object
-     * and simply reference the already-registered IDs.
+     *
+     * Without { withAttrs: true }: presetRef() will THROW — no attrs means buttons
+     * render default blue. Only use this when all preset CSS is already on the site
+     * AND you've verified the page doesn't need attrs inlined.
+     *
+     * With { withAttrs: true }: registry must be fetched with ?with_attrs=1 so each
+     * entry is { id, attrs } instead of a bare ID string. presetRef() then inlines
+     * attrs so the page renders correctly on the front end.
      *
      * registry: the .presets object from the API response
-     *   { "divi/section": { "Section – Cream": "abc123", ... }, ... }
      */
-    loadPresetRegistry(registry) {
+    loadPresetRegistry(registry, opts) {
       this._registry = registry || {};
+      this._registryWithAttrs = !!(opts && opts.withAttrs);
     },
 
     /**
      * Reference an existing preset by module + name from a loaded registry.
-     * Returns { id, attrs: null } — no attrs are inlined since the preset already
-     * exists on the site with its CSS already generated.
      *
-     * Throws if registry not loaded or name not found, so failures are loud.
+     * Throws if:
+     *   - registry not loaded
+     *   - registry was loaded without { withAttrs: true } (would produce default-blue buttons)
+     *   - name not found in the registry
+     *
+     * Returns { id, attrs } — attrs are inlined by applyPreset() so front-end CSS renders.
      */
     presetRef(moduleName, name) {
-      if (!this._registry) throw new Error(`presetRef('${name}'): call loadPresetRegistry() first`);
+      if (!this._registry) throw new Error(`presetRef('${moduleName}', '${name}'): call loadPresetRegistry() first`);
+      if (!this._registryWithAttrs) {
+        throw new Error(
+          `presetRef('${moduleName}', '${name}'): registry was loaded without { withAttrs: true }. ` +
+          `Buttons will render default blue without inlined attrs. ` +
+          `Fetch with GET /presets?with_attrs=1 and pass { withAttrs: true } to loadPresetRegistry(), ` +
+          `or use b.preset() to register custom presets with inline attrs.`
+        );
+      }
       const moduleMap = this._registry[moduleName] || this._registry[`divi/${moduleName}`] || {};
-      const id = moduleMap[name];
-      if (!id) {
+      const entry = moduleMap[name];
+      if (!entry) {
         const known = Object.keys(moduleMap).join(', ') || '(none)';
         throw new Error(`presetRef('${moduleName}', '${name}'): not found. Known: ${known}`);
       }
-      return { id, attrs: null };
+      // Registry may return { id, attrs } (with_attrs=1) or a bare ID string (old format).
+      if (typeof entry === 'string') {
+        console.warn(`presetRef('${moduleName}', '${name}'): server returned a bare ID — attrs not available. Button CSS may not render.`);
+        return { id: entry, attrs: null };
+      }
+      return { id: entry.id, attrs: entry.attrs || null };
     },
 
     /** Register a preset; returns its id for modulePreset references. */

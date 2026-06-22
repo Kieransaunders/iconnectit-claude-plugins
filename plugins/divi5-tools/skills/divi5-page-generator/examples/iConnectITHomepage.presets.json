@@ -1,0 +1,990 @@
+{
+  "context": "et_builder",
+  "presets": {
+    "module": {
+      "divi/section": {
+        "default": "e7f66422-60e2-4934-92b1-cfc792ba3593",
+        "items": {
+          "aku4eoy8is": {
+            "id": "aku4eoy8is",
+            "name": "Section - Light Gray",
+            "moduleName": "divi/section",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "module": {
+                "decoration": {
+                  "background": {
+                    "desktop": {
+                      "value": {
+                        "color": "#f7f7f7"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "desktop": {
+                      "value": {
+                        "padding": {
+                          "top": "3.5em",
+                          "bottom": "3.5em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    },
+                    "phone": {
+                      "value": {
+                        "padding": {
+                          "top": "2.5em",
+                          "bottom": "2.5em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "qz8hqz8hqz": {
+            "id": "qz8hqz8hqz",
+            "name": "Section - White",
+            "moduleName": "divi/section",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "module": {
+                "decoration": {
+                  "background": {
+                    "desktop": {
+                      "value": {
+                        "color": "#ffffff"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "desktop": {
+                      "value": {
+                        "padding": {
+                          "top": "7em",
+                          "bottom": "7em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    },
+                    "phone": {
+                      "value": {
+                        "padding": {
+                          "top": "4em",
+                          "bottom": "4em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "u5gr2dozal": {
+            "id": "u5gr2dozal",
+            "name": "Section - Accent Dark",
+            "moduleName": "divi/section",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "module": {
+                "decoration": {
+                  "background": {
+                    "desktop": {
+                      "value": {
+                        "color": "#141414"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "desktop": {
+                      "value": {
+                        "padding": {
+                          "top": "7em",
+                          "bottom": "7em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    },
+                    "phone": {
+                      "value": {
+                        "padding": {
+                          "top": "4em",
+                          "bottom": "4em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    }
+                  },
+                  "layout": {
+                    "desktop": {
+                      "value": {
+                        "justifyContent": "center"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "6emu2aiqy6": {
+            "id": "6emu2aiqy6",
+            "name": "Section - Dark",
+            "moduleName": "divi/section",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "module": {
+                "decoration": {
+                  "background": {
+                    "desktop": {
+                      "value": {
+                        "color": "#141414"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "desktop": {
+                      "value": {
+                        "padding": {
+                          "top": "7em",
+                          "bottom": "7em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    },
+                    "phone": {
+                      "value": {
+                        "padding": {
+                          "top": "4em",
+                          "bottom": "4em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "off"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "divi/row": {
+        "default": "9ef0c0f5-ce17-457d-b9a0-29428d708fed",
+        "items": {
+          "ybo1er4hu7": {
+            "id": "ybo1er4hu7",
+            "name": "Row - Two Column",
+            "moduleName": "divi/row",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "module": {
+                "advanced": {
+                  "flexColumnStructure": {
+                    "desktop": {
+                      "value": "equal-columns_2"
+                    }
+                  }
+                },
+                "decoration": {
+                  "layout": {
+                    "desktop": {
+                      "value": {
+                        "flexWrap": "nowrap",
+                        "display": "flex",
+                        "columnGap": "60px",
+                        "rowGap": "40px",
+                        "alignItems": "center"
+                      }
+                    },
+                    "phone": {
+                      "value": {
+                        "flexWrap": "wrap",
+                        "display": "flex"
+                      }
+                    },
+                    "phoneWide": {
+                      "value": {
+                        "flexWrap": "wrap",
+                        "display": "flex"
+                      }
+                    }
+                  },
+                  "sizing": {
+                    "desktop": {
+                      "value": {
+                        "width": "100%",
+                        "maxWidth": "1200px"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "m2iyeuaq6m": {
+            "id": "m2iyeuaq6m",
+            "name": "Row - Two Column Top",
+            "moduleName": "divi/row",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "module": {
+                "advanced": {
+                  "flexColumnStructure": {
+                    "desktop": {
+                      "value": "equal-columns_2"
+                    }
+                  }
+                },
+                "decoration": {
+                  "layout": {
+                    "desktop": {
+                      "value": {
+                        "flexWrap": "nowrap",
+                        "display": "flex",
+                        "columnGap": "60px",
+                        "rowGap": "40px",
+                        "alignItems": "flex-start"
+                      }
+                    },
+                    "phone": {
+                      "value": {
+                        "flexWrap": "wrap",
+                        "display": "flex"
+                      }
+                    },
+                    "phoneWide": {
+                      "value": {
+                        "flexWrap": "wrap",
+                        "display": "flex"
+                      }
+                    }
+                  },
+                  "sizing": {
+                    "desktop": {
+                      "value": {
+                        "width": "100%",
+                        "maxWidth": "1200px"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "2hwbq5kzet": {
+            "id": "2hwbq5kzet",
+            "name": "Row - Four Column",
+            "moduleName": "divi/row",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "module": {
+                "advanced": {
+                  "flexColumnStructure": {
+                    "desktop": {
+                      "value": "equal-columns_4"
+                    }
+                  }
+                },
+                "decoration": {
+                  "layout": {
+                    "desktop": {
+                      "value": {
+                        "flexWrap": "nowrap",
+                        "display": "flex",
+                        "columnGap": "40px",
+                        "rowGap": "40px"
+                      }
+                    },
+                    "tablet": {
+                      "value": {
+                        "flexWrap": "wrap",
+                        "display": "flex"
+                      }
+                    },
+                    "phone": {
+                      "value": {
+                        "flexWrap": "wrap",
+                        "display": "flex"
+                      }
+                    },
+                    "phoneWide": {
+                      "value": {
+                        "flexWrap": "wrap",
+                        "display": "flex"
+                      }
+                    }
+                  },
+                  "sizing": {
+                    "desktop": {
+                      "value": {
+                        "width": "100%",
+                        "maxWidth": "1200px"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "divi/text": {
+        "default": "7e5a2a17-7788-4f3a-9378-8b653c85d5d4",
+        "items": {
+          "ezk5qbwh2n": {
+            "id": "ezk5qbwh2n",
+            "name": "Eyebrow Label imported",
+            "moduleName": "divi/text",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "content": {
+                "decoration": {
+                  "bodyFont": {
+                    "body": {
+                      "font": {
+                        "desktop": {
+                          "value": {
+                            "family": "Inter",
+                            "size": "13px",
+                            "lineHeight": "1.4em",
+                            "color": "#F95E00",
+                            "weight": "600",
+                            "letterSpacing": "0.08em",
+                            "textTransform": "uppercase"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "i5sf2pczm9": {
+            "id": "i5sf2pczm9",
+            "name": "Body - Light BG",
+            "moduleName": "divi/text",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "content": {
+                "decoration": {
+                  "bodyFont": {
+                    "body": {
+                      "font": {
+                        "desktop": {
+                          "value": {
+                            "family": "Inter",
+                            "size": "17px",
+                            "lineHeight": "1.75em",
+                            "color": "#6b7280",
+                            "weight": "500"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "yk6se0m8ug": {
+            "id": "yk6se0m8ug",
+            "name": "Body - Dark BG",
+            "moduleName": "divi/text",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "content": {
+                "decoration": {
+                  "bodyFont": {
+                    "body": {
+                      "font": {
+                        "desktop": {
+                          "value": {
+                            "family": "Inter",
+                            "size": "17px",
+                            "lineHeight": "1.75em",
+                            "color": "#9ca3af",
+                            "weight": "500"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "mb0pe3sh6v": {
+            "id": "mb0pe3sh6v",
+            "name": "Footer Text",
+            "moduleName": "divi/text",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "content": {
+                "decoration": {
+                  "bodyFont": {
+                    "body": {
+                      "font": {
+                        "desktop": {
+                          "value": {
+                            "family": "Inter",
+                            "size": "14px",
+                            "lineHeight": "1.7em",
+                            "color": "#6b7280",
+                            "weight": "400"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "6wmc2si8yo": {
+            "id": "6wmc2si8yo",
+            "name": "Copyright imported",
+            "moduleName": "divi/text",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "content": {
+                "decoration": {
+                  "bodyFont": {
+                    "body": {
+                      "font": {
+                        "desktop": {
+                          "value": {
+                            "family": "Inter",
+                            "size": "13px",
+                            "lineHeight": "1.6em",
+                            "color": "#4b5563",
+                            "weight": "400"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "divi/heading": {
+        "default": "520d40ba-fd35-45ef-a563-8ead4ee95232",
+        "items": {
+          "6n4l2j0hyf": {
+            "id": "6n4l2j0hyf",
+            "name": "Hero H1 imported",
+            "moduleName": "divi/heading",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "title": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "64px",
+                          "lineHeight": "1.05em",
+                          "color": "#0f0f0f",
+                          "weight": "900",
+                          "letterSpacing": "-0.04em"
+                        }
+                      },
+                      "phone": {
+                        "value": {
+                          "size": "38px"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "q8q8q8q8q8": {
+            "id": "q8q8q8q8q8",
+            "name": "Section Heading imported",
+            "moduleName": "divi/heading",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "title": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "42px",
+                          "lineHeight": "1.1em",
+                          "color": "#0f0f0f",
+                          "weight": "800",
+                          "letterSpacing": "-0.03em"
+                        }
+                      },
+                      "phone": {
+                        "value": {
+                          "size": "28px"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "atcvexgzi1": {
+            "id": "atcvexgzi1",
+            "name": "Section Heading - Light",
+            "moduleName": "divi/heading",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "title": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "52px",
+                          "lineHeight": "1.05em",
+                          "color": "#ffffff",
+                          "weight": "900",
+                          "letterSpacing": "-0.04em"
+                        }
+                      },
+                      "phone": {
+                        "value": {
+                          "size": "34px"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "ueyi2m6qau": {
+            "id": "ueyi2m6qau",
+            "name": "Footer Heading imported",
+            "moduleName": "divi/heading",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "title": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "12px",
+                          "lineHeight": "1.4em",
+                          "color": "#4b5563",
+                          "weight": "600",
+                          "letterSpacing": "0.1em",
+                          "textTransform": "uppercase"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "divi/button": {
+        "default": "f49743f2-04df-4419-b3d8-c826a589ee28",
+        "items": {
+          "ung92voha3": {
+            "id": "ung92voha3",
+            "name": "Button - Ghost",
+            "moduleName": "divi/button",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "button": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "15px",
+                          "color": "#6b7280",
+                          "weight": "500"
+                        }
+                      }
+                    }
+                  },
+                  "background": {
+                    "desktop": {
+                      "value": {
+                        "color": "transparent"
+                      }
+                    }
+                  },
+                  "border": {
+                    "desktop": {
+                      "value": {
+                        "styles": {
+                          "all": {
+                            "width": "0px"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "desktop": {
+                      "value": {
+                        "padding": {
+                          "top": "14px",
+                          "bottom": "14px",
+                          "left": "0px",
+                          "right": "0px",
+                          "syncVertical": "on",
+                          "syncHorizontal": "on"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "divi/number-counter": {
+        "default": "280779c5-8fe8-4f55-a036-cdae35143aab",
+        "items": {
+          "6543210zyx": {
+            "id": "6543210zyx",
+            "name": "Stat Counter",
+            "moduleName": "divi/number-counter",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "title": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "13px",
+                          "lineHeight": "1.4em",
+                          "color": "#6b7280",
+                          "weight": "500"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "number": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "40px",
+                          "lineHeight": "1em",
+                          "color": "#F95E00",
+                          "weight": "900",
+                          "letterSpacing": "-0.04em"
+                        }
+                      },
+                      "phone": {
+                        "value": {
+                          "size": "32px"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "divi/blurb": {
+        "default": "a0612400-e059-4a04-8be3-2b4a33367aeb",
+        "items": {
+          "ytoje94zup": {
+            "id": "ytoje94zup",
+            "name": "Service Card",
+            "moduleName": "divi/blurb",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "title": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "20px",
+                          "lineHeight": "1.3em",
+                          "color": "#0f0f0f",
+                          "weight": "700",
+                          "letterSpacing": "-0.02em"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "content": {
+                "decoration": {
+                  "bodyFont": {
+                    "body": {
+                      "font": {
+                        "desktop": {
+                          "value": {
+                            "family": "Inter",
+                            "size": "15px",
+                            "lineHeight": "1.7em",
+                            "color": "#6b7280",
+                            "weight": "500"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "imageIcon": {
+                "advanced": {
+                  "color": {
+                    "desktop": {
+                      "value": "#F95E00"
+                    }
+                  },
+                  "size": {
+                    "desktop": {
+                      "value": "28px"
+                    }
+                  }
+                }
+              },
+              "module": {
+                "decoration": {
+                  "background": {
+                    "desktop": {
+                      "value": {
+                        "color": "#ffffff"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "desktop": {
+                      "value": {
+                        "padding": {
+                          "top": "2.5em",
+                          "bottom": "2.5em",
+                          "left": "2.5em",
+                          "right": "2.5em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "on"
+                        }
+                      }
+                    }
+                  },
+                  "border": {
+                    "desktop": {
+                      "value": {
+                        "radius": {
+                          "topLeft": "0px",
+                          "topRight": "0px",
+                          "bottomLeft": "0px",
+                          "bottomRight": "0px",
+                          "sync": "on"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "iea62yuqmi": {
+            "id": "iea62yuqmi",
+            "name": "Work Card",
+            "moduleName": "divi/blurb",
+            "version": "5.0.0-public-beta.1",
+            "type": "module",
+            "created": 1780322688,
+            "updated": 1780322688,
+            "attrs": {
+              "title": {
+                "decoration": {
+                  "font": {
+                    "font": {
+                      "desktop": {
+                        "value": {
+                          "family": "Inter",
+                          "size": "18px",
+                          "lineHeight": "1.3em",
+                          "color": "#0f0f0f",
+                          "weight": "700",
+                          "letterSpacing": "-0.02em"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "content": {
+                "decoration": {
+                  "bodyFont": {
+                    "body": {
+                      "font": {
+                        "desktop": {
+                          "value": {
+                            "family": "Inter",
+                            "size": "14px",
+                            "lineHeight": "1.6em",
+                            "color": "#6b7280",
+                            "weight": "500"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "imageIcon": {
+                "advanced": {
+                  "color": {
+                    "desktop": {
+                      "value": "#F95E00"
+                    }
+                  },
+                  "size": {
+                    "desktop": {
+                      "value": "24px"
+                    }
+                  }
+                }
+              },
+              "module": {
+                "decoration": {
+                  "background": {
+                    "desktop": {
+                      "value": {
+                        "color": "#ffffff"
+                      }
+                    }
+                  },
+                  "spacing": {
+                    "desktop": {
+                      "value": {
+                        "padding": {
+                          "top": "1.8em",
+                          "bottom": "1.8em",
+                          "left": "1.8em",
+                          "right": "1.8em",
+                          "syncVertical": "on",
+                          "syncHorizontal": "on"
+                        }
+                      }
+                    }
+                  },
+                  "border": {
+                    "desktop": {
+                      "value": {
+                        "radius": {
+                          "topLeft": "16px",
+                          "topRight": "16px",
+                          "bottomLeft": "16px",
+                          "bottomRight": "16px",
+                          "sync": "on"
+                        },
+                        "styles": {
+                          "all": {
+                            "width": "1px",
+                            "color": "#e5e7eb",
+                            "style": "solid"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

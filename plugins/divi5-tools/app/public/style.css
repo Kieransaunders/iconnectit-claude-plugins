@@ -327,3 +327,135 @@ select option { background: var(--surface); }
 .prereq { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; }
 .prereq .ok   { color: var(--success); }
 .prereq .fail { color: var(--danger); }
+
+/* ── Secondary button (outlined) ── */
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-secondary:hover { background: var(--accent); color: #fff; }
+
+/* ── Browse/pick button ── */
+.btn-pick {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s;
+  flex-shrink: 0;
+}
+.btn-pick:hover { border-color: var(--accent); }
+
+/* ── Import button ── */
+.btn-import {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-import:hover { background: #15803d; }
+.btn-import:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+
+/* ── Aesthetic colour swatches ── */
+.aesthetic-swatches { display: inline-flex; gap: 3px; margin-left: 4px; vertical-align: middle; }
+.aesthetic-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+/* ── Style check expandable panel ── */
+.style-check-panel {
+  margin-top: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.style-fail { color: #e53e3e; }
+.style-warn { color: #d69e2e; }
+.style-pass { color: #38a169; }
+
+/* ── Re-run button (small, inline in history) ── */
+.btn-rerun {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 0.75rem;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.btn-rerun:hover { border-color: var(--accent); color: var(--accent); }
+.btn-delete {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 0.75rem;
+  padding: 3px 7px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-delete:hover { border-color: var(--danger); color: var(--danger); }
+.btn-view {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  font-size: 0.75rem;
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.btn-view:hover { background: var(--accent); color: #fff; }
+.revision-drawer {
+  background: var(--surface-2, #1e1e2e);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 12px;
+  margin-top: -4px;
+}
+.revision-label { font-size: 0.8125rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.revision-hint  { font-weight: 400; color: var(--muted); }
+.revision-textarea {
+  width: 100%;
+  height: 72px;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.revision-textarea:focus { outline: none; border-color: var(--accent); }

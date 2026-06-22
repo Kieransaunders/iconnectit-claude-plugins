@@ -47,7 +47,15 @@
         <input type="text" name="secondaryKeywords" placeholder="online invoicing, billing software">
       </div>
 
-      <div class="section-label" style="margin-top:4px">Sections</div>
+      <div class="section-label" style="margin-top:4px">Starting Template <span style="font-size:0.7rem;color:var(--muted)">(optional — clone an ET premade page)</span></div>
+      <div class="field">
+        <select name="etTemplate" id="etTemplate">
+          <option value="">— Build from scratch —</option>
+        </select>
+        <div id="etTemplateSections" class="field-hint" style="margin-top:4px;display:none"></div>
+      </div>
+
+      <div class="section-label" style="margin-top:4px">Sections <span id="sectionsNote" style="font-size:0.7rem;color:var(--muted);display:none">(additional / overrides template)</span></div>
       <div class="checkbox-grid">
         <label><input type="checkbox" name="sections" value="Hero" checked> Hero</label>
         <label><input type="checkbox" name="sections" value="About"> About</label>
@@ -65,11 +73,11 @@
       <div class="section-label" style="margin-top:4px">Aesthetic</div>
       <div class="radio-group">
         <label><input type="radio" name="aesthetic" value="" checked> Auto (Claude chooses from the brief)</label>
-        <label><input type="radio" name="aesthetic" value="Minimal Editorial"> Minimal Editorial</label>
-        <label><input type="radio" name="aesthetic" value="Midnight Luxe"> Midnight Luxe</label>
-        <label><input type="radio" name="aesthetic" value="Organic Tech"> Organic Tech</label>
-        <label><input type="radio" name="aesthetic" value="Brutalist Signal"> Brutalist Signal</label>
-        <label><input type="radio" name="aesthetic" value="Vapor Clinic"> Vapor Clinic</label>
+        <label><input type="radio" name="aesthetic" value="Minimal Editorial"> Minimal Editorial <span class="aesthetic-swatches"><span class="aesthetic-swatch" style="background:#fff"></span><span class="aesthetic-swatch" style="background:#d1d5db"></span></span></label>
+        <label><input type="radio" name="aesthetic" value="Midnight Luxe"> Midnight Luxe <span class="aesthetic-swatches"><span class="aesthetic-swatch" style="background:#0f172a"></span><span class="aesthetic-swatch" style="background:#b8960c"></span></span></label>
+        <label><input type="radio" name="aesthetic" value="Organic Tech"> Organic Tech <span class="aesthetic-swatches"><span class="aesthetic-swatch" style="background:#4a7c59"></span><span class="aesthetic-swatch" style="background:#7c5c3a"></span></span></label>
+        <label><input type="radio" name="aesthetic" value="Brutalist Signal"> Brutalist Signal <span class="aesthetic-swatches"><span class="aesthetic-swatch" style="background:#e53e3e"></span><span class="aesthetic-swatch" style="background:#1a1a1a"></span></span></label>
+        <label><input type="radio" name="aesthetic" value="Vapor Clinic"> Vapor Clinic <span class="aesthetic-swatches"><span class="aesthetic-swatch" style="background:#9b5de5"></span><span class="aesthetic-swatch" style="background:#c084fc"></span></span></label>
       </div>
 
       <div class="section-label" style="margin-top:4px">Primary CTA</div>
@@ -115,6 +123,12 @@
       </div>
 
       <div class="section-label" style="margin-top:4px">Designer Export <span style="font-size:0.7rem;color:var(--muted)">(optional — enables style check)</span></div>
+      <div class="field" id="savedExportField">
+        <label>Use saved export</label>
+        <select id="savedExportSelect">
+          <option value="">— Upload new file —</option>
+        </select>
+      </div>
       <div class="drop-zone" id="dropZone">
         <input type="file" name="exportFile" accept=".json" id="exportInput">
         <div id="dropLabel">Drop Divi export JSON here or click to browse</div>
@@ -128,7 +142,26 @@
       <div class="section-label" style="margin-top:4px">Output Folder</div>
       <div class="field">
         <label>Where to save generated files</label>
-        <input type="text" name="outputDir" placeholder="~/Desktop/divi-output">
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="text" name="outputDir" id="outputDir" placeholder="~/Desktop/divi-output" style="flex:1">
+          <button type="button" class="btn-pick" id="pickFolderBtn">Browse</button>
+        </div>
+      </div>
+
+      <input type="hidden" name="savedExportId" id="savedExportId" value="">
+
+      <div class="field" id="revisionNotesField" style="display:none">
+        <label>Revision notes <span style="font-size:0.7rem;color:var(--muted)">(what to change from last run)</span></label>
+        <textarea name="revisionNotes" id="revisionNotes" placeholder="e.g. Make the hero punchier, swap Features for a Process section, use bolder colours"></textarea>
+        <button type="button" class="btn-link" id="clearRevision" style="font-size:0.75rem;color:var(--muted);margin-top:4px;background:none;border:none;cursor:pointer;padding:0">Clear revision notes</button>
+      </div>
+
+      <div class="section-label" style="margin-top:4px">Saved Briefs</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <select id="savedBriefSelect" style="flex:1;height:32px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:0 8px;font-size:0.8125rem">
+          <option value="">— Load a saved brief —</option>
+        </select>
+        <button type="button" class="btn-pick" id="saveBriefBtn">Save</button>
       </div>
 
       <button type="submit" class="btn-generate" id="genBtn">Generate Page</button>
@@ -161,6 +194,8 @@
 
       <button type="button" class="btn-generate" id="saveSettings">Save Settings</button>
       <div id="settingsSaved" class="save-confirm" hidden>Settings saved ✓</div>
+      <button type="button" class="btn-secondary" id="testConnection" style="margin-top:8px">Test Connection</button>
+      <div id="connectionResult" style="margin-top:8px;font-size:0.8125rem"></div>
 
       <div class="section-label" style="margin-top:20px">
         Install the Import Plugin
@@ -205,6 +240,7 @@
     <div class="panel" id="progressPanel" style="display:none">
       <div class="panel-title">Generation Progress</div>
       <div class="steps" id="steps">
+        <div class="step" id="step-clone"><span class="dot"></span> Stage 0 — ET Template Clone</div>
         <div class="step" id="step-brief"><span class="dot"></span> Stage 1 — Brief</div>
         <div class="step" id="step-preview"><span class="dot"></span> Stage 2 — HTML Preview</div>
         <div class="step" id="step-generate"><span class="dot"></span> Stage 3 — Generate + Validate</div>
@@ -217,6 +253,16 @@
       <div class="log-wrap" id="logBox"></div>
     </div>
 
+    <!-- HTML Preview (Stage 2) -->
+    <div class="panel" id="previewPanel" style="display:none">
+      <div class="panel-title" style="display:flex;align-items:center;justify-content:space-between">
+        HTML Preview — Stage 2 Output
+        <button type="button" class="btn-secondary" onclick="document.getElementById('previewPanel').style.display='none'">Dismiss</button>
+      </div>
+      <p style="font-size:0.8125rem;color:var(--muted);margin-bottom:10px">This is the layout preview generated before the full Divi JSON was built.</p>
+      <iframe id="previewFrame" style="width:100%;height:520px;border:1px solid var(--border);border-radius:6px;background:#fff" sandbox="allow-same-origin allow-scripts"></iframe>
+    </div>
+
     <!-- Output files -->
     <div class="panel" id="outputPanel" style="display:none">
       <div class="panel-title" style="display:flex;align-items:center;justify-content:space-between">
@@ -224,6 +270,12 @@
         <div id="verdicts" style="display:flex;gap:8px"></div>
       </div>
       <div class="file-list" id="fileList"></div>
+      <div id="styleCheckDetails" style="display:none" class="style-check-panel"></div>
+      <div id="importRow" style="display:none;margin-top:12px">
+        <button type="button" class="btn-import" id="importBtn">Import to WordPress</button>
+        <a id="previewLink" class="btn-dl" style="display:none;margin-left:8px" target="_blank">Preview in WordPress</a>
+        <div id="importStatus" style="margin-top:8px;font-size:0.8125rem"></div>
+      </div>
     </div>
 
     <!-- History -->

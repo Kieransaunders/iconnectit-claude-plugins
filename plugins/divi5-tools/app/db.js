@@ -56,4 +56,29 @@ db.exec(`
   );
 `);
 
+// ─── Saved briefs ────────────────────────────────────────────────────────────
+db.exec(`
+  CREATE TABLE IF NOT EXISTS saved_briefs (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    name       TEXT NOT NULL,
+    data       TEXT NOT NULL
+  );
+`);
+
+// ─── Migrations: add new columns if they don't exist ────────────────────────
+const migrations = [
+  `ALTER TABLE generations ADD COLUMN import_status TEXT`,
+  `ALTER TABLE generations ADD COLUMN preview_url TEXT`,
+  `ALTER TABLE generations ADD COLUMN brief_json TEXT`,
+  `ALTER TABLE generations ADD COLUMN saved_export_id INTEGER`,
+  `ALTER TABLE generations ADD COLUMN what_it_does TEXT`,
+  `ALTER TABLE generations ADD COLUMN secondary_keywords TEXT`,
+  `ALTER TABLE generations ADD COLUMN has_preview INTEGER DEFAULT 0`,
+  `ALTER TABLE generations ADD COLUMN et_template TEXT`,
+];
+for (const sql of migrations) {
+  try { db.exec(sql); } catch (_) {}
+}
+
 module.exports = { db, DATA_DIR, EXPORTS_DIR };

@@ -59,12 +59,16 @@ class DTI_PresetManager {
 
 	/**
 	 * List all registered presets, optionally filtered by module name.
-	 * Returns a flat name→id map per module, suitable for passing to the JS generator.
 	 *
-	 * @param string $module  Optional filter, e.g. "divi/button"
-	 * @return array{ presets: array<string, array<string, string>> }
+	 * Default: returns a flat name→id map per module.
+	 * With $with_attrs = true: returns name→{ id, attrs } so the JS generator can
+	 * inline preset attrs for front-end CSS rendering (fixes default-blue buttons).
+	 *
+	 * @param string $module      Optional filter, e.g. "divi/button"
+	 * @param bool   $with_attrs  Include stored preset attrs in the response.
+	 * @return array{ presets: array<string, array<string, mixed>> }
 	 */
-	public static function list_presets( string $module = '' ): array {
+	public static function list_presets( string $module = '', bool $with_attrs = false ): array {
 		$preset_class = 'ET\\Builder\\Packages\\GlobalData\\GlobalPreset';
 
 		if ( ! class_exists( $preset_class ) || ! method_exists( $preset_class, 'get_data' ) ) {
@@ -80,7 +84,14 @@ class DTI_PresetManager {
 			$result[ $module_name ] = [];
 			foreach ( $module_data['items'] ?? [] as $id => $item ) {
 				$name = $item['name'] ?? '';
-				if ( $name ) {
+				if ( ! $name ) continue;
+
+				if ( $with_attrs ) {
+					$result[ $module_name ][ $name ] = [
+						'id'   => $id,
+						'attrs' => $item['attrs'] ?? null,
+					];
+				} else {
 					$result[ $module_name ][ $name ] = $id;
 				}
 			}
