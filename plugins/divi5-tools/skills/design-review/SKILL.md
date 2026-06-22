@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: "Divi 5 layout reviewer — audits any Divi 5 JSON export against structural rules, SEO requirements, and a professional design checklist. Also does post-import spec compliance: compares an exported live page against the original brief, spec, or mockup to verify content completeness and section fidelity."
+description: "Divi 5 layout reviewer — audits any Divi 5 JSON export against structural rules, SEO requirements, and a design checklist. Also post-import spec compliance: compares an exported live page against the original brief or mockup."
 when_to_use: "Reviewing, auditing, QC-ing, or improving an existing Divi 5 JSON file or export. Also use after importing a generated page into WordPress and re-exporting it, to compare the live result against the original brief or mockup. Triggers: review divi json, audit divi layout, check divi page, divi seo audit, improve divi design, divi qc, validate divi export, check divi matches brief, spec compliance divi, divi post-import review, compare divi to mockup."
 argument-hint: "[path/to/layout.json] [primary keyword] [--spec path/to/brief-or-spec.md]"
 allowed-tools: Bash(node *)

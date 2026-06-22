@@ -1,6 +1,6 @@
 ---
 name: divi5-extract-style
-description: "Divi 5 style extraction and variables tool. Two directions: (1) brand guide / design tokens (prose, JSON, CSV, table) → importable Divi 5 Global Variables JSON; (2) an existing Divi 5 page export → extracted design tokens (colours, variables, presets) the divi5-page-generator can reuse to build new pages in the same style."
+description: "Divi 5 style extraction and variables tool: (1) brand guide / design tokens → importable Divi 5 Global Variables JSON; (2) an existing Divi 5 page export → design tokens (colours, variables, presets) the page generator can reuse."
 when_to_use: "Extracting the design system from an existing Divi 5 page export so new pages can be generated in the same style — OR converting a brand style guide into Divi 5 global variables. Triggers: extract divi style, reuse divi design, divi export to tokens, divi global variables, divi global colors, style guide to divi, design tokens divi, brand colours divi import, reuse divi design system, extract divi presets, divi export design system."
 argument-hint: "[style guide text, token table, or file path]"
 ---

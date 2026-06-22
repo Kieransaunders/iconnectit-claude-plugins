@@ -1,6 +1,7 @@
 ---
 name: import-to-local
-description: "Import Divi 5 landing page JSON into any WordPress site (local or hosted) as a draft page via the Divi Tools Importer plugin REST API. Open the preview and run the accept/refine loop. Triggers: import divi page, import to local, localwp import, preview divi page, publish divi landing page, divi local site, import divi hosted, deploy divi page."
+description: "Import Divi 5 landing page JSON into any WordPress site (local or hosted) as a draft page via the Divi Tools Importer plugin REST API, then open the preview and run the accept/refine loop."
+when_to_use: "Importing or deploying a generated Divi 5 page into WordPress and previewing it. Triggers: import divi page, import to local, localwp import, preview divi page, publish divi landing page, divi local site, import divi hosted, deploy divi page."
 argument-hint: "[site-url] [api-key]  — or omit to be prompted"
 ---
 
