@@ -44,8 +44,13 @@ for (const v of (doc.global_variables || [])) {
 }
 
 const preset = {};
-const items = (doc.presets && doc.presets.module && doc.presets.module.items) || {};
-for (const [id, meta] of Object.entries(items)) {
+const mod = (doc.presets && doc.presets.module) || {};
+// Flat structure: presets.module.items (presets-only export)
+// Nested structure: presets.module['divi/section'].items (page export)
+const allItems = mod.items
+  ? mod.items
+  : Object.values(mod).reduce((acc, v) => Object.assign(acc, (v && v.items) || {}), {});
+for (const [id, meta] of Object.entries(allItems)) {
   if (meta && meta.name) preset[meta.name] = id;
 }
 

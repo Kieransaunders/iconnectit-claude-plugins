@@ -58,6 +58,7 @@ const b = D.createBuilder();
 const cPlasma = b.globalColor('plasma', T.plasma, 'Plasma Accent');
 const cVoid   = b.globalColor('void', T.void, 'Deep Void');
 const cGhost  = b.globalColor('ghost', T.ghost, 'Ghost Light');
+const cWhite  = b.globalColor('white', T.white, 'Pure White');
 
 // ─── 3. Presets ─────────────────────────────────────────────────────────────
 const P = {
@@ -83,10 +84,10 @@ const P = {
 
   // Headings
   heroH1: b.preset('divi/heading', 'Hero H1', {
-    title: { decoration: { font: { font: D.dv({ headingLevel: 'h1', family: T.headingFont, size: '66px', weight: '800', lineHeight: '1.06em', color: T.white, textAlign: 'center', letterSpacing: '-1px' }, { phone: { size: '36px' } }) } } },
+    title: { decoration: { font: { font: D.dv({ headingLevel: 'h1', family: T.headingFont, size: '66px', weight: '800', lineHeight: '1.06em', color: b.colorVar('white'), textAlign: 'center', letterSpacing: '-1px' }, { phone: { size: '36px' } }) } } },
   }),
   h2Dark: b.preset('divi/heading', 'H2 on dark', {
-    title: { decoration: { font: { font: D.dv({ headingLevel: 'h2', family: T.headingFont, size: '42px', weight: '700', lineHeight: '1.2em', color: T.white, textAlign: 'center', letterSpacing: '-0.5px' }, { phone: { size: '28px' } }) } } },
+    title: { decoration: { font: { font: D.dv({ headingLevel: 'h2', family: T.headingFont, size: '42px', weight: '700', lineHeight: '1.2em', color: b.colorVar('white'), textAlign: 'center', letterSpacing: '-0.5px' }, { phone: { size: '28px' } }) } } },
   }),
   h2Light: b.preset('divi/heading', 'H2 on light', {
     title: { decoration: { font: { font: D.dv({ headingLevel: 'h2', family: T.headingFont, size: '42px', weight: '700', lineHeight: '1.2em', color: T.ink, textAlign: 'center', letterSpacing: '-0.5px' }, { phone: { size: '28px' } }) } } },
@@ -108,16 +109,16 @@ const P = {
 
   // Buttons
   btnPrimary: b.preset('divi/button', 'Button - Primary', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '17px', color: T.white, weight: '700' }) }, background: D.dv({ color: b.colorVar('plasma') }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
+    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '17px', color: b.colorVar('white'), weight: '700' }) }, background: D.dv({ color: b.colorVar('plasma') }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
   }),
   btnOnPlasma: b.preset('divi/button', 'Button - on Plasma', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '17px', color: T.plasma, weight: '700' }) }, background: D.dv({ color: T.white }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
+    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '17px', color: b.colorVar('plasma'), weight: '700' }) }, background: D.dv({ color: T.white }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
   }),
 
   cardBlurb: b.preset('divi/blurb', 'Feature Card', {
     // Dark cards need explicit light text - Divi's default blurb colours (#333/#666)
     // are invisible on a near-black surface.
-    title: { decoration: { font: { font: D.dv({ family: T.headingFont, weight: '700', color: T.white }) } } },
+    title: { decoration: { font: { font: D.dv({ family: T.headingFont, weight: '700', color: b.colorVar('white') }) } } },
     content: { decoration: { bodyFont: { body: { font: D.dv({ family: T.bodyFont, lineHeight: '1.7em', color: T.bodyDark }) } } } },
   }),
 };
@@ -284,7 +285,7 @@ const faq = D.section({ adminLabel: 'FAQ', preset: P.secWhite }, [
 const footer = D.section({ adminLabel: 'Footer', preset: P.secFooter }, [
   D.row({ structure: 'equal-columns_1', maxWidth: '760px' }, [
     D.column({}, [
-      D.text({ html: `<p>DiviTheatre</p>`, font: { family: T.headingFont, size: '20px', weight: '700', color: T.white, textAlign: 'center' } }),
+      D.text({ html: `<p>DiviTheatre</p>`, font: { family: T.headingFont, size: '20px', weight: '700', color: b.colorVar('white'), textAlign: 'center' } }),
       D.text({ html: `<p>Cinematic, code-free motion for Divi 5. A plugin by <a href='https://iconnectit.co.uk'>iConnectIT</a>.</p>`, font: { size: '14px', color: T.muted, textAlign: 'center' } }),
     ]),
   ]),
