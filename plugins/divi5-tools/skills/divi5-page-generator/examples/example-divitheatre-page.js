@@ -109,10 +109,10 @@ const P = {
 
   // Buttons
   btnPrimary: b.preset('divi/button', 'Button - Primary', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '17px', color: b.colorVar('white'), weight: '700' }) }, background: D.dv({ color: b.colorVar('plasma') }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
+    button: { decoration: { button: D.dv({ enable: 'on' }), font: { font: D.dv({ family: T.bodyFont, size: '17px', color: b.colorVar('white'), weight: '700' }) }, background: D.dv({ color: b.colorVar('plasma') }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
   }),
   btnOnPlasma: b.preset('divi/button', 'Button - on Plasma', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '17px', color: b.colorVar('plasma'), weight: '700' }) }, background: D.dv({ color: T.white }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
+    button: { decoration: { button: D.dv({ enable: 'on' }), font: { font: D.dv({ family: T.bodyFont, size: '17px', color: b.colorVar('plasma'), weight: '700' }) }, background: D.dv({ color: T.white }), border: D.dv({ radius: { topLeft: '10px', topRight: '10px', bottomLeft: '10px', bottomRight: '10px', sync: 'on' } }) } },
   }),
 
   cardBlurb: b.preset('divi/blurb', 'Feature Card', {

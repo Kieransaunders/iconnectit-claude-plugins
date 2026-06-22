@@ -326,6 +326,51 @@ for (const g of new Set(allGcidRefs)) {
 }
 if (definedColors.size) pass(`${definedColors.size} global colours defined, references checked`);
 
+// ─── button enable check ─────────────────────────────────────────────────────
+// A button preset missing enable:'on' renders Divi's default blue regardless of
+// any colour variables. This is the #1 cause of "default blue buttons on import".
+;(() => {
+  const hasEnable = (attrs) =>
+    attrs?.button?.decoration?.button?.desktop?.value?.enable === 'on';
+
+  let buttonFails = 0;
+
+  // Group presets (divi/button group — used by groupPreset.button on block)
+  const groupItems = doc.presets?.group?.['divi/button']?.items || {};
+  for (const [id, item] of Object.entries(groupItems)) {
+    if (!hasEnable(item.attrs)) {
+      err(`BUTTON: group preset "${item.name || id}" missing button.decoration.button.enable:"on" — will render default blue`);
+      buttonFails++;
+    }
+  }
+
+  // Module presets (divi/button module preset)
+  const moduleItems = doc.presets?.module?.['divi/button']?.items || {};
+  for (const [id, item] of Object.entries(moduleItems)) {
+    if (!hasEnable(item.attrs)) {
+      err(`BUTTON: module preset "${item.name || id}" missing button.decoration.button.enable:"on" — will render default blue`);
+      buttonFails++;
+    }
+  }
+
+  // Inline button blocks with no preset reference (enable must be on the block itself)
+  for (const blockList of Object.values(tokensByKey)) {
+    for (const t of blockList) {
+      if (t.name !== 'button' || !t.attrs) continue;
+      const hasGroupPreset = t.attrs.groupPreset?.button?.presetId?.length > 0;
+      const hasModulePreset = Array.isArray(t.attrs.modulePreset) && t.attrs.modulePreset.length > 0;
+      if (hasGroupPreset || hasModulePreset) continue;
+      if (!hasEnable(t.attrs)) {
+        const label = t.attrs.button?.innerContent?.desktop?.value?.text || '(unlabelled)';
+        err(`BUTTON: inline button "${String(label).slice(0, 40)}" has no preset and missing enable:"on" — will render default blue`);
+        buttonFails++;
+      }
+    }
+  }
+
+  if (!buttonFails) pass('all button presets and inline buttons have enable:"on"');
+})();
+
 // ─── ET design system token check ───────────────────────────────────────────
 // FAIL when a raw hex colour in the JSON matches a known Elegant Themes token.
 // Generators must use builder.colorRef('Label') instead of hard-coded hex.

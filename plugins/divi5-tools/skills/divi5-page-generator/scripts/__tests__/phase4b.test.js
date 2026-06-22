@@ -226,11 +226,33 @@ function baseline() {
   ok('B7: SEO error mentions h1 count', /h1|heading/i.test(out), out.slice(-200));
 })();
 
-// ─── Gaps: documented but not yet caught ────────────────────────────────────
+// ─── B8: Button preset without enable:'on' ───────────────────────────────────
 
-console.log('\n  NOTE  GAP-A: button without enable:"on" is NOT caught by the validator');
-console.log('        Renders default blue. Fix: validator should check button preset attrs.');
-console.log('  NOTE  GAP-B: codeBlock([]) array arg is NOT caught by the validator');
+(function b8() {
+  const b = D.createBuilder();
+  // Register a button module preset WITHOUT enable:'on'
+  const bpid = b.preset('divi/button', 'BadButton', {
+    button: { decoration: { background: { desktop: { value: { color: '#0000ff' } } } } },
+  });
+  const spid = b.preset('divi/section', 'S', {});
+  const content = D.placeholder([
+    D.section({ preset: spid }, [
+      D.row({}, [
+        D.column({}, [
+          D.heading({ text: 'Title', level: 'h1' }),
+          D.button({ text: 'Click me', preset: bpid }),
+        ]),
+      ]),
+    ]),
+  ]);
+  const doc = b.assemble({ context: 'et_builder', content, title: 'T' });
+  const { status, out } = validate(doc);
+  ok('B8: button preset without enable:"on" exits 1', status === 1, 'exit=' + status);
+  ok('B8: BUTTON error in output', /BUTTON/i.test(out), out.slice(-200));
+})();
+
+// ─── Gap still open ──────────────────────────────────────────────────────────
+console.log('\n  NOTE  GAP-B: codeBlock([]) array arg is NOT caught by the validator');
 console.log('        Emits open+close tags instead of self-closing. Fix: builder should throw on [] arg.');
 
 // ─── Cleanup + report ────────────────────────────────────────────────────────

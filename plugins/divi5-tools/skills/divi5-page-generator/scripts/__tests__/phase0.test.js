@@ -336,6 +336,7 @@ function runValidate(args, opts) {
       '  PASS  114 blocks parsed, hierarchy + balance checked',
       '  PASS  36 preset references checked',
       '  PASS  4 global colours defined, references checked',
+      '  PASS  all button presets and inline buttons have enable:"on"',
       '  PASS  no raw hex values matched ET design system tokens',
       '  PASS  TASTE: no em-dash/en-dash in copy',
       '  PASS  SEO: exactly one h1 ("The Divi 5 Animation Plugin for <em>Cinematic</em>, Code-Fre")',
