@@ -203,24 +203,39 @@ function post(url, apiKey, body) {
       console.log('        Re-run to diff against it.');
       pass++;
     } else {
-      // Pixel diff using built-in Buffer comparison
-      const golden = fs.readFileSync(GOLDEN_FILE);
-      if (screenshotBuf.equals(golden)) {
-        ok('E5: screenshot matches golden (byte-identical)', true);
-      } else {
-        // Save the current shot for inspection
-        const failPath = GOLDEN_FILE.replace('.png', '-actual.png');
-        fs.writeFileSync(failPath, screenshotBuf);
-        // Approximate changed-pixel count: compare raw buffer length difference as proxy
-        // (proper pixelmatch needs a dep; this catches gross layout regressions without one)
-        const diff = Math.abs(screenshotBuf.length - golden.length);
-        const significant = diff > DIFF_THRESHOLD;
-        ok('E5: screenshot within acceptable tolerance of golden',
-          !significant,
-          `size diff ${diff}px-equivalent — actual saved to ${path.relative(process.cwd(), failPath)}`);
-        if (!significant) {
-          console.log(`  INFO  E5: minor screenshot difference (${diff} bytes) — within threshold`);
+      const failPath = GOLDEN_FILE.replace('.png', '-actual.png');
+      fs.writeFileSync(failPath, screenshotBuf);
+
+      // Pixel diff with pixelmatch + pngjs
+      try {
+        const { PNG }      = require('pngjs');
+        const pixelmatch   = require('pixelmatch').default ?? require('pixelmatch');
+
+        const goldenPng  = PNG.sync.read(fs.readFileSync(GOLDEN_FILE));
+        const actualPng  = PNG.sync.read(screenshotBuf);
+
+        if (goldenPng.width !== actualPng.width || goldenPng.height !== actualPng.height) {
+          // Different dimensions = definite layout change
+          ok('E5: screenshot matches golden', false,
+            `dimensions changed: golden ${goldenPng.width}×${goldenPng.height} vs actual ${actualPng.width}×${actualPng.height}`);
+        } else {
+          const diff    = new PNG({ width: goldenPng.width, height: goldenPng.height });
+          const changed = pixelmatch(goldenPng.data, actualPng.data, diff.data,
+            goldenPng.width, goldenPng.height, { threshold: 0.1 });
+          const diffPath = GOLDEN_FILE.replace('.png', '-diff.png');
+          fs.writeFileSync(diffPath, PNG.sync.write(diff));
+
+          ok('E5: changed pixels within threshold',
+            changed <= DIFF_THRESHOLD,
+            `${changed} px changed (threshold ${DIFF_THRESHOLD}) — diff at ${path.relative(process.cwd(), diffPath)}`);
+          if (changed > 0 && changed <= DIFF_THRESHOLD) {
+            console.log(`  INFO  E5: ${changed} pixels changed — within threshold`);
+          }
         }
+        // Clean up actual if it passed
+        if (!failures.some(f => f.includes('E5'))) fs.rmSync(failPath, { force: true });
+      } catch (e) {
+        ok('E5: pixelmatch diff ran', false, e.message);
       }
     }
 
