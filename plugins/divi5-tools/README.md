@@ -133,9 +133,49 @@ The skill will ask for brand colours and aesthetic direction, build an HTML prev
 
 See [docs/user-flow.md](docs/user-flow.md) for a full Mermaid flowchart covering all three starting points (existing design / brand guide / from scratch), both QA gates, and fix loops.
 
-## Requirements
+## Installation
 
-Node.js available in the working environment (used by the bundled builder and validator scripts).
+### WordPress plugin
+
+The plugin zip is bundled inside the `import-to-local` skill. After running `install-skills.sh` it will be at:
+
+```
+~/.claude/skills/import-to-local/divi-tools-importer.zip
+```
+
+1. **WordPress Admin → Plugins → Add New → Upload Plugin**
+2. Choose that zip → **Install Now** → **Activate**
+3. Go to **Settings → Divi Tools Importer** to get your site URL and API key
+
+The plugin provides the REST API that the `import-to-local` skill uses to push generated pages into WordPress.
+
+---
+
+### Claude Code skills
+
+The skills run inside Claude Code (desktop app, CLI, or IDE extension). They live in `~/.claude/skills/` and are invoked with `/skill-name`.
+
+**Option A — install script (recommended)**
+
+Clone or download this repo, then run:
+
+```bash
+bash plugins/divi5-tools/install-skills.sh
+```
+
+Restart Claude Code. All 7 skills are immediately available.
+
+**Option B — manual copy**
+
+Copy any individual skill folder into `~/.claude/skills/`:
+
+```bash
+cp -r plugins/divi5-tools/skills/divi5-page-generator ~/.claude/skills/
+```
+
+Restart Claude Code, then use `/divi5-page-generator` in any session.
+
+**Requirements:** Node.js must be available in your shell (used by the bundled builder and validator scripts).
 
 ---
 
