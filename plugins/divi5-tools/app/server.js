@@ -372,7 +372,7 @@ app.post('/import/:id', async (req, res) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
+          'X-Divi-Tools-Key': apiKey,
         },
         body: JSON.stringify({ layout, seo, schema, draft: true }),
         signal: controller.signal,
@@ -412,7 +412,7 @@ app.get('/test-connection', async (req, res) => {
     let wpRes;
     try {
       wpRes = await fetch(`${siteUrl}/wp-json/divi-tools/v1/ping`, {
-        headers: { 'Authorization': `Bearer ${apiKey}` },
+        headers: { 'X-Divi-Tools-Key': apiKey },
         signal: controller.signal,
       });
     } finally {
