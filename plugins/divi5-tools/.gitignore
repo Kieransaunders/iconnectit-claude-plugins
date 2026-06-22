@@ -6,3 +6,4 @@ app/node_modules/
 .env
 .env.local
 skills/**/.playwright-mcp/
+skills/**/golden/*-diff.png
