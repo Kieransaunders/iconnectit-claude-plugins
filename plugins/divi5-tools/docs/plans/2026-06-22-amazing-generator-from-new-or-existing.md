@@ -26,6 +26,8 @@ The actual problems are bookkeeping, not missing fixes:
 
 **Why this is Phase -1, not Phase 1:** the broken zip is the actual delivery channel to new sites. Until it's rebuilt, every clean install is broken regardless of what the generator does.
 
+> **Update (later, 2026-06-22):** the committed zip was removed entirely — the Claude Code plugin installer rejects packages with a nested `.zip` ("nested zips not allowed"), which blocked fresh plugin installs. The importer now ships as unpacked source under `plugin/divi-tools-importer/` and the zip is **built on demand** (`skills/import-to-local/scripts/build-plugin-zip.sh`). The "commit the rebuilt zip" step above no longer applies; the version/contents checks still do, run against the freshly built zip.
+
 ---
 
 ## What's actually breaking today (evidence)

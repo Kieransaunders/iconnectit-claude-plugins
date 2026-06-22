@@ -52,7 +52,7 @@
 │       └── tests/
 │           ├── style-check.test.js
 │           └── server.test.js
-└── divi-tools-importer.zip                       # Build artifact (v1.2.0)
+                                                  # (no committed zip — built on demand; see "Rebuild the plugin zip")
 ```
 
 ## Environment paths
@@ -62,7 +62,7 @@
 | Repo root | `/Volumes/External/iConnectIT claude plugins` |
 | Generator skill | `plugins/divi5-tools/skills/divi5-page-generator/` |
 | Importer plugin (canonical source) | `plugins/divi5-tools/plugin/divi-tools-importer/` |
-| Build artifact | `divi-tools-importer.zip` (at repo root) |
+| Importer zip | built on demand — never committed (the plugin installer rejects nested zips) |
 | Local app (Node) | `plugins/divi5-tools/app/` (`node server.js` on port 3747) |
 | **Live WordPress test site** | `/Users/boss/Local Sites/divi-5-airtable-plugin/app/public` |
 | Installed plugin (test target) | `/Users/boss/Local Sites/divi-5-airtable-plugin/app/public/wp-content/plugins/divi-tools-importer` |
@@ -74,13 +74,18 @@
 
 ### Rebuild the plugin zip
 
+The zip is **never committed** — the Claude Code plugin installer rejects packages containing a nested `.zip` ("nested zips not allowed"). It's built on demand from the canonical source. Two equivalent builders:
+
 ```bash
-# From repo root:
+# Shipped builder — script-relative, no git, writes to a dir you choose.
+# This is what /divi5-tools:help and the app's /download-plugin endpoint use:
+bash plugins/divi5-tools/skills/import-to-local/scripts/build-plugin-zip.sh ~/Downloads
+
+# Maintainer convenience — git-based, writes to the monorepo root:
 bash plugins/divi5-tools/plugin/build-zip.sh
-# Outputs: divi-tools-importer.zip at repo root
 ```
 
-Verify the zip: `unzip -p divi-tools-importer.zip divi-tools-importer/divi-tools-importer.php | grep Version` should show `1.2.0`.
+Both zip the canonical `plugin/divi-tools-importer/` source. Verify: `unzip -p <zip> divi-tools-importer/divi-tools-importer.php | grep Version` shows `1.2.0` (17 entries total).
 
 ### Deploy to Local WP test site
 
@@ -156,7 +161,7 @@ ssh wp-site "md5sum /path/to/wp-content/plugins/divi-tools-importer.zip"
 |--------|------|---------|--------|
 | **Canonical** | `plugins/divi5-tools/plugin/divi-tools-importer/` | v1.2.0 | ✅ Active — source of truth |
 | Stale (removed) | `divi-tools-importer/` at repo root | v1.0.0 | ❌ Removed in commit `6785d33` (2026-06-22) |
-| Build artifact | `divi-tools-importer.zip` at repo root | v1.2.0 | ✅ Rebuilt from canonical source |
+| Importer zip | built on demand (not committed) | v1.2.0 | ✅ Built from canonical source on each request |
 | Installed on test site | `/Users/boss/Local Sites/.../divi-tools-importer` | v1.2.0 | ✅ Synced via `deploy.sh` |
 
 **CRITICAL:** The stale repo-root `divi-tools-importer/` was a v1.0.0 orphan with only 5 source files and no CSS cache fixes. It confused the initial diagnosis into thinking real restoration work was needed. **Never recreate it.** Always work from `plugins/divi5-tools/plugin/divi-tools-importer/`.

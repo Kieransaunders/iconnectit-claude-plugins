@@ -13,7 +13,7 @@
     {
       "name": "divi5-tools",
       "source": "./plugins/divi5-tools",
-      "description": "Divi 5 toolkit: SEO-optimised landing page JSON generator, design/SEO reviewer, brand-guide-to-global-variables converter, one-command import into Local WP sites, a Divi 5 plugin/custom-module developer skill, and a Theatre.js motion-engine reference for the DiviTheatre animation plugin.",
+      "description": "Divi 5 toolkit: SEO-optimised page JSON generator, design/SEO reviewer, brand-guide-to-Global-Variables converter, one-command import into any WordPress site (local or hosted), a Divi 5 plugin/custom-module developer skill, and a Theatre.js motion-engine reference for the DiviTheatre animation plugin.",
       "version": "1.0.0",
       "keywords": [
         "divi",
