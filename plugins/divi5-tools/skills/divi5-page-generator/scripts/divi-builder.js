@@ -25,7 +25,9 @@ const CRLF = '\r\n';
 // intentional glyphs outweighs the benefit); this import exists solely so the
 // default ban list cannot drift between "what the generator avoids emitting"
 // and "what the validator flags" (spec §4 RS-GLYPH, Phase 0 plan T5).
+const path = require('path');
 const { DEFAULT_GLYPH_SOURCE: SHARED_GLYPH_SOURCE } = require('./glyphs');
+const TYPE_SCALE = require(path.join(__dirname, '../references/type-scale'));
 
 // ─── core helpers ───────────────────────────────────────────────────────────
 
@@ -73,6 +75,19 @@ function applyPreset(moduleAttrs, preset) {
   const presetAttrs = preset && typeof preset === 'object' ? preset.attrs : null;
   const result = presetAttrs ? merge(presetAttrs, moduleAttrs) : moduleAttrs;
   result.modulePreset = [presetId];
+  return result;
+}
+
+/**
+ * Attach a group preset reference to block attrs.
+ * gp: { groupName, groupId, id } as returned by b.groupPreset() / b.headingPresets() etc.
+ * Does NOT inline attrs — group presets are VB-only design tokens; the block just references them.
+ */
+function applyGroupPreset(blockAttrs, gp) {
+  if (!gp) return blockAttrs;
+  const result = { ...blockAttrs };
+  if (!result.groupPreset) result.groupPreset = {};
+  result.groupPreset[gp.groupId] = { presetId: [gp.id], groupName: gp.groupName };
   return result;
 }
 
@@ -500,6 +515,7 @@ function heading(opts) {
   };
   attrs = prune(merge(attrs, withTheatre(o)));
   attrs = applyPreset(attrs, o.preset);
+  attrs = applyGroupPreset(attrs, o.gp);
   return block('heading', attrs, null);
 }
 
@@ -528,6 +544,7 @@ function text(opts) {
   };
   attrs = prune(merge(attrs, withTheatre(o)));
   attrs = applyPreset(attrs, o.preset);
+  attrs = applyGroupPreset(attrs, o.gp);
   return block('text', attrs, null);
 }
 
@@ -564,6 +581,7 @@ function button(opts) {
   };
   attrs = prune(merge(attrs, withTheatre(o)));
   attrs = applyPreset(attrs, o.preset);
+  attrs = applyGroupPreset(attrs, o.gp);
   return block('button', attrs, null);
 }
 
@@ -655,8 +673,10 @@ function randomId() {
 
 function createBuilder(opts) {
   const tokens = (opts && opts.tokens) || null;
-  const presets = {}; // moduleName -> { default, items }
+  const presets = {};       // moduleName -> { default, items }
+  const groupPresetsStore = {}; // groupName -> { default, items }
   const globalColors = [];
+  const globalVariables = [];
 
   return {
     /** Register a global colour. Returns the variable reference string for use in any color field. */
@@ -796,13 +816,156 @@ function createBuilder(opts) {
     },
 
     /**
+     * Register a global variable (spacing, font size, etc.).
+     * Returns the $variable()$ content ref string for use in any value field.
+     * id: stable slug (with or without 'gvid-' prefix)
+     */
+    globalVariable(id, label, value) {
+      const gvid = id.startsWith('gvid-') ? id : `gvid-${id}`;
+      // Idempotent — skip if already registered with the same ID
+      if (!globalVariables.some(v => v.id === gvid)) {
+        globalVariables.push({ id: gvid, label, value, status: 'active', type: 'numbers' });
+      }
+      return `$variable({"type":"content","value":{"name":"${gvid}","settings":{}}})$`;
+    },
+
+    /** Variable ref by ID (no registration — ID must already be in globalVariables). */
+    varRef(id) {
+      const gvid = id.startsWith('gvid-') ? id : `gvid-${id}`;
+      return `$variable({"type":"content","value":{"name":"${gvid}","settings":{}}})$`;
+    },
+
+    /**
+     * Register the 4 fluid font-size global variables and return their ref strings.
+     * { h1, h2, h3, body } — pass directly as the `size` field in font attrs.
+     *
+     * Example:
+     *   const ts = b.typeScale();
+     *   b.preset('divi/heading', 'H1', { title: { decoration: { font: { font: dv({ size: ts.h1, weight: '700' }) } } } })
+     */
+    typeScale() {
+      const G = TYPE_SCALE.GVID;
+      const T = TYPE_SCALE.TYPE;
+      return {
+        h1:   this.globalVariable(G.text3xl, 'text 3xl', T['3xl']),
+        h2:   this.globalVariable(G.text2xl, 'text 2xl', T['2xl']),
+        h3:   this.globalVariable(G.textXl,  'text xl',  T.xl),
+        body: this.globalVariable(G.textM,   'text m',   T.m),
+      };
+    },
+
+    /**
+     * Register the 3 fluid spacing global variables and return their ref strings.
+     * { l, m, s } — pass as margin/padding values.
+     */
+    spaceScale() {
+      const G = TYPE_SCALE.GVID;
+      const S = TYPE_SCALE.SPACE;
+      return {
+        l: this.globalVariable(G.spaceL, 'space l', S.l),
+        m: this.globalVariable(G.spaceM, 'space m', S.m),
+        s: this.globalVariable(G.spaceS, 'space s', S.s),
+      };
+    },
+
+    /**
+     * Register a group preset (for typography, spacing, layout, button groups).
+     * Returns { groupName, groupId, id } — pass as the `gp` option to heading()/text()/button().
+     *
+     * groupName: 'divi/font' | 'divi/font-body' | 'divi/spacing' | 'divi/button' | 'divi/layout'
+     * groupId:   key used in block's groupPreset object, e.g. 'designTitleText' | 'button' | 'module.decoration.spacing'
+     * moduleName: the Divi block type this group preset belongs to
+     */
+    groupPreset(groupName, groupId, moduleName, name, attrs) {
+      const id = randomId();
+      const prunedAttrs = prune(attrs);
+      if (!groupPresetsStore[groupName]) groupPresetsStore[groupName] = { default: id, items: {} };
+      groupPresetsStore[groupName].items[id] = {
+        type: 'group', id, name,
+        version: BUILDER_VERSION,
+        created: Date.now(), updated: Date.now(),
+        groupName, moduleName, groupId,
+        attrs: prunedAttrs,
+        styleAttrs: prunedAttrs,
+      };
+      return { groupName, groupId, id };
+    },
+
+    /**
+     * Register the 6 standard spacing group presets (margin-top and all-padding in s/m/l).
+     * scale: optional { l, m, s } refs — defaults to b.spaceScale().
+     * Returns { marginTopS, marginTopM, marginTopL, paddingS, paddingM, paddingL }.
+     */
+    spacingPresets(scale) {
+      const ss = scale || this.spaceScale();
+      const gp = (name, a) => this.groupPreset('divi/spacing', 'module.decoration.spacing', 'divi/text', name, a);
+      const marginTop = (top) => ({ module: { decoration: { spacing: dv({ margin: { top, syncVertical: 'off', syncHorizontal: 'off' } }) } } });
+      const allPad   = (val) => ({ module: { decoration: { spacing: dv({ padding: { top: val, bottom: val, left: val, right: val, syncVertical: 'on', syncHorizontal: 'on' } }) } } });
+      return {
+        marginTopS: gp('margin top small',  marginTop(ss.s)),
+        marginTopM: gp('margin top medium', marginTop(ss.m)),
+        marginTopL: gp('margin top large',  marginTop(ss.l)),
+        paddingS:   gp('padding small',  allPad(ss.s)),
+        paddingM:   gp('padding medium', allPad(ss.m)),
+        paddingL:   gp('padding large',  allPad(ss.l)),
+      };
+    },
+
+    /**
+     * Register Primary + Secondary button group presets with enable:'on' and hover state.
+     * opts: { primaryGcid, hoverGcid, secondaryGcid } — gcid slugs (with or without 'gcid-' prefix).
+     * Defaults: primary = 'gcid-primary-color', secondary = 'gcid-secondary-color', hover = 'gcid-dmtl913igj'.
+     * Returns { primary, secondary } — each is { groupName, groupId, id }.
+     */
+    buttonPresets(opts) {
+      const o = opts || {};
+      const g = (slug, def) => {
+        const s = slug || def;
+        return s.startsWith('gcid-') ? s : `gcid-${s}`;
+      };
+      const primary   = g(o.primaryGcid,   'primary-color');
+      const secondary = g(o.secondaryGcid, 'secondary-color');
+      const hover     = g(o.hoverGcid,     'dmtl913igj'); // Primary 700 (lightness -20)
+
+      const cvar = (id) => `$variable({"type":"color","value":{"name":"${id}","settings":{}}})$`;
+      const btnAttrs = (bgGcid) => ({
+        button: { decoration: {
+          button:     dv({ enable: 'on', icon: { enable: 'off' } }),
+          background: Object.assign({}, dv({ color: cvar(bgGcid) }), { hover: { color: cvar(hover) } }),
+          border:     Object.assign({}, dv({ styles: { all: { color: cvar(bgGcid) } } }), { hover: { styles: { all: { color: cvar(hover) } } } }),
+          font:       { font: dv({ color: '#ffffff', size: '1rem' }) },
+        }},
+      });
+
+      const gp = (name, bgGcid) => this.groupPreset('divi/button', 'button', 'divi/button', name, btnAttrs(bgGcid));
+      return { primary: gp('Button Primary', primary), secondary: gp('Button Secondary', secondary) };
+    },
+
+    /**
+     * Register h1/h2/h3 heading group presets using type-scale variable refs.
+     * ts: optional refs from b.typeScale() — auto-calls typeScale() if omitted.
+     * Returns { h1, h2, h3 } — each is { groupName, groupId, id }.
+     * Usage: D.heading({ text: 'Hero', level: 'h1', gp: headings.h1 })
+     */
+    headingPresets(ts) {
+      const typeRefs = ts || this.typeScale();
+      const gp = (name, size, headingLevel) => this.groupPreset(
+        'divi/font', 'designTitleText', 'divi/heading', name,
+        { title: { decoration: { font: { font: dv(prune({ weight: '600', size, lineHeight: '1.1em', headingLevel: headingLevel !== 'h2' ? headingLevel : undefined })) } } } }
+      );
+      return { h1: gp('h1', typeRefs.h1, 'h1'), h2: gp('h2', typeRefs.h2, 'h2'), h3: gp('h3', typeRefs.h3, 'h3') };
+    },
+
+    /**
      * assemble({ context, content, title, slug })
      * context: 'et_builder' (page) | 'et_builder_layouts' (library)
      * content: full placeholder-wrapped string
      */
     assemble(opts) {
       const { context, content, title, slug } = opts;
-      const base = { presets: { module: presets }, global_colors: globalColors, global_variables: [], images: {}, thumbnails: [] };
+      const presetsOut = { module: presets };
+      if (Object.keys(groupPresetsStore).length) presetsOut.group = groupPresetsStore;
+      const base = { presets: presetsOut, global_colors: globalColors, global_variables: globalVariables, images: {}, thumbnails: [] };
       if (context === 'et_builder') {
         return { context, data: { 1: content }, canvases: {}, ...base };
       }
@@ -831,8 +994,9 @@ function createBuilder(opts) {
 }
 
 module.exports = {
-  BUILDER_VERSION, CRLF,
+  BUILDER_VERSION, CRLF, TYPE_SCALE,
   dv, block, placeholder, merge, prune, htmlContent,
+  applyGroupPreset,
   section, overlaySection, row, column,
   heading, text, eyebrow, button, blurb, image, icon, accordion, numberCounter, divider,
   theatreAttrs, theatrePartAttrs, withTheatre, normaliseCustomAttrs,

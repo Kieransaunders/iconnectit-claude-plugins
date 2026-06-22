@@ -60,13 +60,13 @@ const P = {
     module: { decoration: { background: D.dv({ color: b.colorVar('light-bg') }), spacing: D.dv({ padding: { top: '6em', bottom: '6em', syncVertical: 'on', syncHorizontal: 'off' } }) } },
   }),
   heroH1: b.preset('divi/heading', 'Hero H1 — left', {
-    title: { decoration: { font: { font: D.dv({ headingLevel: 'h1', family: T.headingFont, size: '56px', weight: '700', lineHeight: '1.08em', color: T.white, textAlign: 'left' }, { phone: { size: '36px' } }) } } },
+    title: { decoration: { font: { font: D.dv({ headingLevel: 'h1', family: T.headingFont, size: '56px', weight: '700', lineHeight: '1.08em', color: WHITE, textAlign: 'left' }, { phone: { size: '36px' } }) } } },
   }),
   sectionH2: b.preset('divi/heading', 'Section H2 — left', {
-    title: { decoration: { font: { font: D.dv({ headingLevel: 'h2', family: T.headingFont, size: '38px', weight: '700', lineHeight: '1.25em', color: T.dark, textAlign: 'left' }, { phone: { size: '28px' } }) } } },
+    title: { decoration: { font: { font: D.dv({ headingLevel: 'h2', family: T.headingFont, size: '38px', weight: '700', lineHeight: '1.25em', color: DARK, textAlign: 'left' }, { phone: { size: '28px' } }) } } },
   }),
   sectionH2Light: b.preset('divi/heading', 'Section H2 — on dark', {
-    title: { decoration: { font: { font: D.dv({ headingLevel: 'h2', family: T.headingFont, size: '38px', weight: '700', lineHeight: '1.25em', color: T.white, textAlign: 'left' }, { phone: { size: '28px' } }) } } },
+    title: { decoration: { font: { font: D.dv({ headingLevel: 'h2', family: T.headingFont, size: '38px', weight: '700', lineHeight: '1.25em', color: WHITE, textAlign: 'left' }, { phone: { size: '28px' } }) } } },
   }),
   cardH3: b.preset('divi/heading', 'Card H3', {
     title: { decoration: { font: { font: D.dv({ headingLevel: 'h3', family: T.headingFont, size: '22px', weight: '600', lineHeight: '1.3em', color: T.dark, textAlign: 'left' }) } } },
@@ -81,10 +81,10 @@ const P = {
     content: { decoration: { bodyFont: { body: { font: D.dv({ family: T.bodyFont, size: '14px', lineHeight: '1.5em', color: T.onDarkBody, textAlign: 'left' }) } } } },
   }),
   btnPrimary: b.preset('divi/button', 'Button — Primary pill', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '16px', color: T.dark, weight: '600' }) }, background: D.dv({ color: WHITE }), border: D.dv({ radius: { topLeft: '999px', topRight: '999px', bottomLeft: '999px', bottomRight: '999px', sync: 'on' } }) } },
+    button: { decoration: { button: D.dv({ enable: 'on' }), font: { font: D.dv({ family: T.bodyFont, size: '16px', color: T.dark, weight: '600' }) }, background: D.dv({ color: WHITE }), border: D.dv({ radius: { topLeft: '999px', topRight: '999px', bottomLeft: '999px', bottomRight: '999px', sync: 'on' } }) } },
   }),
   btnGhost: b.preset('divi/button', 'Button — Ghost', {
-    button: { decoration: { font: { font: D.dv({ family: T.bodyFont, size: '16px', color: WHITE, weight: '500' }) }, background: D.dv({ color: 'transparent' }) } },
+    button: { decoration: { button: D.dv({ enable: 'on' }), font: { font: D.dv({ family: T.bodyFont, size: '16px', color: WHITE, weight: '500' }) }, background: D.dv({ color: 'transparent' }) } },
   }),
 };
 

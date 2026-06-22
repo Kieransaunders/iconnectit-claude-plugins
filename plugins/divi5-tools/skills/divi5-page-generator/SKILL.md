@@ -230,7 +230,12 @@ For brand-specific presets not in the ET library (custom colors, pill buttons et
    - `[brand]-seo-meta.json` — keyword, title tag (≤60 chars, keyword first), meta description (≤155, with CTA), slug
    - `[brand]-schema.json` — FAQPage JSON-LD generated from the FAQ content, plus Organization/LocalBusiness (paste into Divi > Theme Options > Integration > head)
 3. Run the validator with `--keyword` and `--meta`. Fix and re-run until clean — the validator now FAILs on any em-dash/en-dash in copy (taste.md §11).
-3a. **Style consistency gate (required when a designer export is present).** If the user provided an original Divi 5 export (or a `*.tokens.js` was detected in Stage 1), run:
+3a. **Taste gate (required for all pages).** Run the deterministic taste checker on the generated JSON:
+    ```bash
+    node ${CLAUDE_SKILL_DIR}/scripts/taste-check.js [brand]-landing-page.json
+    ```
+    Fix every FAIL (em-dash, AI buzzwords in h1/h2) before proceeding. WARNs (verb-starts-h1, equal-length three-card blurbs) should be resolved unless there is a deliberate reason — note the reason in the delivery summary.
+3b. **Style consistency gate (required when a designer export is present).** If the user provided an original Divi 5 export (or a `*.tokens.js` was detected in Stage 1), run:
     ```bash
     node ${CLAUDE_SKILL_DIR}/../divi5-style-check/scripts/style-check.js <original-export.json> <generated-page.json>
     ```
@@ -239,7 +244,7 @@ For brand-specific presets not in the ET library (custom colors, pill buttons et
    - **If Local WP is running** (preferred — real Divi render): use the `import-to-local` skill's Step 2.5 (`/preview` endpoint). This renders the page via actual Divi 5 with full presets, colours, animations, and responsive breakpoints. No named page is created.
    - **If Local is not running** (quick offline check): `node ${CLAUDE_SKILL_DIR}/scripts/preview.js [brand]-landing-page.json --open` — approximate HTML rendering, good for copy/structure spot-checks.
    Compare either output against the Stage 2 HTML preview. Fix any content, copy, or structural divergence before delivering. This is the JSON fidelity gate.
-5. Confirm the taste pre-flight (taste.md §14) still holds on the generated JSON — the copy and structure must match the approved, taste-checked HTML.
+5. Confirm the taste gate (`taste-check.js`) still passes on the final JSON — the copy and structure must match the approved, taste-checked HTML.
 6. Remind the user: import via Divi Library with **"Import Presets" checked**.
 
 ### Stage 4 — Live screenshot comparison (Playwright gate)
@@ -359,6 +364,7 @@ All paths relative to this skill's directory (`${CLAUDE_SKILL_DIR}` when invokin
 |------|---------|
 | [scripts/divi-builder.js](scripts/divi-builder.js) | Generator library — blocks, presets, colours, assembly |
 | [scripts/validate.js](scripts/validate.js) | Structural validator + SEO report card |
+| [scripts/taste-check.js](scripts/taste-check.js) | Deterministic taste/slop gate — em-dash, AI buzzwords, equal three-card blurbs (Stage 3, step 3a) |
 | [scripts/preview.js](scripts/preview.js) | Divi JSON → standalone HTML preview (fidelity gate before import) |
 | [examples/example-page.js](examples/example-page.js) | Canonical generator pattern — copy this |
 | [references/aesthetics.md](references/aesthetics.md) | 5 aesthetic presets: palettes, fonts, section flows, spacing |
