@@ -13,9 +13,15 @@ Close the loop on a generated Divi 5 page: validate it, push it to any WordPress
 
 The **Divi Tools Importer** plugin must be installed and active on the target site.
 
-The plugin zip is bundled with this skill at `${CLAUDE_SKILL_DIR}/divi-tools-importer.zip`. Tell the user:
+The plugin ships as unpacked source under `plugin-src/` (a bundled `.zip` can't live inside a Claude Code plugin — the installer rejects nested zips). Build the installable zip on demand:
 
-> "The plugin zip is at `~/.claude/skills/import-to-local/divi-tools-importer.zip`. Install it via **WordPress Admin → Plugins → Add New → Upload Plugin**, then activate it."
+```bash
+bash "${CLAUDE_SKILL_DIR}/scripts/build-plugin-zip.sh" ~/Downloads
+```
+
+It prints the path to the finished zip (e.g. `~/Downloads/divi-tools-importer.zip`). Tell the user:
+
+> "I've built the plugin zip at `~/Downloads/divi-tools-importer.zip`. Install it via **WordPress Admin → Plugins → Add New → Upload Plugin**, then activate it."
 
 After activation they go to **Settings → Divi Tools Importer** to copy their site URL and API key.
 

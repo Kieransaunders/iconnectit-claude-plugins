@@ -268,13 +268,12 @@ app.get('/exports', (req, res) => {
 
 // ─── GET /download-plugin — serve the importer plugin ZIP ────────────────────
 app.get('/download-plugin', (req, res) => {
-  const zip = path.join(PLUGIN_DIR, 'divi-tools-importer.zip');
-  if (fs.existsSync(zip)) return res.download(zip, 'divi-tools-importer.zip');
-  // Fallback: build it on the fly if the zip doesn't exist yet
-  const buildScript = path.join(PLUGIN_DIR, 'plugin', 'build-zip.sh');
-  if (!fs.existsSync(buildScript)) return res.status(404).json({ error: 'Plugin ZIP not found' });
+  // The zip isn't committed (the Claude Code plugin installer rejects nested
+  // zips), so always build it from the unpacked source on demand.
+  const buildScript = path.join(PLUGIN_DIR, 'skills', 'import-to-local', 'scripts', 'build-plugin-zip.sh');
+  if (!fs.existsSync(buildScript)) return res.status(404).json({ error: 'Plugin build script not found' });
   try {
-    execSync(`bash "${buildScript}"`, { cwd: PLUGIN_DIR });
+    const zip = execSync(`bash "${buildScript}"`).toString().trim();
     res.download(zip, 'divi-tools-importer.zip');
   } catch (e) {
     res.status(500).json({ error: 'Could not build plugin ZIP' });

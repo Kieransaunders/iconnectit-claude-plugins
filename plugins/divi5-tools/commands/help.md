@@ -6,17 +6,17 @@ description: Divi 5 Tools help — find & install the importer plugin zip, get t
 
 Walk the user through setup. Be concise. Run the steps below, adapting to where they already are.
 
-## 1. Locate the importer plugin zip
+## 1. Build the importer plugin zip
 
-The **Divi Tools Importer** WordPress plugin zip is bundled with the skill. Find the real path on disk (don't guess — locations differ by install method):
+The **Divi Tools Importer** WordPress plugin ships as unpacked source (a Claude Code plugin can't bundle a nested `.zip`). Build the installable zip — find the build script first (its location varies by install method), then run it, writing the zip to `~/Downloads`:
 
 ```bash
-ls ~/.claude/skills/import-to-local/divi-tools-importer.zip 2>/dev/null \
-  || find ~/.claude/plugins/cache -name divi-tools-importer.zip 2>/dev/null \
-  || find ~/.claude/plugins/marketplaces -name divi-tools-importer.zip 2>/dev/null
+SCRIPT=$(find ~/.claude/skills ~/.claude/plugins/cache ~/.claude/plugins/marketplaces \
+  -path '*import-to-local/scripts/build-plugin-zip.sh' 2>/dev/null | head -1)
+[ -n "$SCRIPT" ] && bash "$SCRIPT" ~/Downloads
 ```
 
-Report the resolved path to the user. If none found, tell them to run `bash install-skills.sh` from the plugin source repo.
+Report the printed zip path (e.g. `~/Downloads/divi-tools-importer.zip`) to the user. If the script isn't found, the plugin isn't installed — have them re-install divi5-tools.
 
 ## 2. Install it in WordPress
 
