@@ -35,3 +35,6 @@ generate-*.js
 # ...but keep bundled examples/fixtures
 !plugins/divi5-tools/skills/**/examples/**
 !plugins/divi5-tools/skills/**/__fixtures__/**
+
+# Built plugin zips — never commit (Claude Code installer rejects nested zips)
+*.zip
