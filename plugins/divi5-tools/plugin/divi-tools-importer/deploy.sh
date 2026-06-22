@@ -16,6 +16,7 @@ fi
 rsync -av --delete \
   --exclude='.git' \
   --exclude='deploy.sh' \
+  --exclude='dev-watch.sh' \
   --exclude='*.log' \
   "$SRC/" "$DEST/"
 
