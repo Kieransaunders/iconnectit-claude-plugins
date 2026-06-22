@@ -536,12 +536,19 @@ async function rerunGeneration(id, event) {
 function renderStyleCheckDetails(logText) {
   const panel = document.getElementById('styleCheckDetails');
   if (!logText) { panel.style.display = 'none'; return; }
-  const lines = logText.split('\n');
-  const relevant = lines.filter(l => /FAIL|WARN|PASS|CONSISTENT|INCONSISTENT/i.test(l));
+  // Scope to the style-check report — the full log also carries the render
+  // validator's "all checks pass" summary, which reads as contradictory next
+  // to an INCONSISTENT style verdict (they measure different things).
+  const start = logText.indexOf('STYLE CONSISTENCY REPORT');
+  const report = start === -1 ? logText : logText.slice(start);
+  const lines = report.split('\n');
+  // Keep the verdict, section headers, and the ✖/⚠/✓ detail bullets (the
+  // bullets don't contain the words FAIL/WARN, so match on the glyphs too).
+  const relevant = lines.filter(l => /FAIL|WARN|VERDICT|CONSISTENT|INCONSISTENT|[✖⚠✓]/.test(l));
   if (!relevant.length) { panel.style.display = 'none'; return; }
   const html = relevant.map(l => {
-    const cls = /FAIL|INCONSISTENT/i.test(l) ? 'style-fail' :
-                /WARN/i.test(l) ? 'style-warn' : 'style-pass';
+    const cls = /✖|FAIL|INCONSISTENT/.test(l) ? 'style-fail' :
+                /⚠|WARN/.test(l) ? 'style-warn' : 'style-pass';
     const escaped = l.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     return `<div class="${cls}">${escaped}</div>`;
   }).join('');
