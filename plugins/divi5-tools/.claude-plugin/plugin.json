@@ -1,7 +1,7 @@
 {
   "name": "divi5-tools",
-  "version": "0.5.0",
-  "description": "Divi 5 toolkit: SEO-optimised landing page JSON generator, design/SEO reviewer for any Divi 5 export, brand-guide-to-global-variables converter, one-command import into Local WP sites with draft preview and publish-on-accept, and a Theatre.js (@theatre/core 0.7.0) reference for building the DiviTheatre animation plugin's motion engine and presets.",
+  "version": "1.0.0",
+  "description": "Divi 5 toolkit: SEO-optimised landing page JSON generator, design/SEO reviewer for any Divi 5 export, brand-guide-to-global-variables converter, one-command import into Local WP sites with draft preview and publish-on-accept.",
   "author": {
     "name": "Kieran, iConnectIT"
   },
