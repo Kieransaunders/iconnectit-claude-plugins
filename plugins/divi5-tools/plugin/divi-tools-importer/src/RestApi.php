@@ -59,6 +59,12 @@ class DTI_RestApi {
 			),
 		) );
 
+		register_rest_route( self::NAMESPACE, '/global-variables', array(
+			'methods'             => 'POST',
+			'callback'            => array( __CLASS__, 'handle_global_variables_import' ),
+			'permission_callback' => array( __CLASS__, 'authenticate' ),
+		) );
+
 		register_rest_route( self::NAMESPACE, '/ping', array(
 			'methods'             => 'GET',
 			'callback'            => array( __CLASS__, 'handle_ping' ),
@@ -141,6 +147,25 @@ class DTI_RestApi {
 			$result = DTI_PresetManager::list_presets( $module, $with_attrs );
 		} catch ( RuntimeException $e ) {
 			return new WP_Error( 'list_failed', $e->getMessage(), array( 'status' => 500 ) );
+		}
+
+		return new WP_REST_Response( $result, 200 );
+	}
+
+	public static function handle_global_variables_import( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+		// Accept the full Global Variables JSON as the POST body.
+		$payload = $request->get_json_params();
+
+		if ( ! is_array( $payload ) || empty( $payload ) ) {
+			return new WP_Error( 'invalid_payload', 'POST body must be a valid Global Variables JSON object.', array( 'status' => 400 ) );
+		}
+
+		try {
+			$result = DTI_GlobalVariablesImporter::import( $payload );
+		} catch ( \InvalidArgumentException $e ) {
+			return new WP_Error( 'invalid_payload', $e->getMessage(), array( 'status' => 400 ) );
+		} catch ( \RuntimeException $e ) {
+			return new WP_Error( 'import_failed', $e->getMessage(), array( 'status' => 500 ) );
 		}
 
 		return new WP_REST_Response( $result, 200 );
